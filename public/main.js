@@ -33,7 +33,11 @@ require.config({
 			deps: ['jquery']
     	},
 		'ui': {
-			deps: ['backbone', 'jquery-ui']
+			deps: [
+				'backbone',
+				'css!styles/ui',
+				'jquery-ui'
+			]
 		},
 		'underscore': {
 			exports: '_'
@@ -41,4 +45,9 @@ require.config({
     }
 });
 
-require(["ui"]);
+require(["ui"], function(UiView) {
+	var ui = new UiView({
+		el: 'body'
+	});
+	ui.render();
+});
