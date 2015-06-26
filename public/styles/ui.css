@@ -2,6 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400);
 
 body {
+	background-image: url(../images/bg-tile.jpg);
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
 	color: #333;
@@ -31,6 +32,7 @@ input.loading {
 	border-radius: 3px;
 	cursor: pointer;
 	position: relative;
+	background:#fff;
 }
 	.hotel-preview:hover {
 		top: -1px;
