@@ -1,3 +1,5 @@
 raw/
 
 node_modules/
+/nbproject/private/
+nbproject/
