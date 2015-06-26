@@ -2,7 +2,8 @@ Documentation generation: http://yui.github.io/yuidoc/
 
 ZipCode Data: http://www.opengeocode.org/download.php#cityzip
 
-
+Distance calculation between lat/long points:
+http://www.movable-type.co.uk/scripts/latlong.html
 
 Room Key Front End Development Challenge
 ========================================
