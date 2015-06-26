@@ -10,8 +10,13 @@
 */
 var IGNORE_CACHE = true;
 
+// set up require.js configuration
 require.config({
-	urlArgs: IGNORE_CACHE ? "nocache=" +  (new Date()).getTime() : '',
+	
+	// cache busting
+	urlArgs: IGNORE_CACHE ? 'nocache=' +  (new Date()).getTime() : '',
+	
+	// paths to libraries
 	paths: {
 		'backbone': 'lib/backbone/backbone-min',
 		'css': 'lib/require/css',
@@ -21,6 +26,8 @@ require.config({
 		'ui': 'views/ui',
 		'underscore': 'lib/underscore/underscore-min'
 	},
+	
+	// dependencies
     shim: {
 		'backbone': {
 			exports: 'Backbone',
@@ -45,9 +52,13 @@ require.config({
     }
 });
 
+// load and render the main UI to the body element of the HTML page
 require(["ui"], function(UiView) {
+	
 	var ui = new UiView({
 		el: 'body'
 	});
+	
 	ui.render();
+	
 });
