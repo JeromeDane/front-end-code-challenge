@@ -2,6 +2,14 @@
  * Configure require.js and load main UI
  */
 
+/**
+* Force require.js to ignore cache during development. Should be removed for 
+* deployment to production environments.
+* 
+* @type Boolean
+*/
+var IGNORE_CACHE = true;
+
 require.config({
 	urlArgs: IGNORE_CACHE ? "nocache=" +  (new Date()).getTime() : '',
 	paths: {
