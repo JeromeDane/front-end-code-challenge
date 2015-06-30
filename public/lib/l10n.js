@@ -9,7 +9,7 @@
 
 /*global XMLHttpRequest, setTimeout, document, navigator, ActiveXObject*/
 
-/*! @source http://purl.eligrey.com/github/l10n.js/blob/master/l10n.js*/
+/*! @source https://github.com/eligrey/l10n.js/blob/master/l10n.js*/
 
 (function () {
 "use strict";
