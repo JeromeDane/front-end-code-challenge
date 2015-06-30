@@ -60,7 +60,6 @@ define([
 			
 			// re-render the user interface on locale change
 			this.views.header.on('locale-change', function(locale) {
-				console.log('ui', locale);
 				_this.render();
 			});
 		
