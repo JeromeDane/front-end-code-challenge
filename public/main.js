@@ -25,6 +25,7 @@ require.config({
 		'json': 'lib/require/json',
 		'l10n': 'lib/l10n',
 		'localization': 'lib/jeromedane/localization',
+		'jerome-utils': 'lib/jeromedane/utils',
 		'text': 'lib/require/text',
 		'ui': 'views/ui',
 		'underscore': 'lib/underscore/underscore.min'
@@ -50,7 +51,8 @@ require.config({
 				'backbone',
 				'css!styles/ui',
 				'jquery-ui',
-				'localization'
+				'localization',
+				'jerome-utils'
 			]
 		},
 		'underscore': {
