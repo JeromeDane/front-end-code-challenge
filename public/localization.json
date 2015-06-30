@@ -1,14 +1,19 @@
 {
 	"en": {
+		"Check-In": "Check-In",
+		"Check-Out": "Check-Out",
 		"Language": "Language",
 		"LOCALE_en": "English",
 		"LOCALE_fr": "French",
-		"SITE_TITLE": "Super Hotel Search"
+		"SITE_TITLE": "Super Hotel Search",
+		"WHERE_STAY?": "Where would you like to stay?"
 	},
 	"fr": {
+		"Check-In": "Enregistrement",
 		"Language": "Langue",
 		"LOCALE_en": "Angalis",
 		"LOCALE_fr": "Français",
-		"SITE_TITLE": "Recherche de Super Hôtel"
+		"SITE_TITLE": "Recherche de Super Hôtel",
+		"WHERE_STAY?": "Où aimeriez-vous rester?"
 	}
 }
