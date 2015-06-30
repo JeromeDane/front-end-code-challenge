@@ -1,5 +1,1 @@
-@import url("../lib/jquery-ui/jquery-ui.min.css");
-
-body {
-	background-image: url('../images/bg-tile.jpg');
-}
+@import url("../lib/jquery-ui/jquery-ui.min.css")
