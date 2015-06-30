@@ -39,7 +39,18 @@ define(['l10n'], function() {
 			 * @returns {undefined}
 			 */
 			define: function(localizationData) {
+				
 				String.toLocaleString(localizationData);	
+				
+			},
+			
+			/**
+			 * Get the current locale
+			 * 
+			 * @returns String
+			 */
+			getLocale: function() {
+				return String.locale;
 			},
 
 			/**
@@ -56,7 +67,20 @@ define(['l10n'], function() {
 				str = input.toLocaleString();
 
 				return replaceVars(str);
+			},
+			
+			/**
+			 * Set the current locale
+			 * 
+			 * @param {type} locale The locale to use when appllying localization
+			 * @returns {undefined}
+			 */
+			setLocale: function(locale) {
+				
+				String.locale = locale;
+				
 			}
+			
 		};
 	}());
 });

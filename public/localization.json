@@ -1,8 +1,14 @@
 {
 	"en": {
+		"Language": "Language",
+		"LOCALE_en": "English",
+		"LOCALE_fr": "French",
 		"SITE_TITLE": "Super Hotel Search"
 	},
 	"fr": {
+		"Language": "Langue",
+		"LOCALE_en": "Angalis",
+		"LOCALE_fr": "Français",
 		"SITE_TITLE": "Recherche de Super Hôtel"
 	}
 }

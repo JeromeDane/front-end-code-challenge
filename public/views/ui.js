@@ -24,6 +24,7 @@ define([
 	// globalize localization function for simplicity (see comment abovce declaration of "l" var above)
 	l = com.jeromedane.Localization.l;
 	
+	
 	// define our localization strings
 	com.jeromedane.Localization.define(localization);
 
@@ -48,10 +49,20 @@ define([
 		
 		initialize: function() {
 			
+			// set local reference to this for use in handlers
+			var _this = this;
+			
+			// define subviews
 			this.views =  {
 				header: new HeaderView(),
 				search: new SearchView()
 			};
+			
+			// re-render the user interface on locale change
+			this.views.header.on('locale-change', function(locale) {
+				console.log('ui', locale);
+				_this.render();
+			});
 		
 		},               
                 
