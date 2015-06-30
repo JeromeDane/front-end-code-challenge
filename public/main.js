@@ -18,13 +18,13 @@ require.config({
 	
 	// paths to libraries
 	paths: {
-		'backbone': 'lib/backbone/backbone-min',
+		'backbone': 'lib/backbone/backbone.min',
 		'css': 'lib/require/css',
-		'jquery': 'lib/jquery/jquery-min',
+		'jquery': 'lib/jquery/jquery.min',
 		'jquery-ui': 'lib/jquery-ui/jquery-ui.min',
 		'text': 'lib/require/text',
 		'ui': 'views/ui',
-		'underscore': 'lib/underscore/underscore-min'
+		'underscore': 'lib/underscore/underscore.min'
 	},
 	
 	// dependencies
