@@ -1,3 +1,4 @@
+<!-- TODO: Localize text -->
 <% if(typeof(thumbnail) != 'undefined') { %>
 	<img src="<%= thumbnail %>" class="thumbnail" alt="Hotel Thumbnail"/>
 <% } %>

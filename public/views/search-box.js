@@ -6,6 +6,8 @@ define([
 	LocationsCollection
 ) {
 	
+	// TODO: Way to let user click "current location"
+	
 	// TODO: Store field values and restore them on render
 	
 	function initDatePickers(view) {
