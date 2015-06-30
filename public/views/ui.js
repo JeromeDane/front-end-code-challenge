@@ -1,12 +1,31 @@
+/**
+ * Lazy declaration of a global variable/function for easy 
+ * localization calls throughout the rest of the application.
+ * This is not really good practice, but it'll save me time
+ * for the purposes of this coding challenge. 
+ */
+var l;
+
+/**
+ * Load dependencies for UI view
+ */
 define([
 	'text!templates/ui.tpl',
+	'json!../localization.json',
      'views/header',
      'views/search'
 ], function(
     templateHtml,
+	localization,
     HeaderView,
     SearchView
 ) {
+
+	// globalize localization function for simplicity (see comment abovce declaration of "l" var above)
+	l = com.jeromedane.Localization.l;
+	
+	// define our localization strings
+	com.jeromedane.Localization.define(localization);
 
 	/**
 	 * Render a subview of the main UI view 

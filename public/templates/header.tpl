@@ -1,1 +1,1 @@
-<h1>Site Name Here</h1>
+<h1><%= l("SITE_TITLE") %></h1>
