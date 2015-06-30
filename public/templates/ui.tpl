@@ -1,3 +1,2 @@
-<div id="helloWorldDialog">
-	<p>Hello world, from UI!</p>
-</div>
+<div class="view view-header"></div>
+<div class="view view-body"></div>
