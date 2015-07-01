@@ -8,6 +8,22 @@ com.jeromedane = com.jeromedane || {};
 com.jeromedane.Utils = {
 	
 	/**
+	 * Perform an action only after a certain amount of
+	 * time has passed. Useful for performing a search based
+	 * on an input field on key up, but only if the user hasn't
+	 * entered a new key in a certain amount of time.
+	 * 
+	 * Source: http://stackoverflow.com/questions/1909441/jquery-keyup-delay
+	 */
+	delay: (function(){
+		var timer = 0;
+		return function(callback, ms){
+			clearTimeout (timer);
+			timer = setTimeout(callback, ms);
+		};
+	})(),
+	
+	/**
 	 * Render a subview of a given view
 	 * 
 	 * @param {type} view The view instance into which the subview will be rendered
