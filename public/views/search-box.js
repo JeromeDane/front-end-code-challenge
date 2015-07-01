@@ -2,6 +2,8 @@ define([
 	'text!templates/search-box.tpl'
 ], function(templateHtml) {
 	
+	// TODO: Store field values and restore them on render
+	
 	function initDatePickers(view) {
 		
 		// get checkin/checkout fields
