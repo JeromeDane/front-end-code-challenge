@@ -45,7 +45,9 @@ define([
 		// when the user finishes entering a keystroke in the location search
 		$('input[name="location"]', view.$el).keyup(function() {
 			var searchStr = this.value;
-			if(searchStr.length > 3) {
+			// if the search string is greater than 2 characters
+			if(searchStr.length > 2) {
+				// perform the actual search after the last keystroke was at least keyUpDelay ago
 				com.jeromedane.Utils.delay(function(){
 					console.log(searchStr);
 					// apply search filter and get locations matching that filter
