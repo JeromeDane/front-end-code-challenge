@@ -1,13 +1,11 @@
 define([
 	'text!templates/search.tpl',
 	'views/search-box',
-	'views/search-results',
-	'collections/locations'
+	'views/search-results'
 ], function(
 	templateHtml,
 	SearchBoxView,
-	SearchResultsView,
-	LocationsCollection
+	SearchResultsView
 ) {
 	
 	var renderSubView = com.jeromedane.Utils.renderSubView;
@@ -23,15 +21,6 @@ define([
 				'search-results': new SearchResultsView()
 			};
 			
-			this.collections = {
-				locations: new LocationsCollection()
-			};
-			
-			var locations = this.collections.locations;
-			locations.on('update', function() {
-				console.log(locations);
-			});
-			
 		},
 		
 		render: function() {
@@ -40,8 +29,6 @@ define([
 			
 			renderSubView(this, 'search-box');
 			renderSubView(this, 'search-results');
-			
-			this.collections.locations.fetch();
 			
 		}
 	};
