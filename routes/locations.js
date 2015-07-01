@@ -61,7 +61,7 @@ router.get('/', function(req, res) {
  *  database structure like JSON files. I'm doing it this way
  *  to add interest to the coding challenge without completely
  *  changing the DB system. Normally I would use a DB that allows
- *  for more optimal data retrieval using queries (e.g. sql, etc.)
+ *  for more optimal data retrieval using queries on indexed fields.
  */
 router.get('/search/:name', function(req, res) {
   var searchStr = res.req.params.name;
