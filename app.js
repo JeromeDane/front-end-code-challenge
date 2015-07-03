@@ -5,6 +5,7 @@ var ip          = require('ip');
 var bodyParser  = require('body-parser');
 
 var locations   = require('./routes/locations');
+var hotels      = require('./routes/hotels');
 
 var app = express();
 var publicPathName = 'public';
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(publicPath));
 
 app.use('/api/locations', locations);
+app.use('/api/hotels', hotels);
 
 var server = app.listen(9696, function () {
 
