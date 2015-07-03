@@ -73,7 +73,7 @@ define([
 		// when the user finishes entering a keystroke in the location search
 		view.$search.keyup(function(evt) {
 			// make sure key pressed was a word character
-			if(evt.which == 0 || !String.fromCharCode(evt.which).match(/\w/)) {
+			if((evt.which != 8 && evt.which != 846) && !String.fromCharCode(evt.which).match(/\w/)) {
 				return;
 			}
 			var searchStr = this.value;
