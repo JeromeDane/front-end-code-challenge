@@ -97,7 +97,7 @@ define([
 	function initMaxDist(view) {
 		
 		var $slider = $('.distSlider');
-		var initialDist = 5;
+		var initialDist = 10;
 		
 		function updateSliderDisplay(val) {
 			if(val < 5) return false;
