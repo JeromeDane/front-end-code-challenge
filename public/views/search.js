@@ -1,11 +1,13 @@
 define([
 	'text!templates/search.tpl',
 	'views/search-box',
-	'views/search-results'
+	'views/search-results',
+	'collections/hotels'
 ], function(
 	templateHtml,
 	SearchBoxView,
-	SearchResultsView
+	SearchResultsView,
+	HotelsCollection
 ) {
 	
 	var renderSubView = com.jeromedane.Utils.renderSubView;
@@ -16,9 +18,11 @@ define([
 		
 		initialize: function() {
 			
+			this.hotels = new HotelsCollection();
+			
 			this.views = {
-				'search-box': new SearchBoxView(),
-				'search-results': new SearchResultsView()
+				'search-box': new SearchBoxView({ hotels: this.hotels }),
+				'search-results': new SearchResultsView({ hotels: this.hotels })
 			};
 			
 		},

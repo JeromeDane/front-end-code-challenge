@@ -10,7 +10,7 @@
 	<div class="search-field dist">
 		<label><%= l("WITHIN_X_MILES") %></label>
 		<div class="distSlider"></div>
-		<input type"text" name="dist"/>
+		<input type="hidden" name="dist"/>
 	</div>
 	<div class="search-field">
 		<label><%= l("Check-In") %></label>

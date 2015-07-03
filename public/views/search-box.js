@@ -70,6 +70,8 @@ define([
 			view.$search.val(view.currLocationLabel);
 		});
 		
+		// TODO: cache location search results (maybe)
+		
 		// when the user finishes entering a keystroke in the location search
 		view.$search.keyup(function(evt) {
 			// make sure key pressed was a word character
@@ -122,9 +124,12 @@ define([
 	function initSubmit(view) {
 		view.$form = $('form', view.$el);
 		view.$form.submit(function() {
-			console.log($(this).serialize());
+			view.hotels.setParams($(this).serialize());
+			view.hotels.fetch();
 			return false;
 		});
+		
+		// TODO: show location not found message as appropriate
 	}
 	
 	// map locations collection to autocomplete data and refresh options
@@ -147,9 +152,13 @@ define([
 		
 		template: _.template(templateHtml),
 		
-		initialize: function() {
-			this.locations = new LocationsCollection();
+		initialize: function(options) {
 			
+			if(!options || !options.hotels) throw "Search box view must be initialized with a hotels collection";
+			
+			this.hotels = options.hotels;
+			
+			this.locations = new LocationsCollection();
 			this.locations.on('update', parseLocationResults, this);
 			
 		},
