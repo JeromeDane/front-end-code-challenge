@@ -15,7 +15,9 @@ _.each(['charlottesville', 'newyork', 'chicago'], function(location) {
 	hotels = hotels.concat(cloneRequiredJson(require('../data/hotels/' + location + '.json')));
 });
 
-function getHotelsWithPrices(querystring) {
+function getHotelsWithPrices(req) {
+  
+  var querystring = url.parse(req.url, true).query;
   
   var checkin = Date.parse(querystring.checkin);
   var checkout = Date.parse(querystring.checkout);
@@ -96,11 +98,13 @@ function getDistance(lat, lng, hotel) {
 	return km;
 }
 
-function filterHotelsByLocation(hotels, querystring) {
-	
+function filterHotelsByLocation(hotels, req) {
+
+  var querystring = url.parse(req.url, true).query;
+
   var lat = parseFloat(querystring.lat);
   var lng = parseFloat(querystring.lng);
-   var dist = parseFloat(querystring.dist);
+  var dist = parseFloat(querystring.dist);
 
   if(isNaN(lat) || isNaN(lng)) throw 'Invalid location';
   if(isNaN(dist) || dist < 1) throw 'Invalid maximum distance';
@@ -112,13 +116,25 @@ function filterHotelsByLocation(hotels, querystring) {
 }
 
 /**
- * Get hotels
+ * Get hotels by distance from a given point
+ * 
+ * Requires the following querystring GET parameters:
+ * checkin - Date of checkin
+ * checkout - Date of checkout
+ * lat - Latitude of the central point
+ * lng - Longitude of the central point
+ * dist - The maximum distance from the central point in miles to find hotels
  */
 router.get('/', function(req, res) {
-  var querystring = url.parse(req.url, true).query;
-  var hotels = getHotelsWithPrices(querystring);
-  hotels = filterHotelsByLocation(hotels, querystring);
+  var hotels = getHotelsWithPrices(req);
+  hotels = filterHotelsByLocation(hotels, req);
   res.json(hotels);
+});
+
+// Get a specific hotel
+router.get('/:id', function(req, res, next) {
+  var hotels = getHotelsWithPrices(req);
+  res.json(_.findWhere(hotels, {id: req.params.id}));
 });
 
 module.exports = router;

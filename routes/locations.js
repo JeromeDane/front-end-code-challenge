@@ -38,13 +38,4 @@ router.get('/', function(req, res) {
   res.json(_.toArray(filteredLocations));
 });
 
-// Get a specific hotel
-router.get('/:id/hotels/:udicode', function(req, res, next) {
-  var location = locations[req.params.id];
-  var hotels;
-  if (!location) return next();
-  hotels = getHotels(location, req);
-  res.json(_.findWhere(hotels, {id: req.params.udicode}));
-});
-
 module.exports = router;
