@@ -1,8 +1,11 @@
-<form>
+<form class="search-box">
 	<div class="search-field">
 		<label><%= l("WHERE_STAY?") %></label>
-		<input type"text" name="location"/>
-		<input type="text" name="locationId"/>
+		<div class="search-field-wrapper">
+			<input type"text" class="location"/>
+		</div>
+		<input type="hidden" name="lat"/>
+		<input type="hidden" name="lng"/>
 	</div>
 	<div class="search-field">
 		<label><%= l("Check-In") %></label>

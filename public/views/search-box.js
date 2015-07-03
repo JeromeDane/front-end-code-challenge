@@ -38,28 +38,71 @@ define([
 		
 	}
 	
+	// map locations collection to autocomplete data and refresh options
+	function parseLocationResults() {
+		this.$search.autocomplete('option', 'source', this.locations.map(function(loc) {
+			return {
+				label: loc.get('city') + ', ' + l(loc.get('state')) + ' ' + loc.get('postal'),
+				city: loc.get('city'),
+				state: loc.get('state'),
+				zip: loc.get('postal'),
+				lat: loc.get('latitude'),
+				lng: loc.get('longitude')
+			};
+		}));
+		this.$search.removeClass('loading');	
+		this.$search.keydown();					// force open autocomplete options
+	}
+	
+	// initialize location search field
 	function initLocationSearch(view) {
 		
-		var keyUpDelay = 500;
+		var keyUpDelay = 500;	// millisecond delay to perform location search after key up
+		
+		view.$search = $('input.location', view.$el);
+		
+		// create autocomplete instance on search field
+		view.$search.autocomplete({
+			minLength: 3,
+			select: function(evt, ui) {
+				var itm = ui.item;
+				$('input[name="lat"]', view.$el).val(itm.lat);
+				$('input[name="lng"]', view.$el).val(itm.lng);
+				view.currLocationLabel = itm.label;
+				view.$form.submit();
+			},
+			source: []
+		});
+		
+		// restore any current location to search field on blur
+		view.$search.blur(function() {
+			view.$search.val(view.currLocationLabel);
+		});
 		
 		// when the user finishes entering a keystroke in the location search
-		$('input[name="location"]', view.$el).keyup(function() {
+		view.$search.keyup(function(evt) {
+			// make sure key pressed was a word character
+			if(evt.which == 0 || !String.fromCharCode(evt.which).match(/\w/)) {
+				return;
+			}
 			var searchStr = this.value;
 			// if the search string is greater than 2 characters
 			if(searchStr.length > 2) {
 				// perform the actual search after the last keystroke was at least keyUpDelay ago
+				view.$search.addClass('loading');
 				com.jeromedane.Utils.delay(function(){
-					console.log(searchStr);
 					// apply search filter and get locations matching that filter
 					view.locations.setFilter(searchStr);
 					view.locations.fetch();
 				}, keyUpDelay);
 			}
 		});
+		
 	}
 	
 	function initSubmit(view) {
-		$('form', view.$el).submit(function() {
+		view.$form = $('form', view.$el);
+		view.$form.submit(function() {
 			console.log($(this).serialize());
 			return false;
 		});
@@ -72,9 +115,7 @@ define([
 		initialize: function() {
 			this.locations = new LocationsCollection();
 			
-			this.locations.on('update', function(locations) {
-				console.log(locations);
-			});
+			this.locations.on('update', parseLocationResults, this);
 			
 		},
 		
