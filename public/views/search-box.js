@@ -38,28 +38,17 @@ define([
 		
 	}
 	
-	// map locations collection to autocomplete data and refresh options
-	function parseLocationResults() {
-		this.$search.autocomplete('option', 'source', this.locations.map(function(loc) {
-			return {
-				label: loc.get('city') + ', ' + l(loc.get('state')) + ' ' + loc.get('postal'),
-				city: loc.get('city'),
-				state: loc.get('state'),
-				zip: loc.get('postal'),
-				lat: loc.get('latitude'),
-				lng: loc.get('longitude')
-			};
-		}));
-		this.$search.removeClass('loading');	
-		this.$search.keydown();					// force open autocomplete options
-	}
-	
 	// initialize location search field
 	function initLocationSearch(view) {
 		
 		var keyUpDelay = 500;	// millisecond delay to perform location search after key up
 		
 		view.$search = $('input.location', view.$el);
+		
+		// restore location text if previously set
+		if(view.currLocationLabel) {
+			view.$search.val(view.currLocationLabel);
+		}
 		
 		// create autocomplete instance on search field
 		view.$search.autocomplete({
@@ -134,6 +123,22 @@ define([
 			console.log($(this).serialize());
 			return false;
 		});
+	}
+	
+	// map locations collection to autocomplete data and refresh options
+	function parseLocationResults() {
+		this.$search.autocomplete('option', 'source', this.locations.map(function(loc) {
+			return {
+				label: loc.get('city') + ', ' + l(loc.get('state')) + ' ' + loc.get('postal'),
+				city: loc.get('city'),
+				state: loc.get('state'),
+				zip: loc.get('postal'),
+				lat: loc.get('latitude'),
+				lng: loc.get('longitude')
+			};
+		}));
+		this.$search.removeClass('loading');	
+		this.$search.keydown();					// force open autocomplete options
 	}
 	
 	var view = {
