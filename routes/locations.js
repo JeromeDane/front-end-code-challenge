@@ -6,11 +6,6 @@ var randomSeed = require('random-seed');
 
 var locations = require('../data/zipcodes.json');
 
-// Get locations
-router.get('/', function(req, res) {
-  res.json(_.toArray(locations));
-});
-
 /**
  *  Search locations
  *  
@@ -21,8 +16,10 @@ router.get('/', function(req, res) {
  *  changing the DB system. Normally I would use a DB that allows
  *  for more optimal data retrieval using queries on indexed fields.
  */
-router.get('/search/:name', function(req, res) {
-  var searchStr = res.req.params.name;
+router.get('/', function(req, res) {
+  var querystring = url.parse(req.url, true).query;
+  var searchStr = querystring.search;
+  if(!searchStr || searchStr.length < 3) throw 'Invalid location search string';
   // get only the locations that have the search string in the combined state, city, and postal code
   var filteredLocations = _.filter(locations, function(location){
 	  var compositeLocationStr = (location.state + ' ' + location.city + ' ' + location.postal).toLowerCase();
