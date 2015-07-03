@@ -50,6 +50,8 @@ define([
 			view.$search.val(view.currLocationLabel);
 		}
 		
+		// TODO: ignore punctuation in matching and consider both abbreviated and full state names
+		
 		// create autocomplete instance on search field
 		view.$search.autocomplete({
 			minLength: 3,
