@@ -30,7 +30,7 @@ define([
 		 * @returns {undefined}
 		 */
 		setFilter: function(filterStr) {
-			this.url = baseUrl + '/search/' + encodeURIComponent(filterStr);
+			this.url = baseUrl + '?search=' + encodeURIComponent(filterStr);
 		}
 		
 	};
