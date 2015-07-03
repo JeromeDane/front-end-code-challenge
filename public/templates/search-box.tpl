@@ -7,6 +7,11 @@
 		<input type="hidden" name="lat"/>
 		<input type="hidden" name="lng"/>
 	</div>
+	<div class="search-field dist">
+		<label><%= l("WITHIN_X_MILES") %></label>
+		<div class="distSlider"></div>
+		<input type"text" name="dist"/>
+	</div>
 	<div class="search-field">
 		<label><%= l("Check-In") %></label>
 		<input type"text" name="checkin"/>

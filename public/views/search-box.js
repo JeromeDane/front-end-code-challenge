@@ -100,6 +100,34 @@ define([
 		
 	}
 	
+	// initialize maximum distance input
+	function initMaxDist(view) {
+		
+		var $slider = $('.distSlider');
+		var initialDist = 5;
+		
+		function updateSliderDisplay(val) {
+			if(val < 5) return false;
+			var $label = $('.search-field.dist label');
+			$label.text($label.text().replace(/MAXDIST|\d+/, val));
+			$('input[name="dist"]').val(val);
+			return true;
+		}
+		
+		$slider.slider({
+			range: 'min',
+			min: 0,
+			max: 50,
+			step: 5,
+			value: initialDist, 
+			slide: function(evt, ui) {
+				return updateSliderDisplay(ui.value);
+			}
+		});
+		
+		updateSliderDisplay(initialDist);
+	}
+	
 	function initSubmit(view) {
 		view.$form = $('form', view.$el);
 		view.$form.submit(function() {
@@ -125,6 +153,7 @@ define([
 			
 			initDatePickers(this);
 			initLocationSearch(this);
+			initMaxDist(this);
 			initSubmit(this);
 			
 		}

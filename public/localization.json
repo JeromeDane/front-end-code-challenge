@@ -7,6 +7,7 @@
 		"LOCALE_fr": "French",
 		"SITE_TITLE": "Super Hotel Search",
 		"WHERE_STAY?": "Where would you like to stay?",
+		"WITHIN_X_MILES": "Within MAXDIST miles",
 		
 		"AL": "Alabama",
 		"AK": "Alaska",
@@ -74,6 +75,7 @@
 		"LOCALE_en": "Angalis",
 		"LOCALE_fr": "Français",
 		"SITE_TITLE": "Recherche de Super Hôtel",
-		"WHERE_STAY?": "Où aimeriez-vous rester?"
+		"WHERE_STAY?": "Où aimeriez-vous rester?",
+		"WITHIN_X_MILES": "à moins de MAXDIST miles"
 	}
 }
