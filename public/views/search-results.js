@@ -7,14 +7,16 @@ define([
 ) {
 	
 	function renderHotels(view) {
+		
 		var $wrapper = $('.hotels', view.$el);
+		
 		view.hotels.each(function(hotel) {
-			var domId = 'hotel-' + hotel.get('id');
-			$wrapper.append('<div id="' + domId + '" class="view"></div>');
+			
 			(new HotelPreviewView({
-				el: '#' + domId,
-				model: hotel
+				model: hotel,
+				appendTo: $wrapper
 			})).render();
+			
 		});
 	}
 	
