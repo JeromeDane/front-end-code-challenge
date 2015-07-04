@@ -2,6 +2,9 @@
 	<% if(typeof(logo) != 'undefined') { %>
 		<img src="<%= logo %>" class="logo"/>
 	<% } %>
+	<% if(typeof(thumbnail) != 'undefined') { %>
+		<img src="<%= thumbnail %>" class="image"/>
+	<% } %>
 	<div class="name"><%= name %></name>
 	<div class="description"><%= short_description %></name>
 	<div class="stars">Stars: <%= stars %>/5</div>
