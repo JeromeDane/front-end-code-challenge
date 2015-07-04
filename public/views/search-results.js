@@ -1,9 +1,11 @@
 define([
 	'text!templates/search-results.tpl',
-	'views/hotel-preview'
+	'views/hotel-preview',
+	'masonry'
 ], function(
 	templateHtml,
-	HotelPreviewView
+	HotelPreviewView,
+	Masonry
 ) {
 	
 	function renderHotels(view) {
@@ -18,6 +20,9 @@ define([
 			})).render();
 			
 		});
+		
+		// apply pinterest-style columns
+		new Masonry('.view-search-results .hotels');
 	}
 	
 	var view = {

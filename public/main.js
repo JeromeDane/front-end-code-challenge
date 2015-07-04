@@ -25,6 +25,7 @@ require.config({
 		'json': 'lib/require/json',
 		'l10n': 'lib/l10n',
 		'localization': 'lib/jeromedane/localization',
+		'masonry': 'lib/masonry/masonry.min',
 		'jerome-utils': 'lib/jeromedane/utils',
 		'text': 'lib/require/text',
 		'ui': 'views/ui',
