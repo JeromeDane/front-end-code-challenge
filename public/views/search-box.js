@@ -161,6 +161,10 @@ define([
 			this.locations = new LocationsCollection();
 			this.locations.on('update', parseLocationResults, this);
 			
+			// preload cville hotels for easy preview during development 
+			this.hotels.setParams('lat=38.035466&lng=-78.46289&dist=10&checkin=2015-07-03&checkout=2015-07-04');
+			this.hotels.fetch();
+			
 		},
 		
 		render: function() {
