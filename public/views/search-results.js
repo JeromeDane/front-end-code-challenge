@@ -1,6 +1,22 @@
 define([
-	'text!templates/search-results.tpl'
-], function(templateHtml) {
+	'text!templates/search-results.tpl',
+	'views/hotel-preview'
+], function(
+	templateHtml,
+	HotelPreviewView
+) {
+	
+	function renderHotels(view) {
+		var $wrapper = $('.hotels', view.$el);
+		view.hotels.each(function(hotel) {
+			var domId = 'hotel-' + hotel.get('id');
+			$wrapper.append('<div id="' + domId + '" class="view"></div>');
+			(new HotelPreviewView({
+				el: '#' + domId,
+				model: hotel
+			})).render();
+		});
+	}
 	
 	var view = {
 		
@@ -11,11 +27,9 @@ define([
 			if(!options || !options.hotels) throw "Search results view must be initialized with a hotels collection";
 			
 			this.hotels = options.hotels;
-			this.hotels.on('update', function() {
-				console.log(options.hotels);
-			});
+			this.hotels.on('update', this.render, this);
 			this.hotels.on('fetch-start', function() {
-				console.log('loading...');
+				$('.loading', this.$el).show();
 			});
 			
 		},
@@ -23,6 +37,11 @@ define([
 		render: function() {
 			
 			this.$el.html(this.template());
+			
+			$('.loading', this.$el).hide();
+			
+			renderHotels(this);
+			
 			
 		}
 	};
