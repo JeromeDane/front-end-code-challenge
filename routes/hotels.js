@@ -8,15 +8,15 @@ function cloneRequiredJson(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-// combine hotel data from 3 available locations
-// normally this would likely be in one single data source
-var hotels = [];
-_.each(['charlottesville', 'newyork', 'chicago'], function(location) {
-	hotels = hotels.concat(cloneRequiredJson(require('../data/hotels/' + location + '.json')));
-});
-
 function getHotelsWithPrices(req) {
   
+  // combine hotel data from 3 available locations
+  // normally this would likely be in one single data source
+  var hotels = [];
+  _.each(['charlottesville', 'newyork', 'chicago'], function(location) {
+    hotels = hotels.concat(cloneRequiredJson(require('../data/hotels/' + location + '.json')));
+  });
+	
   var querystring = url.parse(req.url, true).query;
   
   var checkin = Date.parse(querystring.checkin);
