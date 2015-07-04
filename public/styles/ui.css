@@ -8,15 +8,22 @@ body {
 	color: #333;
 }
 
-form.search-box .search-field-wrapper {
-	margin-right: 100px;
+form.search-box {
+	background:#fff;
+	padding:1em;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	border:1px solid #aaa;
+	border-radius: 3px;
 }
-form.search-box input.location {
-	width: 100%;
-	font-size: 1.5em;
-	padding: .2em;
-	font-family: serif;
-}
+	form.search-box .search-field-wrapper {
+		margin-right: 100px;
+	}
+	form.search-box input.location {
+		width: 100%;
+		font-size: 1.5em;
+		padding: .2em;
+		font-family: serif;
+	}
 
 input.loading {
 	background: url(../images/ajax-loader.gif) right no-repeat;
