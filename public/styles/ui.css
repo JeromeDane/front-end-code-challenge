@@ -3,22 +3,49 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-}
-
-.view {
-	border:1px solid red;
+	font-size: 14px;
+	color: #333;
 }
 
 form.search-box .search-field-wrapper {
-	margin-right:100px;
+	margin-right: 100px;
 }
 form.search-box input.location {
-	width:100%;
-	font-size:1.5em;
-	padding:.2em;
+	width: 100%;
+	font-size: 1.5em;
+	padding: .2em;
 	font-family: serif;
 }
 
 input.loading {
 	background: url(../images/ajax-loader.gif) right no-repeat;
 }
+
+.hotel-preview {
+	width:200px;
+	display: inline-block;
+	margin:0 1em 1em 0;
+	padding: 1em;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	border:1px solid #aaa;
+	border-radius: 3px;
+	cursor: pointer;
+	position: relative;
+}
+	.hotel-preview:hover {
+		top: -1px;
+		left: -1px;
+		border-color: #888;
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	}
+	.hotel-preview .thumbnail {
+		border: 1px inset #ccc;
+	}
+	.hotel-preview .logo {
+		float: right;
+		margin: .5em 0 0 .5em;
+	}
+	.hotel-preview .name {
+		font-weight: bold;
+		margin: .5em 0;
+	}
