@@ -21,8 +21,12 @@ define([
 			
 		});
 		
-		// apply pinterest-style columns
-		new Masonry('.view-search-results .hotels');
+		
+		// apply pinterest-style columns and update layout as images are loaded
+		var grid = new Masonry('.view-search-results .hotels');
+		$('img.thumbnail', $wrapper).load(function() {
+			grid.layout();
+		});
 	}
 	
 	var view = {

@@ -44,6 +44,9 @@ require.config({
 		'jquery-ui': {
 			deps: ['jquery']
     	},
+		'masonry': {
+			deps: ['jquery']
+		},
 		'localization': {
 			deps: ['l10n']
 		},
