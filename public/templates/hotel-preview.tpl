@@ -11,7 +11,7 @@
 	<div class="rating">Guest Rating: <%= guest_rating %>/5</div>
 	<div class="distance">Distance: <%= distance.toFixed(1) %> miles</div>
 	<% if(available) { %>
-		<div class="rate">$<%= l(nightly_rate.toFixed(2)) %></name>
+		<div class="rate">$<%= l(nightly_rate.toFixed(2)) %> per night</name>
 	<% } else { %>
 		<div class="unavailable">No rooms available</div>
 	<% } %>
