@@ -12,6 +12,8 @@ define([
 	
 	function initDatePickers(view) {
 		
+		// TODO: Fix display of calendar popups on mobile
+		
 		// get checkin/checkout fields
 		$checkinField = $('input[name="checkin"]', view.$el);
 		$checkoutField = $('input[name="checkout"]', view.$el);
