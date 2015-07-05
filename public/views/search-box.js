@@ -95,20 +95,41 @@ define([
 		
 		view.$search = $('.location input', view.$el);
 		
-		var origText = view.$search.val();
+		// remember original text to be able to conditionally style input 
+		view._origSearchPrompt = view.$search.val();
 		
 		// restore location text if previously set
 		if(view.currLocationLabel) {
 			view.$search.val(view.currLocationLabel);
 		}
 		
-		// restore any current location to search field on blur
+		// handle search field gain focus
+		view.$search.focus(function() {
+			// remove original search prompt on focus
+			if(this.value === view._origSearchPrompt) {
+				this.value = "";
+				styleLocationSearchInput(view);
+			}
+		});
+		
+		// handle search field lose focus
 		view.$search.blur(function() {
+			
+			// restore any current location to search field on blur
 			view.$search.val(view.currLocationLabel);
+			
+			// restore original prompt if field is empty
+			if(this.value.replace(/\s/g, '') === "") {
+				this.value = view._origSearchPrompt;
+			}
+			styleLocationSearchInput(view);
+			
 		});
 		
 		initLocationAutoComplete(view);
 		initLocationKeyup(view);
+		
+		styleLocationSearchInput(view);
 		
 	}
 	
@@ -175,6 +196,15 @@ define([
 		}));
 		this.$search.removeClass('loading');	
 		this.$search.keydown();					// force open autocomplete options
+	}
+	
+	// style location search input based on whether original text is present or not
+	function styleLocationSearchInput(view) {
+		if(view.$search.val() === view._origSearchPrompt) {
+			view.$search.addClass("prompt");
+		} else {
+			view.$search.removeClass("prompt");
+		}
 	}
 	
 	var view = {

@@ -54,6 +54,10 @@ form.search-box {
 			padding: .2em;
 			font-family: serif;
 		}
+			form.search-box .location input.prompt {
+				color: #aaa;
+				font-style: italic;
+			}
 	form.search-box .search-field.dist {
 		margin-right: 15px;
 		margin-bottom: 1em;
