@@ -107,6 +107,9 @@ define([
 				this.value = "";
 				styleLocationSearchInput(view);
 			}
+			
+			// TODO: Fix having to tap on search field twice on iPhones (and other mobiles?)
+			
 		});
 		
 		// handle search field lose focus
