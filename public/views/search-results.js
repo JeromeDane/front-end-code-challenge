@@ -12,6 +12,8 @@ define([
 		
 		var $wrapper = $('.hotels', view.$el);
 		
+		// TODO: No hotels found UI message
+		
 		view.hotels.each(function(hotel) {
 			
 			(new HotelPreviewView({
@@ -27,6 +29,10 @@ define([
 		$('img.thumbnail', $wrapper).load(function() {
 			grid.layout();
 		});
+		
+		// TODO: force thumbnail height via CSS and update grid 
+		// layout sooner during loading using something like
+		// http://stackoverflow.com/questions/23390393/get-image-height-before-its-fully-loaded
 	}
 	
 	var view = {
