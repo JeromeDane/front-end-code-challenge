@@ -7,7 +7,7 @@ body {
 	font-size: 14px;
 	color: #333;
 	margin: 0;
-	padding: 1em 2em;
+	padding: 1em;
 }
 
 .view-header {
@@ -15,6 +15,7 @@ body {
 }
 	.view-header h1 {
 		margin-top: 0;
+		margin-bottom: .5em;
 	}
 	.view-header .view-locale-switcher {
 		text-align: right;
@@ -23,19 +24,21 @@ body {
 	@media (min-width: 450px) {
 		.view-header .view-locale-switcher {
 			position: absolute;
-			top: 0;
+			top: -5px;
 			right: 0;
 		}
 	}
 
 form.search-box {
 	background: #fff;
-	padding: 1em;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border:1px solid #aaa;
 	border-radius: 3px;
 	position: relative;
 }
+	form.search-box .padding {	
+		margin: 1em;
+	}
 	form.search-box .location {
 		margin-bottom: .5em;
 	}
@@ -60,11 +63,24 @@ form.search-box {
 			}
 	form.search-box .search-field.dist {
 		margin-right: 15px;
-		margin-bottom: 1em;
+		margin-bottom: .75em;
 	}
 		form.search-box .search-field.dist label {
 			margin-bottom: .3em;
 			display: block;
+		}
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout {
+		width: 49%;
+		display: inline-block;
+	}
+		form.search-box .search-field.checkin label,
+		form.search-box .search-field.checkout label {
+			display: block;
+		}
+		form.search-box .search-field.checkin input,
+		form.search-box .search-field.checkout input {
+			width: 80%;
 		}
 	form.search-box input[type="submit"] {
 		position: absolute;
@@ -115,6 +131,10 @@ input.loading {
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
+	/* more horizontal padding */
+	body {
+		padding: 1em 2em;
+	}
 	/* larger location search input text */
 	form.search-box .location input {
 		font-size: 1.5em;
