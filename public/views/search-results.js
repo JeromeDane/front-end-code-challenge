@@ -47,6 +47,7 @@ define([
 			this.hotels.on('update', this.render, this);
 			this.hotels.on('fetch-start', function() {
 				$('.loading', this.$el).show();
+				$('.hotels', this.$el).hide();
 			});
 			
 		},
