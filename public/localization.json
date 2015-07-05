@@ -5,8 +5,8 @@
 		"Language": "Language",
 		"LOCALE_en": "English",
 		"LOCALE_fr": "French",
+		"LOCATION_SEARCH_PROMPT": "Enter a city or zipcode",
 		"SITE_TITLE": "Super Hotel Search",
-		"WHERE_STAY?": "Where would you like to stay?",
 		"WITHIN_X_MILES": "Within MAXDIST miles",
 		
 		"AL": "Alabama",
@@ -70,12 +70,13 @@
 		"WY": "Wyoming"
 	},
 	"fr": {
-		"Check-In": "Enregistrement",
+		"Check-In": "Arrivée",
+		"Check-Out": "Départ",
 		"Language": "Langue",
 		"LOCALE_en": "Angalis",
 		"LOCALE_fr": "Français",
-		"SITE_TITLE": "Recherche de Super Hôtel",
-		"WHERE_STAY?": "Où aimeriez-vous rester?",
+		"LOCATION_SEARCH_PROMPT": "Entrez une ville ou code postal",
+		"SITE_TITLE": "Super Hôtels",
 		"WITHIN_X_MILES": "à moins de MAXDIST miles"
 	}
 }
