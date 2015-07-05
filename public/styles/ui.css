@@ -50,8 +50,8 @@ form.search-box {
 		}
 		form.search-box .location input {
 			width: 100%;
-			font-size: 1.5em;
-			padding: .2em;
+			font-size: 1em;
+			padding: .5em .2em;
 			font-family: serif;
 		}
 			form.search-box .location input.prompt {
@@ -70,7 +70,7 @@ form.search-box {
 		position: absolute;
 		right: 22px;
 		top: 14px;
-		height: 37px;
+		height: 34px;
 		border-color: #999;
 		border-radius: 0 3px 3px 0;
 	}
@@ -112,3 +112,16 @@ input.loading {
 		font-weight: bold;
 		margin: .5em 0;
 	}
+
+/* tablets and some phone horizontal views */
+@media (min-width: 600px) {
+	/* larger location search input text */
+	form.search-box .location input {
+		font-size: 1.5em;
+		padding: .2em;
+	}
+	/* align location search button with larger text */
+	form.search-box input[type="submit"] {
+		height: 37px;
+	}
+}
