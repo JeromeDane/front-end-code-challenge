@@ -37,10 +37,8 @@ form.search-box,
 	border-radius: 3px;
 	position: relative;
 	margin-bottom: 1em;
+	padding: 1em;
 }
-	form.search-box .padding {	
-		margin: 1em;
-	}
 	form.search-box .location {
 		margin-bottom: .5em;
 	}
