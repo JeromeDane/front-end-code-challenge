@@ -38,6 +38,8 @@ define([
 		});
 		$checkoutField.datepicker('setDate', "+1d");
 		
+		// TODO: Hide date fields and show as formatted date text when not focused. Click text/icon to change.
+		
 	}
 	
 	// initialize location search field autocomplete
