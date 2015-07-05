@@ -8,14 +8,22 @@ function cloneRequiredJson(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-function getHotelsWithPrices(req) {
-  
+// get all the hotels
+function getHotels() {
   // combine hotel data from 3 available locations
   // normally this would likely be in one single data source
   var hotels = [];
   _.each(['charlottesville', 'newyork', 'chicago'], function(location) {
     hotels = hotels.concat(cloneRequiredJson(require('../data/hotels/' + location + '.json')));
   });
+  return hotels;
+}
+
+function getHotelsWithPrices(req) {
+  
+  // combine hotel data from 3 available locations
+  // normally this would likely be in one single data source
+  var hotels = getHotels();
 	
   var querystring = url.parse(req.url, true).query;
   
@@ -129,6 +137,25 @@ router.get('/', function(req, res) {
   var hotels = getHotelsWithPrices(req);
   hotels = filterHotelsByLocation(hotels, req);
   res.json(hotels);
+});
+
+/**
+ * Get all available hotel amenities
+ * 
+ * Normally I'd store this in a separate data source
+ * of just the amenities available since this would
+ * be much faster to retrieve, but for the purposes
+ * of this challenge, just get a unique list of all the
+ * ammenities out there.
+ */
+router.get('/amenities', function(req, res) {
+  var uniqueAmenities = {};
+  _.each(_.pluck(getHotels(), 'amenities'), function(amenities) {
+    _.each(amenities, function(amenity) {
+	  uniqueAmenities[amenity.code] = amenity;
+	});
+  });
+  res.json(_.toArray(uniqueAmenities));
 });
 
 // Get a specific hotel
