@@ -168,6 +168,9 @@ define([
 	function initSubmit(view) {
 		view.$form = $('form', view.$el);
 		view.$form.submit(function() {
+			
+			// TODO: Apply search parameters to URL in order to allow bookmarking and page refresh
+			
 			view.hotels.setParams($(this).serialize());
 			view.hotels.fetch({
 				complete: function() {
