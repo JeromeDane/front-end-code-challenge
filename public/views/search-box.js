@@ -168,20 +168,7 @@ define([
 	function initSubmit(view) {
 		view.$form = $('form', view.$el);
 		view.$form.submit(function() {
-			
-			// TODO: Apply search parameters to URL in order to allow bookmarking and page refresh
-			
-			view.hotels.setParams($(this).serialize());
-			view.hotels.fetch({
-				complete: function() {
-					// tell other views to re-render as necessary
-					view.hotels.trigger('update');
-				},
-				error: function(e) {
-					// TODO: error handling and UI message
-					console.log('error', e);
-				}
-			});
+			searchHotels(view);
 			return false;
 		});
 		
@@ -204,6 +191,26 @@ define([
 		}));
 		this.$search.removeClass('loading');	
 		this.$search.keydown();					// force open autocomplete options
+	}
+	
+	// perform hotel search
+	function searchHotels(view) {
+		
+		// TODO: Apply search parameters to URL in order to allow bookmarking and page refresh
+		
+		// TODO: Display error on missing or bad lat/long parameters
+
+		view.hotels.setParams(view.$form.serialize());
+		view.hotels.fetch({
+			complete: function() {
+				// tell other views to re-render as necessary
+				view.hotels.trigger('update');
+			},
+			error: function(e) {
+				// TODO: error handling and UI message
+				console.log('error', e);
+			}
+		});
 	}
 	
 	// apply search filter and get locations matching that filter
