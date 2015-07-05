@@ -40,17 +40,8 @@ define([
 		
 	}
 	
-	// initialize location search field
-	function initLocationSearch(view) {
-		
-		var keyUpDelay = 500;	// millisecond delay to perform location search after key up
-		
-		view.$search = $('input.location', view.$el);
-		
-		// restore location text if previously set
-		if(view.currLocationLabel) {
-			view.$search.val(view.currLocationLabel);
-		}
+	// initialize location search field autocomplete
+	function initLocationAutoComplete(view) {
 		
 		// TODO: ignore punctuation in matching and consider both abbreviated and full state names
 		
@@ -66,20 +57,25 @@ define([
 			},
 			source: []
 		});
+	}
+	
+	// initialize keyup event handler on location field
+	function initLocationKeyup(view) {
 		
-		// restore any current location to search field on blur
-		view.$search.blur(function() {
-			view.$search.val(view.currLocationLabel);
-		});
-		
-		// TODO: cache location search results (maybe)
+		var keyUpDelay = 500;	// millisecond delay to perform location search after key up
 		
 		// when the user finishes entering a keystroke in the location search
 		view.$search.keyup(function(evt) {
+			
+			// TODO: Fix buggy application of results based on current location search (check timing)
+			
 			// make sure key pressed was a word character
 			if((evt.which != 8 && evt.which != 846) && !String.fromCharCode(evt.which).match(/\w/)) {
 				return;
 			}
+			
+			// TODO: cache location search results (maybe)
+			
 			var searchStr = this.value;
 			// if the search string is greater than 2 characters
 			if(searchStr.length > 2) {
@@ -92,6 +88,27 @@ define([
 				}, keyUpDelay);
 			}
 		});
+	}
+	
+	// initialize location search field
+	function initLocationSearchField(view) {
+		
+		view.$search = $('.location input', view.$el);
+		
+		var origText = view.$search.val();
+		
+		// restore location text if previously set
+		if(view.currLocationLabel) {
+			view.$search.val(view.currLocationLabel);
+		}
+		
+		// restore any current location to search field on blur
+		view.$search.blur(function() {
+			view.$search.val(view.currLocationLabel);
+		});
+		
+		initLocationAutoComplete(view);
+		initLocationKeyup(view);
 		
 	}
 	
@@ -127,9 +144,19 @@ define([
 		view.$form = $('form', view.$el);
 		view.$form.submit(function() {
 			view.hotels.setParams($(this).serialize());
-			view.hotels.fetch();
+			view.hotels.fetch({
+				complete: function() {
+					view.hotels.trigger('update');
+				},
+				error: function(e) {
+					console.log('error', e);
+					// TODO: error handling and UI message
+				}
+			});
 			return false;
 		});
+		
+		$('input[type="submit"]', view.$form).button();
 		
 		// TODO: show location not found message as appropriate
 	}
@@ -174,7 +201,7 @@ define([
 			this.$el.html(this.template());
 			
 			initDatePickers(this);
-			initLocationSearch(this);
+			initLocationSearchField(this);
 			initMaxDist(this);
 			initSubmit(this);
 			
