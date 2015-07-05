@@ -23,7 +23,6 @@ define([
 			
 		});
 		
-		
 		// apply pinterest-style columns and update layout as images are loaded
 		var grid = new Masonry('.view-search-results .hotels');
 		$('img.thumbnail', $wrapper).load(function() {
@@ -58,7 +57,9 @@ define([
 			
 			$('.loading', this.$el).hide();
 			
-			renderHotels(this);
+			if(this.hotels.length > 0) {
+				renderHotels(this);
+			}
 			
 			
 		}

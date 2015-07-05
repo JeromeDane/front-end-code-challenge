@@ -1,11 +1,13 @@
 define([
 	'text!templates/search.tpl',
 	'views/search-box',
+	'views/search-filters',
 	'views/search-results',
 	'collections/hotels'
 ], function(
 	templateHtml,
 	SearchBoxView,
+	SearchFiltersView,
 	SearchResultsView,
 	HotelsCollection
 ) {
@@ -22,6 +24,7 @@ define([
 			
 			this.views = {
 				'search-box': new SearchBoxView({ hotels: this.hotels }),
+				'search-filters': new SearchFiltersView({ hotels: this.hotels }),
 				'search-results': new SearchResultsView({ hotels: this.hotels })
 			};
 			
@@ -32,6 +35,7 @@ define([
 			this.$el.html(this.template());
 			
 			renderSubView(this, 'search-box');
+			renderSubView(this, 'search-filters');
 			renderSubView(this, 'search-results');
 			
 		}

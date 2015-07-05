@@ -1,0 +1,3 @@
+<div class="search-filters-wrapper">
+	Search filters here ...
+</div>

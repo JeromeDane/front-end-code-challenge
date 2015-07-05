@@ -29,12 +29,14 @@ body {
 		}
 	}
 
-form.search-box {
+form.search-box,
+.search-filters-wrapper {
 	background: #fff;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border:1px solid #aaa;
 	border-radius: 3px;
 	position: relative;
+	margin-bottom: 1em;
 }
 	form.search-box .padding {	
 		margin: 1em;
