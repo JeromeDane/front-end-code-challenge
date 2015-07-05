@@ -28,6 +28,7 @@ require.config({
 		'masonry': 'lib/masonry/masonry.min',
 		'jerome-utils': 'lib/jeromedane/utils',
 		'text': 'lib/require/text',
+		'touchpunch': 'lib/touchpunch/touchpunch.min',
 		'ui': 'views/ui',
 		'underscore': 'lib/underscore/underscore.min'
 	},
@@ -50,13 +51,17 @@ require.config({
 		'localization': {
 			deps: ['l10n']
 		},
+		'touchpunch': {
+			deps: ['jquery-ui']
+		},
 		'ui': {
 			deps: [
 				'backbone',
 				'css!styles/ui',
 				'jquery-ui',
 				'localization',
-				'jerome-utils'
+				'jerome-utils',
+				'touchpunch'
 			]
 		},
 		'underscore': {
