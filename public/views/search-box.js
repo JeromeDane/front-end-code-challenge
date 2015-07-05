@@ -76,15 +76,12 @@ define([
 			
 			// TODO: cache location search results (maybe)
 			
-			var searchStr = this.value;
 			// if the search string is greater than 2 characters
-			if(searchStr.length > 2) {
+			if(view.$search.val().length > 2) {
 				// perform the actual search after the last keystroke was at least keyUpDelay ago
 				view.$search.addClass('loading');
 				com.jeromedane.Utils.delay(function(){
-					// apply search filter and get locations matching that filter
-					view.locations.setFilter(searchStr);
-					view.locations.fetch();
+					searchLocations(view);
 				}, keyUpDelay);
 			}
 		});
@@ -167,11 +164,12 @@ define([
 			view.hotels.setParams($(this).serialize());
 			view.hotels.fetch({
 				complete: function() {
+					// tell other views to re-render as necessary
 					view.hotels.trigger('update');
 				},
 				error: function(e) {
-					console.log('error', e);
 					// TODO: error handling and UI message
+					console.log('error', e);
 				}
 			});
 			return false;
@@ -196,6 +194,21 @@ define([
 		}));
 		this.$search.removeClass('loading');	
 		this.$search.keydown();					// force open autocomplete options
+	}
+	
+	// apply search filter and get locations matching that filter
+	function searchLocations(view) {
+		view.locations.setFilter(view.$search.val());
+		view.locations.fetch({
+			complete: function() {
+				// tell other views to re-render as necessary
+				view.locations.trigger('update');
+			},
+			error: function(e) {
+				// TODO: error handling and UI message
+				console.log('error', e);
+			}
+		});
 	}
 	
 	// style location search input based on whether original text is present or not
