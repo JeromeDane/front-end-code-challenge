@@ -1,11 +1,10 @@
 <form class="search-box">
-	<div class="search-field">
-		<label><%= l("WHERE_STAY?") %></label>
+	<input type="hidden" name="lat"/>
+	<input type="hidden" name="lng"/>
+	<div class="search-field location">
 		<div class="search-field-wrapper">
-			<input type"text" class="location"/>
+			<input type"text" value="<%= l("LOCATION_SEARCH_PROMPT") %>"/>
 		</div>
-		<input type="hidden" name="lat"/>
-		<input type="hidden" name="lng"/>
 	</div>
 	<div class="search-field dist">
 		<label><%= l("WITHIN_X_MILES") %></label>

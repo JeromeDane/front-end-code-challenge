@@ -6,23 +6,69 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
 	color: #333;
+	margin: 0;
+	padding: 1em 2em;
 }
 
+.view-header {
+	position: relative;
+}
+	.view-header h1 {
+		margin-top: 0;
+	}
+	.view-header .view-locale-switcher {
+		text-align: right;
+	}
+	/* move locale switcher to top right if there's room */
+	@media (min-width: 450px) {
+		.view-header .view-locale-switcher {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+
 form.search-box {
-	background:#fff;
-	padding:1em;
+	background: #fff;
+	padding: 1em;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border:1px solid #aaa;
 	border-radius: 3px;
+	position: relative;
 }
-	form.search-box .search-field-wrapper {
-		margin-right: 100px;
+	form.search-box .location {
+		margin-bottom: .5em;
 	}
-	form.search-box input.location {
-		width: 100%;
-		font-size: 1.5em;
-		padding: .2em;
-		font-family: serif;
+		form.search-box .location .search-field-wrapper {
+			margin-right: 100px;
+		}
+		form.search-box .location label {
+			font-size: 1.3em;
+			font-weight: bold;
+			display: block;
+			margin-bottom: .5em;
+		}
+		form.search-box .location input {
+			width: 100%;
+			font-size: 1.5em;
+			padding: .2em;
+			font-family: serif;
+		}
+	form.search-box .search-field.dist {
+		margin-right: 15px;
+		margin-bottom: 1em;
+	}
+		form.search-box .search-field.dist label {
+			margin-bottom: .3em;
+			display: block;
+		}
+	form.search-box input[type="submit"] {
+		position: absolute;
+		right: 22px;
+		top: 14px;
+		height: 37px;
+		border-color: #999;
+		border-radius: 0 3px 3px 0;
 	}
 
 input.loading {
