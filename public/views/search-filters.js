@@ -20,6 +20,13 @@ define([
 		}
 	}
 
+	function initClearFilters(view) {
+		$('.clear-filters', view.$el).click(function() {
+			view.hotels.clearFilters();
+			view.render();
+		});
+	}
+
 	function initFilterByName(view) {
 		var $input = $('input[name="name"]');
 		$input.keyup(function(e) {
@@ -100,6 +107,7 @@ define([
 			initOpenCloseToggle(this);
 			initSortBy(this);
 			initFilterByName(this);
+			initClearFilters(this);
 			
 			// render jquery-ui buttons
 			$('button', this.$el).button();
