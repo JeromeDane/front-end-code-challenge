@@ -83,6 +83,7 @@ define([
 			
 			this.hotels = options.hotels;
 			this.hotels.on('update', this.render, this);
+			this.hotels.on('no-results', this.render, this);
 			
 			this.views = {
 				"search-numresults": new SearchNumResultsView({
@@ -93,6 +94,12 @@ define([
 		},
 		
 		render: function() {
+			
+			// if there are no results, then clear out the container element and don't render
+			if(this.hotels.length === 0) {
+				this.$el.html("");
+				return;
+			}
 			
 			this.$el.html(this.template({
 				sortOrders: this.hotels.getSortOrders()

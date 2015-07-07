@@ -209,10 +209,15 @@ define([
 		// TODO: Display error on missing or bad lat/long parameters
 
 		view.hotels.setParams(view.$form.serialize());
+		view.hotels.setLocationName($('.search-field input', view.$el).val());
 		view.hotels.fetch({
 			complete: function() {
 				// tell other views to re-render as necessary
-				view.hotels.trigger('update');
+				if(view.hotels.length > 0) {
+					view.hotels.trigger('update');
+				} else {
+					view.hotels.trigger('no-results');
+				}
 			},
 			error: function(e) {
 				// TODO: error handling and UI message

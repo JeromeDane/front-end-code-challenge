@@ -105,6 +105,27 @@ define([
 		},
 		
 		/**
+		 * Get the maximum distance used in the last search
+		 * 
+		 * @returns {float} The maximum distance used in the last search
+		 */
+		getMaxDistance: function() {
+			var matches = this.url.match(/dist=((\d|\.)+)/);
+			if(matches) {
+				return parseFloat(matches[1]);
+			}
+		},
+		
+		/**
+		 * Get name of the location used to perform search
+		 * 
+		 * @returns {string} Name of the location used to perform search
+		 */
+		getLocationName: function() {
+			return this._locationName || l("unknown location");
+		},
+		
+		/**
 		 * Get the collection's current sort order
 		 * 
 		 * @returns {string} Current sort order
@@ -127,6 +148,16 @@ define([
 			// create a container for custom filters
 			this._filters = {};
 			
+		},
+		
+		/**
+		 * Set the location name for retrieval later
+		 * 
+		 * @param {sting} locationName
+		 * @returns {undefined}
+		 */
+		setLocationName: function(locationName) {
+			this._locationName = locationName;
 		},
 		
 		/**
