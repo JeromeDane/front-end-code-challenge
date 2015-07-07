@@ -94,6 +94,25 @@ input.loading {
 	background: url(../images/ajax-loader.gif) right no-repeat;
 }
 
+.search-filters-wrapper {
+	
+}
+	.search-filters-wrapper label.show,
+	.search-filters-wrapper.closed .filters {
+		display: none;
+	}
+		.search-filters-wrapper.closed label.show {
+			display: block;
+		}
+	.search-filters-wrapper.closed,
+	.search-filters-wrapper.closed * {
+		cursor: pointer;
+	}
+	.search-filters-wrapper .buttons {
+		margin-top: 1em;
+		text-align: right;
+	}
+	
 .view-search-results {
 	margin-top:1em;
 }
