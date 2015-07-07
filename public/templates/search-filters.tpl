@@ -4,7 +4,7 @@
 	<div class="sort">
 		Sort by
 		<select name="sort-by">
-			<% _.each(hotels.getSortOrders(), function(order) { %>
+			<% _.each(sortOrders, function(order) { %>
 				<option value="<%= order %>"><%= l('SORT_BY_' + order) %></option>
 			<% }) %>
 		</select>

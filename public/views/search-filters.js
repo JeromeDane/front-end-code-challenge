@@ -94,15 +94,9 @@ define([
 		
 		render: function() {
 			
-			if(this.hotels.length > 0) {
-				this.$el.html(this.template({
-					hotels: this.hotels,
-					hotelsFiltered: this.hotels.getFiltered()
-				}));
-			} else {
-				// don't render anything if there are no hotel results
-				this.$el.html("");
-			}
+			this.$el.html(this.template({
+				sortOrders: this.hotels.getSortOrders()
+			}));
 			
 			initOpenCloseToggle(this);
 			initSortBy(this);
