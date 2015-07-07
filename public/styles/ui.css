@@ -35,7 +35,8 @@ h4 {
 	}
 
 form.search-box,
-.search-filters-wrapper {
+.search-filters-wrapper,
+.view-search-results .no-results {
 	background: #fff;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border:1px solid #aaa;
@@ -151,6 +152,17 @@ input.loading {
 .view-search-results {
 	margin-top:1em;
 }
+
+.view-search-results .no-results {
+	display: none;
+	min-height: 115px;
+}
+	.view-search-results .no-results img {
+		float: left;
+		margin: 0 2em 1em 0;
+		position: relative;
+		top: -.5em;
+	}
 
 .hotel-preview {
 	width:200px;
