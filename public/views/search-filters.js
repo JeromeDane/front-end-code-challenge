@@ -4,6 +4,18 @@ define([
 	templateHtml
 ) {
 
+	// apply correct open/closed state
+	function applyOpenClosedClasses(view) {
+		var $elem = $('.search-filters-wrapper', view.$el);
+		if(view.isOpen) {
+			$elem.addClass('open');	
+			$elem.removeClass('closed');	
+		} else {
+			$elem.addClass('closed');	
+			$elem.removeClass('open');	
+		}
+	}
+
 	function initFilterByName(view) {
 		var $input = $('input[name="name"]');
 		$input.keyup(function(e) {
@@ -25,8 +37,8 @@ define([
 			toggleOpenClosed(view);
 		});
 		
-		// apply correct open/closed state
-		$('.search-filters-wrapper', view.$el).addClass(view.isOpen ? 'open' : 'closed');
+		applyOpenClosedClasses(view);
+		
 	}
 	
 	// initialize sort functionality
@@ -47,7 +59,7 @@ define([
 	
 	function toggleOpenClosed(view) {
 		view.isOpen = !view.isOpen;
-		view.render();
+		applyOpenClosedClasses(view);
 	}
 	
 	var view = {
