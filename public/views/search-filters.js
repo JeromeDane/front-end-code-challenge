@@ -4,6 +4,8 @@ define([
 	templateHtml
 ) {
 
+	// TODO: Include filters as parameters in document location to allow bookmarking
+
 	// apply correct open/closed state
 	function applyOpenClosedClasses(view) {
 		var $elem = $('.search-filters-wrapper', view.$el);
