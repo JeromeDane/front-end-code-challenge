@@ -172,6 +172,14 @@ define([
 			return false;
 		});
 		
+		// don't submit form on enter pressed
+		$('input', view.$form).keydown(function(event){
+			if(event.keyCode === 13) {
+			  event.preventDefault();
+			  return false;
+			}
+		});
+		
 		$('input[type="submit"]', view.$form).button();
 		
 		// TODO: show location not found message as appropriate
