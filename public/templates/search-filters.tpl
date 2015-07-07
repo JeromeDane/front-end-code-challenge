@@ -9,11 +9,11 @@
 			<% }) %>
 		</select>
 	</div>
-	<label class="show">Click to filter search results</label>
+	<button class="show-filters">Show Filters</button>
 	<div class="filters">
-		filters here ...
+		<h4>Filters</h4>
+		<p>Filters go here ...</p>
 		<div class="buttons">
-			<button class="clear">Clear Filters</button>
 			<button class="close">Hide Filters</button>
 		</div>
 	</div>

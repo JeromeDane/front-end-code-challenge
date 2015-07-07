@@ -98,6 +98,7 @@ input.loading {
 	
 }
 	.search-filters-wrapper label.show,
+	.search-filters-wrapper.open button.show-filters,
 	.search-filters-wrapper.closed .filters {
 		display: none;
 	}
@@ -110,7 +111,6 @@ input.loading {
 	}
 	.search-filters-wrapper .buttons {
 		margin-top: 1em;
-		text-align: right;
 	}
 	
 .view-search-results {

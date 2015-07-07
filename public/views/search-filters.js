@@ -4,6 +4,21 @@ define([
 	templateHtml
 ) {
 	
+	function initOpenCloseToggle(view) {
+		
+		// open if currently closed
+		$('button.show-filters', view.$el).click(function() {
+			toggleOpenClosed(view);
+		});
+		
+		// initialize close button click
+		$('button.close', view.$el).click(function() {
+			toggleOpenClosed(view);
+		});
+		
+		// apply correct open/closed state
+		$('.search-filters-wrapper', view.$el).addClass(view.isOpen ? 'open' : 'closed');
+	}
 	
 	// initialize sort functionality
 	function initSortBy(view) {
@@ -20,6 +35,12 @@ define([
 		// set currently selected sort order
 		$sortBy.val(view.hotels.getSortOrder());
 	}
+	
+	function toggleOpenClosed(view) {
+		view.isOpen = !view.isOpen;
+		view.render();
+	}
+	
 	var view = {
 		
 		template: _.template(templateHtml),
@@ -43,6 +64,10 @@ define([
 				// don't render anything if there are no hotel results
 				this.$el.html("");
 			}
+			
+			initOpenCloseToggle(this);
+			initSortBy(this);
+			
 			$('button', this.$el).button();
 		}
 	};
