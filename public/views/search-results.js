@@ -44,6 +44,7 @@ define([
 			
 			this.hotels = options.hotels;
 			this.hotels.on('update', this.render, this);
+			this.hotels.on('sort', this.render, this);
 			this.hotels.on('fetch-start', function() {
 				$('.loading', this.$el).show();
 				$('.hotels', this.$el).hide();

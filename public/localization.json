@@ -9,6 +9,14 @@
 		"SITE_TITLE": "Super Hotel Search",
 		"WITHIN_X_MILES": "Within MAXDIST miles",
 		
+		"SORT_BY_distance": "Distance",
+		"SORT_BY_guest_rating": "Guest Rating",
+		"SORT_BY_name": "Name",
+		"SORT_BY_rate": "Rate (low to high)",
+		"SORT_BY_rate-desc": "Rate (high to low)",
+		"SORT_BY_stars": "Stars (low to high)",
+		"SORT_BY_stars-desc": "Stars (high to low)",
+		
 		"AL": "Alabama",
 		"AK": "Alaska",
 		"AS": "American Samoa",
@@ -77,6 +85,13 @@
 		"LOCALE_fr": "Français",
 		"LOCATION_SEARCH_PROMPT": "Entrez une ville ou code postal",
 		"SITE_TITLE": "Super Hôtels",
-		"WITHIN_X_MILES": "à moins de MAXDIST miles"
+		"WITHIN_X_MILES": "à moins de MAXDIST miles",
+		
+		"SORT_BY_guest_rating": "Avis Voyageurs",
+		"SORT_BY_name": "Nom",
+		"SORT_BY_rate": "Prix (croissant)",
+		"SORT_BY_rate-desc": "Prix (décroissant)",
+		"SORT_BY_stars": "Étoiles (croissant)",
+		"SORT_BY_stars-desc": "Étoiles (décroissant)"
 	}
 }
