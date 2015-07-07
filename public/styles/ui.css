@@ -36,6 +36,7 @@ h4 {
 
 form.search-box,
 .search-filters-wrapper,
+.view-search-results .loading,
 .view-search-results .no-results {
 	background: #fff;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -45,6 +46,11 @@ form.search-box,
 	margin-bottom: 1em;
 	padding: 1em;
 }
+	form.search-box .invalid-location {
+		padding: 1em;
+		margin: .5em 0 1em;
+		display: none;
+	}
 	form.search-box .location {
 		margin-bottom: .5em;
 	}

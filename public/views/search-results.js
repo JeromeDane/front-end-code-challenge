@@ -37,9 +37,15 @@ define([
 	}
 	
 	// show a no results found message
-	function showNoResults(view) {
+	function renderNoResultsMessage(view) {
 		
 		$('.loading', this.$el).hide();
+		
+		// if there are actually results to display, then 
+		if(!view.hotels.hasNoResults()) {
+			$('.no-results', view.$el).hide();
+			return;
+		}
 		
 		$('.no-results', view.$el).show();
 		
@@ -66,7 +72,7 @@ define([
 			this.hotels.on('filter', this.render, this);
 			this.hotels.on('reset', this.render, this);
 			this.hotels.on('no-results', function() {
-				showNoResults(view);
+				renderNoResultsMessage(view);
 			});
 			this.hotels.on('fetch-start', function() {
 				$('.loading', view.$el).show();
@@ -82,15 +88,8 @@ define([
 			
 			$('.loading', this.$el).hide();
 			
-			if(this.hotels.length > 0) {
-				renderHotels(this);
-			}
-			
-			// show no results if search has been run but no hotels in collection
-			if(this.hotels.getMaxDistance() && this.hotels.length === 0) {
-				showNoResults(this);
-			}
-			
+			renderHotels(this);
+			renderNoResultsMessage(this);
 			
 		}
 	};

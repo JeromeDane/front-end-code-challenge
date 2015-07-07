@@ -6,6 +6,11 @@
 			<input type"text" value="<%= l("LOCATION_SEARCH_PROMPT") %>"/>
 		</div>
 	</div>
+	<div class="invalid-location ui-state-error">
+		<!-- TODO: Localization -->
+		Please first select a location from the drop-down menu as you type.
+		If you are unable to find your destination, please <a href="javascript:alert('not implemented in this coding challenge')">contact us</a>.
+	</div>
 	<div class="search-field dist">
 		<label><%= l("WITHIN_X_MILES") %></label>
 		<div class="distSlider"></div>

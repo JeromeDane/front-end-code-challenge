@@ -143,11 +143,32 @@ define([
 			return ["distance", "guest_rating", "name", "rate", "rate-desc", "stars", "stars-desc"];
 		},
 		
+		/**
+		 * Determine whether or not a search was run resulting in no results
+		 * 
+		 * @returns {boolean} Whether or not a search was run resulting in no results
+		 */
+		hasNoResults: function() {
+			return (this.getMaxDistance() && this.length === 0);
+		},
+		
 		initialize: function() {
 		
 			// create a container for custom filters
 			this._filters = {};
 			
+		},
+		
+		/**
+		 * Override standard backbone collection reset call to
+		 * clear out existing search parameters.
+		 * 
+		 * @returns {undefined}
+		 */
+		reset: function() {
+			this.clearFilters();
+			this.clearParams();
+			this.constructor.__super__.reset.apply(this, arguments);
 		},
 		
 		/**

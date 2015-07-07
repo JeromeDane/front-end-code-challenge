@@ -7,6 +7,8 @@ define([
 ) {
 
 	// TODO: Include filters as parameters in document location to allow bookmarking
+	
+	// TODO: Store filters as they change to re-apply them on re-render (such as after language change)
 
 	// apply correct open/closed state
 	function applyOpenClosedClasses(view) {
@@ -84,6 +86,12 @@ define([
 			this.hotels = options.hotels;
 			this.hotels.on('update', this.render, this);
 			this.hotels.on('no-results', this.render, this);
+			
+			// hide/clear filters when a hotel fetch starts
+			var _this = this;
+			this.hotels.on('fetch-start', function() {
+				_this.$el.html("");
+			});
 			
 			this.views = {
 				"search-numresults": new SearchNumResultsView({

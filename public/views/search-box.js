@@ -10,6 +10,25 @@ define([
 	
 	// TODO: Store field values and restore them on render
 	
+	function handleHotelSearchError(view, response) {
+		
+		// clear out existing locations and hotels
+		view.locations.reset();
+		view.hotels.reset();
+		
+		// show invalid location warning
+		if(response.responseText || response.responseText.match(/location/i)) {
+			$('.invalid-location', view.$el).show();
+		} else {
+			alert("Unknown server error");
+		}
+		
+	}
+	
+	function hideInvalidLocationMessage(view) {
+		$('.invalid-location', view.$el).hide();
+	}
+	
 	function initDatePickers(view) {
 		
 		// TODO: Fix display of calendar popups on mobile
@@ -48,6 +67,8 @@ define([
 	function initLocationAutoComplete(view) {
 		
 		// TODO: ignore punctuation in matching and consider both abbreviated and full state names
+		
+		// TODO: automatically select first item in list on enter pressed if nothing highlighted using arrow keys
 		
 		// create autocomplete instance on search field
 		view.$search.autocomplete({
@@ -111,6 +132,8 @@ define([
 				this.value = "";
 				styleLocationSearchInput(view);
 			}
+			
+			hideInvalidLocationMessage(view);
 			
 			// TODO: Fix having to tap on search field twice on iPhones (and other mobiles?)
 			
@@ -204,10 +227,10 @@ define([
 	// perform hotel search
 	function searchHotels(view) {
 		
+		hideInvalidLocationMessage(view);
+		
 		// TODO: Apply search parameters to URL in order to allow bookmarking and page refresh
 		
-		// TODO: Display error on missing or bad lat/long parameters
-
 		view.hotels.setParams(view.$form.serialize());
 		view.hotels.setLocationName($('.search-field input', view.$el).val());
 		view.hotels.fetch({
@@ -219,9 +242,8 @@ define([
 					view.hotels.trigger('no-results');
 				}
 			},
-			error: function(e) {
-				// TODO: error handling and UI message
-				console.log('error', e);
+			error: function(collection, response) {
+				handleHotelSearchError(view, response);
 			}
 		});
 	}
@@ -233,10 +255,6 @@ define([
 			complete: function() {
 				// tell other views to re-render as necessary
 				view.locations.trigger('update');
-			},
-			error: function(e) {
-				// TODO: error handling and UI message
-				console.log('error', e);
 			}
 		});
 	}
