@@ -1,7 +1,9 @@
 define([
-	'text!templates/search-filters.tpl'
+	'text!templates/search-filters.tpl',
+	'views/search-numresults'
 ], function(
-	templateHtml
+	templateHtml,
+	SearchNumResultsView
 ) {
 
 	// TODO: Include filters as parameters in document location to allow bookmarking
@@ -75,13 +77,20 @@ define([
 			this.hotels = options.hotels;
 			this.hotels.on('update', this.render, this);
 			
+			this.views = {
+				"search-numresults": new SearchNumResultsView({
+					hotels: this.hotels
+				})
+			};
+			
 		},
 		
 		render: function() {
 			
 			if(this.hotels.length > 0) {
 				this.$el.html(this.template({
-					hotels: this.hotels
+					hotels: this.hotels,
+					hotelsFiltered: this.hotels.getFiltered()
 				}));
 			} else {
 				// don't render anything if there are no hotel results
@@ -94,6 +103,8 @@ define([
 			
 			// render jquery-ui buttons
 			$('button', this.$el).button();
+			
+			com.jeromedane.Utils.renderSubView(this, 'search-numresults');
 		}
 	};
 	

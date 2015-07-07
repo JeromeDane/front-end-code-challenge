@@ -1,6 +1,6 @@
 <!-- TODO: Localization -->
 <div class="search-filters-wrapper">
-	<div class="num-results">Found <%= l(hotels.length) %> hotels matching your search</div>
+	<div class="view view-search-numresults"></div>
 	<div class="sort">
 		Sort by
 		<select name="sort-by">
