@@ -227,6 +227,8 @@ define([
 	// perform hotel search
 	function searchHotels(view) {
 		
+		// TODO: Check to make sure lat/long fields are filled out BEFORE allowing search and display invalid location message as necessary
+		
 		hideInvalidLocationMessage(view);
 		
 		// TODO: Apply search parameters to URL in order to allow bookmarking and page refresh
