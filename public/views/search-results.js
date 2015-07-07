@@ -51,7 +51,7 @@ define([
 		
 		// get the error text once it's been localized through the template and substitute location and distance
 		var $details = $('.no-results .details', view.$el);
-		$details.text($details.text()
+		$details.text(l("NO_RESULTS")
 			.replace(/MAXDIST/, view.hotels.getMaxDistance())
 			.replace(/LOCATION/, view.hotels.getLocationName()));
 	}
