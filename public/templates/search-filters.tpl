@@ -12,7 +12,10 @@
 	<div class="filters">
 		<h4>Filter Search Results</h4>
 		<div class="clear-filters" title="Clear filters"></div>
-		<p>Filters go here ...</p>
+		<div class="filter">
+			<label>Name</label>
+			<input name="name"/>
+		</div>
 		<div class="buttons">
 			<button class="close">Hide Filters</button>
 		</div>

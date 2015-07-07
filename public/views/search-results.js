@@ -14,14 +14,15 @@ define([
 		
 		// TODO: No hotels found UI message
 		
-		view.hotels.each(function(hotel) {
-			
+		// render all hotels that match any currently applied custom filters
+		_.each(view.hotels.getFiltered(), function(hotel) {
 			(new HotelPreviewView({
 				model: hotel,
 				appendTo: $wrapper
 			})).render();
 			
 		});
+		
 		
 		// apply pinterest-style columns and update layout as images are loaded
 		// TODO: Investigate/fix bug where Masonry sometimes does not align things properly
@@ -46,6 +47,7 @@ define([
 			this.hotels = options.hotels;
 			this.hotels.on('update', this.render, this);
 			this.hotels.on('sort', this.render, this);
+			this.hotels.on('filter', this.render, this);
 			this.hotels.on('fetch-start', function() {
 				$('.loading', this.$el).show();
 				$('.hotels', this.$el).hide();

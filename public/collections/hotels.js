@@ -14,6 +14,16 @@ define([
 		url: baseUrl,
 		
 		/**
+		 * Clear any currently applied custom filters
+		 * 
+		 * @returns {undefined}
+		 */
+		clearFilters: function() {
+			this._filters = {};
+			this.trigger('filter');
+		},
+		
+		/**
 		 * Clear any currently applied parameters so that future
 		 * fetch calls will return ALL hotels
 		 * 
@@ -55,6 +65,46 @@ define([
 		},
 		
 		/**
+		 * Apply a custom filter to the hotels
+		 * 
+		 * @param {string} field The type
+		 * @param {mixed} value The value or values to be used in the custom sorting
+		 * @returns {undefined}
+		 */
+		filterBy: function(field, value) {
+			this._filters[field] = value;
+			this.trigger('filter');
+		},
+		
+		/**
+		 * Get the hotels in the collection that match any custom
+		 * filters applied using the custom filterBy() method
+		 * 
+		 * @returns {undefined}
+		 */
+		getFiltered: function() {
+			var filters = this._filters;
+			return this.filter(function(hotel) {
+				var hotelMatches = true;
+				// check each custom filter to see if hotel matches
+				_.every(filters, function(value, field) {
+					switch(field) {
+						// if name filter not empty, make sure the hotel's name contains search string
+						case 'name':
+							if(value.replace(/\s/g, "") !== "" && 
+								hotel.get('name').toLowerCase().indexOf(value.toLowerCase()) === -1
+							) {
+								hotelMatches = false;
+								return false;
+							}
+							break;
+					}
+				});
+				return hotelMatches;
+			});
+		},
+		
+		/**
 		 * Get the collection's current sort order
 		 * 
 		 * @returns {string} Current sort order
@@ -70,6 +120,13 @@ define([
 		 */
 		getSortOrders: function() {
 			return ["distance", "guest_rating", "name", "rate", "rate-desc", "stars", "stars-desc"];
+		},
+		
+		initialize: function() {
+		
+			// create a container for custom filters
+			this._filters = {};
+			
 		},
 		
 		/**

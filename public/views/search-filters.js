@@ -3,6 +3,15 @@ define([
 ], function(
 	templateHtml
 ) {
+
+	function initFilterByName(view) {
+		var $input = $('input[name="name"]');
+		$input.keyup(function(e) {
+			// clear name filter if escape key pressed
+			if(e.which === 27) $input.val("");
+			view.hotels.filterBy("name", $input.val());
+		});
+	}
 	
 	function initOpenCloseToggle(view) {
 		
@@ -67,7 +76,9 @@ define([
 			
 			initOpenCloseToggle(this);
 			initSortBy(this);
+			initFilterByName(this);
 			
+			// render jquery-ui buttons
 			$('button', this.$el).button();
 		}
 	};
