@@ -20,11 +20,14 @@ define([
 		render: function() {
 			
 			if(this.hotels.length > 0) {
-				this.$el.html(this.template());
+				this.$el.html(this.template({
+					hotels: this.hotels
+				}));
 			} else {
 				// don't render anything if there are no hotel results
 				this.$el.html("");
 			}
+			$('button', this.$el).button();
 		}
 	};
 	
