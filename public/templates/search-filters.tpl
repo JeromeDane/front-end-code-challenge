@@ -9,12 +9,13 @@
 			<% }) %>
 		</select>
 	</div>
-	<button class="show-filters">Show Filters</button>
 	<div class="filters">
-		<h4>Filters</h4>
+		<h4>Filter Search Results</h4>
+		<div class="clear-filters" title="Clear filters"></div>
 		<p>Filters go here ...</p>
 		<div class="buttons">
 			<button class="close">Hide Filters</button>
 		</div>
 	</div>
+	<button class="show-filters">Filter Search Results</button>
 </div>
