@@ -24,6 +24,7 @@ define([
 		});
 		
 		// apply pinterest-style columns and update layout as images are loaded
+		// TODO: Investigate/fix bug where Masonry sometimes does not align things properly
 		var grid = new Masonry('.view-search-results .hotels');
 		$('img.thumbnail', $wrapper).load(function() {
 			grid.layout();
