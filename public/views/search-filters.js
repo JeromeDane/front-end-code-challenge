@@ -4,6 +4,22 @@ define([
 	templateHtml
 ) {
 	
+	
+	// initialize sort functionality
+	function initSortBy(view) {
+		
+		var $sortBy = $('select[name="sort-by"]', view.$el);
+		
+		// resort the collection of found hotels on select change
+		$sortBy.change(function() {
+			view.hotels.sort({
+				order: this.value
+			});
+		});
+		
+		// set currently selected sort order
+		$sortBy.val(view.hotels.getSortOrder());
+	}
 	var view = {
 		
 		template: _.template(templateHtml),
