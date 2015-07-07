@@ -27,6 +27,7 @@ require.config({
 		'localization': 'lib/jeromedane/localization',
 		'masonry': 'lib/masonry/masonry.min',
 		'jerome-utils': 'lib/jeromedane/utils',
+		'raty': 'lib/raty/jquery.raty',
 		'text': 'lib/require/text',
 		'touchpunch': 'lib/touchpunch/touchpunch.min',
 		'ui': 'views/ui',
@@ -54,6 +55,12 @@ require.config({
 		'localization': {
 			deps: ['l10n']
 		},
+		'raty': {
+			deps: [
+				'jquery',
+				'css!lib/raty/jquery.raty'
+			]
+		},
 		'touchpunch': {
 			deps: ['jquery-ui']
 		},
@@ -64,6 +71,7 @@ require.config({
 				'jquery-ui',
 				'localization',
 				'jerome-utils',
+				'raty',
 				'touchpunch'
 			]
 		},

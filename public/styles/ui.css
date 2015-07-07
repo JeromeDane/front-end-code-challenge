@@ -127,6 +127,19 @@ input.loading {
 		font-weight: bold;
 		margin: .5em 0;
 	}
+	.hotel-preview .stars {
+		position: absolute;
+		top: 1.5em;
+		right: 1em;
+	}
+	.hotel-preview .star-value img {
+		height: 15px;
+		width: 15px;
+	}
+	/* don't show stars over actual hotel star value */
+	.hotel-preview .star-value img[src*="off"] {
+		display: none;
+	}
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {

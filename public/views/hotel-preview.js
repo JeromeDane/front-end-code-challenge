@@ -23,6 +23,13 @@ define([
 			
 			this.$el.html(this.template(this.model.toJSON()));
 			
+			// render star value
+			$('.star-value', this.$el).raty({
+				path: 'lib/raty/images',
+				readOnly: true,
+				score: this.model.get('stars')
+			});
+			
 		}
 	};
 	

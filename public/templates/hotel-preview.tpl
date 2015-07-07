@@ -6,7 +6,7 @@
 	<img src="<%= logo %>" class="logo"/>
 <% } %>
 <div class="name" title="<%= short_description %>"><%= name %></div>
-<div class="stars">Stars: <%= stars %>/5</div>
+<div class="stars"><div class="star-value"></div></div>
 <div class="rating">Guest Rating: <%= guest_rating %>/5</div>
 <div class="distance">Distance: <%= distance.toFixed(1) %> miles</div>
 <% if(available) { %>
