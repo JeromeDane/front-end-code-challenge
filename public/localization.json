@@ -9,6 +9,13 @@
 		"SITE_TITLE": "Super Hotel Search",
 		"WITHIN_X_MILES": "Within MAXDIST miles",
 		
+		"STAR_HOTEL": "star hotel",
+		"1_STAR_HOTEL": "1 {{STAR_HOTEL}}",
+		"2_STAR_HOTEL": "2 {{STAR_HOTEL}}",
+		"3_STAR_HOTEL": "3 {{STAR_HOTEL}}",
+		"4_STAR_HOTEL": "4 {{STAR_HOTEL}}",
+		"5_STAR_HOTEL": "5 {{STAR_HOTEL}}",
+		
 		"SORT_BY_distance": "distance",
 		"SORT_BY_guest_rating": "guest rating",
 		"SORT_BY_name": "name",
@@ -86,6 +93,14 @@
 		"LOCATION_SEARCH_PROMPT": "Entrez une ville ou code postal",
 		"SITE_TITLE": "Super Hôtels",
 		"WITHIN_X_MILES": "à moins de MAXDIST miles",
+		
+		"Hotel": "Hôtel",
+		"star": "étoile",
+		"1_STAR_HOTEL": "{{Hotel}} 1 {{star}}",
+		"2_STAR_HOTEL": "{{Hotel}} 2 {{star}}",
+		"3_STAR_HOTEL": "{{Hotel}} 3 {{star}}",
+		"4_STAR_HOTEL": "{{Hotel}} 4 {{star}}",
+		"5_STAR_HOTEL": "{{Hotel}} 5 {{star}}",
 		
 		"SORT_BY_guest_rating": "avis voyageurs",
 		"SORT_BY_name": "nom",
