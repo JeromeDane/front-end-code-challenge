@@ -43,7 +43,10 @@ require.config({
     		exports: 'jQuery'
     	},
 		'jquery-ui': {
-			deps: ['jquery']
+			deps: [
+				'jquery',
+				'css!lib/jquery-ui/jquery-ui.min'
+			]
     	},
 		'masonry': {
 			deps: ['jquery']
