@@ -91,6 +91,7 @@
 		"WY": "Wyoming"
 	},
 	"fr": {
+		"Amenities": "Équipements",
 		"Check-In": "Arrivée",
 		"Check-Out": "Départ",
 		"Guest Rating": "Avis voyageurs",
@@ -99,11 +100,16 @@
 		"LOCALE_en": "Angalis",
 		"LOCALE_fr": "Français",
 		"LOCATION_SEARCH_PROMPT": "Entrez une ville ou code postal",
+		"Nightly Rate": "Tarif à la nuit",
 		"No rooms available": "Pas de disponibilité",
 		"NO_RESULTS": "Aucun hôtel n'a été trouvé à moins de MAXDIST miles de LOCATION",
 		"NO_RESULTS_SUGGESTION": "Essayez un de nos endroits plus populaires comme <em>Charlottesville, VA</em>, <em>Chicago, IL</em>, ou <em>New York, NY</em>.",
+		"Only show available": "Seulement disponibles",
 		"read more": "en savoire plus",
+		"show all": "voir tout",
+		"show less": "voir moins",
 		"SITE_TITLE": "Super Hôtels",
+		"Sort by": "Trier",
 		"taxes & fees": "taxes et frais",
 		"WITHIN_X_MILES": "à moins de MAXDIST miles",
 		
