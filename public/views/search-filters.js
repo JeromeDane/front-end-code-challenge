@@ -155,7 +155,7 @@ define([
 	
 	function toggleAmenitiesShowMore(view) {
 		
-		var numMin = 10;
+		var numMin = 6;
 		
 		var showMore = $('.amenities li:visible', view.$el).size() === numMin;
 		
