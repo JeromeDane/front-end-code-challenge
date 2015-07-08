@@ -11,11 +11,6 @@
 		Please first select a location from the drop-down menu as you type.
 		If you are unable to find your destination, please <a href="javascript:alert('not implemented in this coding challenge')">contact us</a>.
 	</div>
-	<div class="search-field dist">
-		<label><%= l("WITHIN_X_MILES") %></label>
-		<div class="distSlider"></div>
-		<input type="hidden" name="dist"/>
-	</div>
 	<div class="search-field checkin">
 		<label><%= l("Check-In") %>:</label>
 		<input type"text" name="checkin"/>
@@ -23,6 +18,11 @@
 	<div class="search-field checkout">
 		<label><%= l("Check-Out") %>:</label>
 		<input type"text" name="checkout"/>
+	</div>
+	<div class="search-field dist">
+		<label><%= l("WITHIN_X_MILES") %></label>
+		<div class="distSlider"></div>
+		<input type="hidden" name="dist"/>
 	</div>
 	<input type="submit" value="Search"/>
 </form>
