@@ -87,10 +87,16 @@ define([
 			return this.filter(function(hotel) {
 				var hotelMatches = true;
 				// check each custom filter to see if hotel matches
-				_.every(filters, function(value, field) {
+				_.each(filters, function(value, field) {
 					switch(field) {
-						// if name filter not empty, make sure the hotel's name contains search string
+						case 'availability':
+							if(value && !hotel.get('available')) {
+								hotelMatches = false;
+								return false;
+							}
+							break;
 						case 'name':
+							// if name filter not empty, make sure the hotel's name contains search string
 							if(value.replace(/\s/g, "") !== "" && 
 								hotel.get('name').toLowerCase().indexOf(value.toLowerCase()) === -1
 							) {
@@ -98,6 +104,13 @@ define([
 								return false;
 							}
 							break;
+						case 'rate':
+							if(hotel.get('nightly_rate') < value[0] || hotel.get('nightly_rate') > value[1]) {
+								hotelMatches = false;
+								return false;
+							}
+							break;
+							
 					}
 				});
 				return hotelMatches;

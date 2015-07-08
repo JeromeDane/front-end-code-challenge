@@ -29,6 +29,43 @@ define([
 		});
 	}
 
+	function initFilterByAvailability(view) {
+		var $input = $('.search-filters-wrapper .availability input', view.$el);
+		$input.on('change', function() {
+			view.hotels.filterBy("availability", this.checked);
+		});
+	}
+	
+	function initFilterByRate(view) {
+		// get the maximum price for all hotels founr
+		var max = view.hotels.max(function(hotel) {
+			return hotel.get('nightly_rate');
+		}).get('nightly_rate');
+		
+		var $slider = $('.rate .slider', view.$el);
+		
+		function _updateRateValueDisplay(values) {
+			values = values || $slider.slider('values');
+			$('.rate .values', view.$el).text("$" + l(values[0]) + " - $" + l(values[1]));
+		}
+		
+		// create slider
+		$slider.slider({
+			range: true,
+			min: 0,
+			max: max,
+			values: [0, max],
+			step: 5,
+			slide: function(evt, ui) {
+				_updateRateValueDisplay(ui.values);
+			},
+			change: function(evt, ui) {
+				view.hotels.filterBy("rate", ui.values);
+			}
+		});	
+		_updateRateValueDisplay();
+	}
+	
 	function initFilterByName(view) {
 		var $input = $('input[name="name"]');
 		$input.keyup(function(e) {
@@ -132,6 +169,8 @@ define([
 			initOpenCloseToggle(this);
 			initSortBy(this);
 			initFilterByName(this);
+			initFilterByAvailability(this);
+			initFilterByRate(this);
 			initClearFilters(this);
 			
 			// render jquery-ui buttons

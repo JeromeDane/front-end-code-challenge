@@ -109,7 +109,7 @@ form.search-box,
 		}
 		form.search-box .search-field.checkin input,
 		form.search-box .search-field.checkout input {
-			width: 80%;
+			max-width: 100px;
 		}
 	form.search-box input[type="submit"] {
 		position: absolute;
@@ -130,6 +130,10 @@ input.loading {
 	.search-filters-wrapper > *:first-child,
 	.search-filters-wrapper > *:first-child + * {
 		margin-bottom:1em;
+	}
+	.search-filters-wrapper .num-results {
+		font-weight: bold;
+		color: #099;
 	}
 	.search-filters-wrapper h4 {
 		display: inline-block;
@@ -166,6 +170,22 @@ input.loading {
 		}
 	.search-filters-wrapper .buttons {
 		margin-top: 1em;
+	}
+	.search-filters-wrapper .sort,
+	.search-filters-wrapper .filter {
+		margin-bottom: 1em;
+	}
+	.search-filters-wrapper .sort,
+	.search-filters-wrapper .availability {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	.search-filters-wrapper .filter label {
+		display: block;
+		margin-bottom:.5em;
+	}
+	.search-filters-wrapper .rate .slider {
+		margin: 0 .5em;
 	}
 	
 .view-search-results .hotels {
@@ -353,6 +373,27 @@ input.loading {
 	form.search-box input[type="submit"] {
 		right: 38px;
 	}
+	
+	/* show distance, checkin, and checkout on one line */
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout,
+	form.search-box .search-field.dist {
+		display: inline-block;
+		width: 30%;
+	}
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout {
+		text-align: center;
+		margin-top: .5em;
+	}
+	form.search-box .search-field.dist {
+		position: relative;
+		top: -1.5em;
+	}
+	form.search-box {
+		height: 100px;
+	}
+	
 	.hotel-details h1 {
 		font-size: 1.5em;
 	}

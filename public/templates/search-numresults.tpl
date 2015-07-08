@@ -1,7 +1,10 @@
 <!-- TODO: Localization -->
-<% if(numHotels === numHotelsFiltered) { %>
-	Found 
-<% } else { %>
-	Showing <%= l(numHotelsFiltered) %> of 
-<% } %>
-<%= l(numHotels) %> hotels matching your search
+<span class="num-results">
+	<% if(numHotels !== numHotelsFiltered) { %>
+		Showing <%= l(numHotelsFiltered) %> of 
+	<% } %>
+	<%= l(numHotels) %> hotels 
+	<% if(numHotels === numHotelsFiltered) { %>
+		match your search
+	<% } %>
+</span>
