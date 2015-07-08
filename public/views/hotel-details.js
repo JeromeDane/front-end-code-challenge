@@ -93,6 +93,27 @@ define([
 		
 	}
 	
+	// render star value and guest ratings as stars
+	function renderStars(view) {
+		
+		var starConfig = {
+			half: true,
+			path: 'lib/raty/images',
+			readOnly: true
+		};
+
+		// render hotel star value
+		// TODO: replace path to star images for this instance to a copy that has a small drop shadow to help with visibility when positioned over hotel thumbnail images
+		starConfig.score = view.model.get('stars');
+		starConfig.hints = ["", "", "", "", ""];
+		$('.star-value', view.$dialog).raty(starConfig);
+
+		// render guest rating star value
+		starConfig.score = view.model.get('guest_rating');
+		starConfig.hints = [l('RATING_1'), l('RATING_2'), l('RATING_3'), l('RATING_4'), l('RATING_5')];
+		$('.rating .score', view.$dialog).raty(starConfig);
+	}
+	
 	// resize the dialog based on current size settings
 	function resizeDialogIfOpen(view) {
 		
@@ -137,6 +158,9 @@ define([
 			this.$el.html(this.template(this.model.toJSON()));
 			
 			showDialog(this, hotelPreviewView);
+			renderStars(this);
+			
+			$('button', this.$dialog).button();
 		}
 	};
 	
