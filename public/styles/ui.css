@@ -273,6 +273,11 @@ input.loading {
 		position: relative;
 		top: -.5em;
 	}
+		.hotel-details .rate-block button img {
+			vertical-align: middle;
+			margin-left: .5em;
+			max-height: 40px;
+		}
 	.hotel-details h1 {
 		font-size: 1.2em;
 		margin: 0 1em .1em 0;
@@ -335,7 +340,7 @@ input.loading {
 	.hotel-details .rate-block {
 		text-align: center;
 		position: relative;
-		top: -1.5em;
+		top: -1em;
 	}
 	.hotel-details .rate-block .qualifier {
 		text-align: left;
