@@ -29,6 +29,7 @@ require.config({
 		'jerome-utils': 'lib/jeromedane/utils',
 		'raty': 'lib/raty/jquery.raty',
 		'text': 'lib/require/text',
+		'tooltipster': 'lib/tooltipster/jquery.tooltipster.min',
 		'touchpunch': 'lib/touchpunch/touchpunch.min',
 		'ui': 'views/ui',
 		'underscore': 'lib/underscore/underscore.min'
@@ -61,6 +62,13 @@ require.config({
 				'css!lib/raty/jquery.raty'
 			]
 		},
+		'tooltipster': {
+			deps: [
+				'jquery',
+				'css!lib/tooltipster/css/tooltipster',
+				'css!lib/tooltipster/css/themes/tooltipster-shadow'
+			]
+		},
 		'touchpunch': {
 			deps: ['jquery-ui']
 		},
@@ -72,6 +80,7 @@ require.config({
 				'localization',
 				'jerome-utils',
 				'raty',
+				'tooltipster',
 				'touchpunch'
 			]
 		},

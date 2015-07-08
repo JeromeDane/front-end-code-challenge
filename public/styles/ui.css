@@ -20,6 +20,17 @@ h4 {
 	margin-bottom: 1em;
 }
 
+.tooltipster-content {
+	font-size: .9em;
+}
+	.tooltipster-content a {
+		color: #099;
+		display: block;
+		margin-top: 1em;
+		text-decoration: none;
+		text-align: right;
+	}
+
 .view-header {
 	position: relative;
 }
@@ -269,7 +280,7 @@ input.loading {
 		display: inline-block;
 		position: relative;
 		text-align: left;
-		margin-right: 1em;
+		padding: 0 1em 2em 0;
 		max-width: 200px;
 	}
 	.hotel-details .rate-block.bestrate .group{
@@ -293,6 +304,10 @@ input.loading {
 			font-size: .9em;
 			position: relative;
 			top: -1em;
+			cursor: pointer;
+			color: #099;
+			background: url('//d1zikkhuo9bi6f.cloudfront.net/v32.4.1/roomkey/images/_base/check-small.png') no-repeat;
+			padding-left: 18px;
 		}
 		.hotel-details .rate-block .unavailable {
 			display: inline-block;

@@ -8,6 +8,27 @@ define([
 	var width, height;			// automatically calculated within updateDialogDimensions()
 	var animDuration = 300;
 	
+	// initialize best rate tooltop and interaction
+	function initBestRate(view) {
+		if(!view.model.get('best_rate_guarantee')) return;
+		
+		// add link if found
+		var content = view.model.get('best_rate_guarantee').description;
+		if(view.model.get('best_rate_guarantee').url) {
+			content += '<a href="' + view.model.get('best_rate_guarantee').url + '" target="_blank">' + 
+					l('read more') + ' ...</a>';
+		}
+		
+		$('.rate-guarantee', view.$dialog).tooltipster({
+			maxWidth: 300,
+			interactive: true,
+			position: 'bottom', 
+			content: content,
+			contentAsHTML: true,
+			theme: 'tooltipster-shadow'
+		});
+	}
+	
 	function isDialogOpen(view) {
 		return (view.$dialog && view.$dialog.hasClass('ui-dialog-content') && view.$dialog.dialog('isOpen'));
 	}
@@ -159,6 +180,7 @@ define([
 			
 			showDialog(this, hotelPreviewView);
 			renderStars(this);
+			initBestRate(this);
 			
 			$('button', this.$dialog).button();
 		}
