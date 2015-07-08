@@ -10,7 +10,10 @@
 <div class="distance">Distance: <%= distance.toFixed(1) %> miles</div>
 <div class="rating">Rating: <span class="score"></span></div>
 <% if(available) { %>
-	<div class="rate">$<%= l(nightly_rate.toFixed(2)) %> per night</div>
+	<div class="rate">
+		<div class="price">$<%= l(nightly_rate.toFixed(2)) %></div>
+		<div class="qualifier">per night<br/>+ taxes &amp; fees</div>
+	</div>
 <% } else { %>
 	<div class="unavailable">No rooms available</div>
 <% } %>

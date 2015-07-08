@@ -148,10 +148,6 @@ input.loading {
 		.search-filters-wrapper.closed label.show {
 			display: block;
 		}
-	.search-filters-wrapper.closed,
-	.search-filters-wrapper.closed * {
-		cursor: pointer;
-	}
 	.search-filters-wrapper .buttons {
 		margin-top: 1em;
 	}
@@ -219,6 +215,22 @@ input.loading {
 		position: relative;
 		top: 2px;
 	}
+	.hotel-preview .rate {
+		margin-top: .5em;
+	}
+		.hotel-preview .rate .price {
+			display: inline-block;
+			font-size: 2em;
+			font-family: 'Bitter', serif;
+			color: #3b2525;
+		}
+		.hotel-preview .rate .qualifier {
+			display: inline-block;
+			margin-left: .5em;
+			font-size: .75em;
+			font-style: italic;
+			color: #666;
+		}
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
@@ -233,6 +245,6 @@ input.loading {
 	}
 	/* align location search button with larger text */
 	form.search-box input[type="submit"] {
-		height: 42px;
+		height: 41px;
 	}
 }
