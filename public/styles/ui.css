@@ -212,6 +212,12 @@ input.loading {
 	.hotel-preview .star-value img[src*="off"] {
 		display: none;
 	}
+	.hotel-preview .rating .score img {
+		height: 15px;
+		width: 15px;
+		position: relative;
+		top: 2px;
+	}
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {

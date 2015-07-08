@@ -7,8 +7,8 @@
 <% } %>
 <div class="name" title="<%= short_description %>"><%= name %></div>
 <div class="stars"><div class="star-value"></div></div>
-<div class="rating">Guest Rating: <%= guest_rating %>/5</div>
 <div class="distance">Distance: <%= distance.toFixed(1) %> miles</div>
+<div class="rating">Rating: <span class="score"></span></div>
 <% if(available) { %>
 	<div class="rate">$<%= l(nightly_rate.toFixed(2)) %> per night</div>
 <% } else { %>

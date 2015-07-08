@@ -18,6 +18,12 @@
 		"4_STAR_HOTEL": "4 {{STAR_HOTEL}}",
 		"5_STAR_HOTEL": "5 {{STAR_HOTEL}}",
 		
+		"RATING_1": "bad",
+		"RATING_2": "poor",
+		"RATING_3": "average",
+		"RATING_4": "good",
+		"RATING_5": "excellent",
+		
 		"SORT_BY_distance": "distance",
 		"SORT_BY_guest_rating": "guest rating",
 		"SORT_BY_name": "name",
@@ -105,6 +111,12 @@
 		"3_STAR_HOTEL": "{{Hotel}} 3 {{star}}",
 		"4_STAR_HOTEL": "{{Hotel}} 4 {{star}}",
 		"5_STAR_HOTEL": "{{Hotel}} 5 {{star}}",
+		
+		"RATING_1": "mauvais",
+		"RATING_2": "pauvres",
+		"RATING_3": "moyen",
+		"RATING_4": "bien",
+		"RATING_5": "excellent",
 		
 		"SORT_BY_guest_rating": "avis voyageurs",
 		"SORT_BY_name": "nom",
