@@ -37,6 +37,9 @@ define([
 			hide: {
 				effect: "scale",
 				duration: animDuration
+			},
+			close: function() {
+				view.$dialog.remove();
 			}
 		});
 		// start out the dialog as invisible/transparent
