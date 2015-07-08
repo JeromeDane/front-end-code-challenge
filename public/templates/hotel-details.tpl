@@ -16,11 +16,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="rate-block">
+	<div class="rate-block<% if(best_rate_guarantee) { %> bestrate<% } %>">
 		<% if(available) { %>
-			<div class="rate">
-				<div class="price">$<%= l(nightly_rate.toFixed(2)) %></div>
-				<div class="qualifier"><%= l("per night") %><br/>+ <%= l("taxes & fees") %></div>
+			<div class="group">
+				<div class="rate">
+					<div class="price">$<%= l(nightly_rate.toFixed(2)) %></div>
+					<div class="qualifier"><%= l("per night") %><br/>+ <%= l("taxes & fees") %></div>
+				</div>
+				<% if(best_rate_guarantee) { %>
+					<div class="rate-guarantee">
+						<%= best_rate_guarantee.heading %>
+					</div>
+				<% } %>
 			</div>
 			<!-- TODO: localization -->
 			<button onclick="javascript:alert('not implemented in this coding challenge')">
