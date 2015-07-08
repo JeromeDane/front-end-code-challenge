@@ -1,4 +1,3 @@
-<!-- TODO: Localize text -->
 <% if(typeof(thumbnail) != 'undefined') { %>
 	<img src="<%= thumbnail %>" class="thumbnail" alt="Hotel Thumbnail"/>
 <% } %>
@@ -8,12 +7,12 @@
 <div class="name" title="<%= short_description %>"><%= name %></div>
 <div class="stars"><div class="star-value"></div></div>
 <div class="distance">Distance: <%= distance.toFixed(1) %> miles</div>
-<div class="rating">Rating: <span class="score"></span></div>
+<div class="rating"><%= l("Guest Rating") %>: <span class="score"></span></div>
 <% if(available) { %>
 	<div class="rate">
 		<div class="price">$<%= l(nightly_rate.toFixed(2)) %></div>
-		<div class="qualifier">per night<br/>+ taxes &amp; fees</div>
+		<div class="qualifier"><%= l("per night") %><br/>+ <%= l("taxes & fees") %></div>
 	</div>
 <% } else { %>
-	<div class="unavailable">No rooms available</div>
+	<div class="unavailable"><%= l("No rooms available") %></div>
 <% } %>

@@ -1,14 +1,12 @@
 {
 	"en": {
-		"Check-In": "Check-In",
-		"Check-Out": "Check-Out",
-		"Language": "Language",
 		"LOCALE_en": "English",
 		"LOCALE_fr": "French",
 		"LOCATION_SEARCH_PROMPT": "Enter a city or zipcode",
 		"NO_RESULTS": "No hotels were found within MAXDIST miles of LOCATION",
 		"NO_RESULTS_SUGGESTION": "Try searching one of our more popular locations like <em>Charlottesville, VA</em>, <em>Chicago, IL</em>, or <em>New York, NY</em>.",
 		"SITE_TITLE": "Super Hotel Search",
+		"taxes & fees": "taxes &amp; fees",
 		"WITHIN_X_MILES": "Within MAXDIST miles",
 		
 		"STAR_HOTEL": "star hotel",
@@ -95,13 +93,17 @@
 	"fr": {
 		"Check-In": "Arrivée",
 		"Check-Out": "Départ",
+		"Guest Rating": "Avis voyageurs",
 		"Language": "Langue",
+		"per night": "par nuit",
 		"LOCALE_en": "Angalis",
 		"LOCALE_fr": "Français",
 		"LOCATION_SEARCH_PROMPT": "Entrez une ville ou code postal",
+		"No rooms available": "Pas de disponibilité",
 		"NO_RESULTS": "Aucun hôtel n'a été trouvé à moins de MAXDIST miles de LOCATION",
 		"NO_RESULTS_SUGGESTION": "Essayez un de nos endroits plus populaires comme <em>Charlottesville, VA</em>, <em>Chicago, IL</em>, ou <em>New York, NY</em>.",
 		"SITE_TITLE": "Super Hôtels",
+		"taxes & fees": "taxes et frais",
 		"WITHIN_X_MILES": "à moins de MAXDIST miles",
 		
 		"Hotel": "Hôtel",

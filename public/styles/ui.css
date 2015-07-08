@@ -231,6 +231,15 @@ input.loading {
 			font-style: italic;
 			color: #666;
 		}
+	.hotel-preview .unavailable {
+		margin-top: 1em;
+		border: 1px solid #aaa;
+		color: #666;
+		background: #ccc;
+		text-align: center;
+		padding: 1em 0;
+		border-radius: 3px;
+	}
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
