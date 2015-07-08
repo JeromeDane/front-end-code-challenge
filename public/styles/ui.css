@@ -7,7 +7,11 @@ body {
 	font-size: 14px;
 	color: #333;
 	margin: 0;
-	padding: 1em;
+	padding: 1em 0;
+}
+
+.ui-container {
+	margin: auto;
 }
 
 h4 {
@@ -152,7 +156,8 @@ input.loading {
 		margin-top: 1em;
 	}
 	
-.view-search-results {
+.view-search-results .hotels {
+	margin: auto;
 	margin-top:1em;
 }
 
@@ -170,7 +175,7 @@ input.loading {
 .hotel-preview {
 	width:200px;
 	display: inline-block;
-	margin:0 1em 1em 0;
+	margin-bottom: 1em;
 	padding: 1em;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border:1px solid #aaa;
@@ -243,10 +248,6 @@ input.loading {
 
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
-	/* more horizontal padding */
-	body {
-		padding: 1em 2em;
-	}
 	/* larger location search input text */
 	form.search-box .location input {
 		font-size: 1.5em;

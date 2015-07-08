@@ -33,6 +33,24 @@ define([
 		
 		template: _.template(templateHtml),
 		
+		resize: function() {
+			
+			var cardWidth = 230;
+			var cardGutter = 13;
+			
+			// figure out how many hotel previews could fit on one row for the current window size
+			var numCards = Math.floor($(window).width() / (cardWidth + cardGutter));
+			
+			if(numCards > 1) {
+				// make the UI container wide enough to fit the most possible hotel previews for window size
+				$('.ui-container', this.$el).width(numCards * 
+						(cardWidth + cardGutter)
+						- cardGutter);
+			} else {
+				$('.ui-container', this.$el).width($(window).width() - 40);
+			}
+		},
+		
 		initialize: function() {
 			
 			// set local reference to this for use in handlers
@@ -49,6 +67,11 @@ define([
 				_this.render();
 			});
 		
+			// resize the UI as needed
+			$(window).resize(function() {
+				_this.resize();
+			});
+		
 		},               
                 
 		render: function() {
@@ -58,6 +81,7 @@ define([
 			renderSubView(this, 'header');
 			renderSubView(this, 'search', 'body');
 			
+			this.resize();
 			
 		}
 	};
