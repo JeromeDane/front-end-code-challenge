@@ -10,6 +10,8 @@ body {
 	padding: 1em 0;
 }
 
+
+
 .ui-container {
 	margin: auto;
 }
@@ -39,6 +41,7 @@ h4 {
 		}
 	}
 
+.ui-dialog,
 form.search-box,
 .search-filters-wrapper,
 .view-search-results .loading,
@@ -246,6 +249,15 @@ input.loading {
 		border-radius: 3px;
 	}
 
+.hotel-details-dialog > .ui-dialog-title {
+	display: none;
+}
+.hotel-details-dialog > .ui-widget-header {
+	background: none;
+	border: none;
+}
+	
+	
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
 	/* larger location search input text */

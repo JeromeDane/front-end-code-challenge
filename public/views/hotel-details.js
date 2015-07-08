@@ -30,10 +30,10 @@ define([
 
 		// show hotel details as popup dialog
 		view.$dialog.dialog({
+			dialogClass: 'hotel-details-dialog',
 			modal: true,
 			height: hotelPreviewView.$el.height(),
 			width: hotelPreviewView.$el.width(),
-			title: view.model.get('name'),
 			hide: {
 				effect: "scale",
 				duration: animDuration
