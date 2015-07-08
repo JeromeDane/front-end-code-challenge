@@ -372,13 +372,16 @@ input.loading {
 	/* show search filters on the right */
 	.search-filters-wrapper {
 		width: 200px;
-		float: right;
+		float: left;
 	}
 		.search-filters-wrapper button.close {
 			display:none;
 		}
 	.view-search-results {
-		margin-right: 243px;
+		margin-left: 243px;
+	}
+	.view-search-results .hotels {
+		margin:1em 0 0;
 	}
 	
 	.hotel-details .overview-block,
