@@ -9,7 +9,7 @@ define([
 	var animDuration = 300;
 	
 	function isDialogOpen(view) {
-		return (view.$dialog && view.$dialog.dialog('isOpen'));
+		return (view.$dialog && view.$dialog.hasClass('ui-dialog-content') && view.$dialog.dialog('isOpen'));
 	}
 
 	// get where the dialog top should be
@@ -88,8 +88,8 @@ define([
 	// update the dialog dimensions based on window size
 	function updateDialogDimensions() {
 		// TODO: calculate dialog dimensions based on current window size
-		width = Math.min(600, $(window).width() - 20);
-		height = Math.min(600, $(window).height() - 70);
+		width = Math.min(900, $(window).width() - 20);
+		height = Math.min(700, $(window).height() - 70);
 		
 	}
 	

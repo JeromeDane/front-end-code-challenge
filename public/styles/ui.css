@@ -104,9 +104,9 @@ form.search-box,
 		}
 	form.search-box input[type="submit"] {
 		position: absolute;
-		right: 22px;
+		right: 30px;
 		top: 14px;
-		height: 37px;
+		height: 35px;
 		border-color: #999;
 		border-radius: 0 3px 3px 0;
 	}
@@ -268,5 +268,8 @@ input.loading {
 	/* align location search button with larger text */
 	form.search-box input[type="submit"] {
 		height: 41px;
+	}
+	form.search-box input[type="submit"] {
+		right: 38px;
 	}
 }
