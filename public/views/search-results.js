@@ -16,10 +16,15 @@ define([
 		
 		// render all hotels that match any currently applied custom filters
 		_.each(view.hotels.getFiltered(), function(hotel) {
-			(new HotelPreviewView({
+			var hotelView = new HotelPreviewView({
 				model: hotel,
 				appendTo: $wrapper
-			})).render();
+			});
+			// listen for hotel preview click and tell parent view to show the hotel
+			hotelView.on('click', function(hotelView) {
+				view.trigger('show-hotel', hotelView);
+			});
+			hotelView.render();
 			
 		});
 		
