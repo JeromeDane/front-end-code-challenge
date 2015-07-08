@@ -369,6 +369,18 @@ input.loading {
 
 /* tablets and larger */
 @media (min-width: 800px) {
+	/* show search filters on the right */
+	.search-filters-wrapper {
+		width: 200px;
+		float: right;
+	}
+		.search-filters-wrapper button.close {
+			display:none;
+		}
+	.view-search-results {
+		margin-right: 243px;
+	}
+	
 	.hotel-details .overview-block,
 	.hotel-details .rate-block {
 		display: inline-block;

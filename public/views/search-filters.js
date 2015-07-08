@@ -40,6 +40,10 @@ define([
 	
 	function initOpenCloseToggle(view) {
 		
+		var largeWidth = 800;
+		
+		view.isOpen = $(window).width() >= largeWidth;
+		
 		// open if currently closed
 		$('button.show-filters', view.$el).click(function() {
 			toggleOpenClosed(view);
@@ -48,6 +52,18 @@ define([
 		// initialize close button click
 		$('button.close', view.$el).click(function() {
 			toggleOpenClosed(view);
+		});
+
+		// automatically toggle filters on resize when appropriate
+		$(window).resize(function() {
+			// open filters when moving to large view
+			if(!view.isOpen && $(window).width() >= largeWidth) {
+				toggleOpenClosed(view);
+			}
+			// hide filters when moving to small view
+			if(view.isOpen && $(window).width() < largeWidth) {
+				toggleOpenClosed(view);
+			}
 		});
 		
 		applyOpenClosedClasses(view);
