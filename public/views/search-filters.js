@@ -29,6 +29,36 @@ define([
 		});
 	}
 
+	function initFilterByAmenities(view) {
+		
+		var $amenities = $('.amenities input', view.$el);
+		var selectedAmenities = [];
+		
+		// for each checkbox, perform filter by amenities when it changes
+		$amenities.each(function() {
+			$(this).change(function() {
+				// update amenities currently selected
+				var itemName = this.name;
+				if(this.checked) {
+					selectedAmenities.push(itemName);
+				} else {
+					selectedAmenities = _.reject(selectedAmenities, function(item) {
+						return item === itemName; 
+					});
+				}
+				// perform filter
+				view.hotels.filterBy('amenities', selectedAmenities);
+			});
+		});
+		
+		// initialize amenities toggle
+		$('.amenities .toggle', view.$el).click(function() {
+			toggleAmenitiesShowMore(view);
+		});
+		
+		toggleAmenitiesShowMore(view);
+	}
+
 	function initFilterByAvailability(view) {
 		var $input = $('.search-filters-wrapper .availability input', view.$el);
 		$input.on('change', function() {
@@ -123,6 +153,30 @@ define([
 		$sortBy.val(view.hotels.getSortOrder());
 	}
 	
+	function toggleAmenitiesShowMore(view) {
+		
+		var numMin = 10;
+		
+		var showMore = $('.amenities li:visible', view.$el).size() === numMin;
+		
+		if(showMore) {
+			$('.amenities .toggle .more', view.$el).hide();
+			$('.amenities .toggle .less', view.$el).show();
+		} else {
+			$('.amenities .toggle .more', view.$el).show();
+			$('.amenities .toggle .less', view.$el).hide();
+		}
+		
+		$('.amenities li', view.$el).each(function(i, amenity) {
+			if(showMore) {
+				$(amenity).show();
+			} else if(i > numMin - 1) {
+				$(amenity).hide();	
+			}
+		});
+		
+	}
+	
 	function toggleOpenClosed(view) {
 		view.isOpen = !view.isOpen;
 		applyOpenClosedClasses(view);
@@ -163,13 +217,15 @@ define([
 			}
 			
 			this.$el.html(this.template({
+				amenities: this.hotels.getAmenitiesWithFrequency(),
 				sortOrders: this.hotels.getSortOrders()
 			}));
 			
 			initOpenCloseToggle(this);
 			initSortBy(this);
-			initFilterByName(this);
+			initFilterByAmenities(this);
 			initFilterByAvailability(this);
+			initFilterByName(this);
 			initFilterByRate(this);
 			initClearFilters(this);
 			

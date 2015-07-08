@@ -1,7 +1,9 @@
 define([
-	'models/hotel'
+	'models/hotel',
+	'json!api/hotels/amenities'
 ], function(
-		HotelModel
+	HotelModel,
+	amenities	
 ) {
 	
 	var baseUrl = 'api/hotels';
@@ -76,6 +78,33 @@ define([
 			this.trigger('filter');
 		},
 		
+		getAmenitiesWithFrequency: function() {
+			// make it easy to look up amenities
+			amenities = _.indexBy(_.toArray(amenities), 'code');
+
+			// reset hotel count for each amenity
+			_.each(amenities, function(amenity) {
+				amenity.count = 0;
+			});
+
+			// count the number of hotels that are using each amenity
+			_.each(this.pluck('amenities'), function(amenityList) {
+				_.each(amenityList, function(amenity) {
+					amenities[amenity.code].count++;
+				});
+			});
+
+			// sort the amenities by the number of hotels that have them (descending)
+			amenities = _.sortBy(_.toArray(amenities), function(amenity) {
+				return -1 * amenity.count;
+			});
+
+			// only return amenities that are used by at least one hotel
+			return _.filter(amenities, function(amenity) {
+				return amenity.count > 0;
+			});
+		},
+		
 		/**
 		 * Get the hotels in the collection that match any custom
 		 * filters applied using the custom filterBy() method
@@ -89,10 +118,16 @@ define([
 				// check each custom filter to see if hotel matches
 				_.each(filters, function(value, field) {
 					switch(field) {
+						case 'amenities':
+							_.each(value, function(code) {
+								if(!hotel.hasAmenity(code)) {
+									hotelMatches = false;
+								}
+							});
+							break;
 						case 'availability':
 							if(value && !hotel.get('available')) {
 								hotelMatches = false;
-								return false;
 							}
 							break;
 						case 'name':
@@ -101,13 +136,11 @@ define([
 								hotel.get('name').toLowerCase().indexOf(value.toLowerCase()) === -1
 							) {
 								hotelMatches = false;
-								return false;
 							}
 							break;
 						case 'rate':
 							if(hotel.get('nightly_rate') < value[0] || hotel.get('nightly_rate') > value[1]) {
 								hotelMatches = false;
-								return false;
 							}
 							break;
 							

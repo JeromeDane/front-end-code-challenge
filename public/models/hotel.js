@@ -17,7 +17,11 @@ define([
 				this.set('thumbnail', this.photos.at(0).get('thumbnail'));
 			}
 			
-		}
+		},
+		
+		hasAmenity: function(code) {
+			return _.findWhere(this.get('amenities'), { code: code });
+		} 
 		
 	};
 	

@@ -26,6 +26,24 @@
 			<label>Nightly Rate: <span class="values"></label>
 			<div class="slider"></div>
 		</div>
+		<div class="filter amenities">
+			<label>Amenities</label>
+			<ul>
+				<% _.each(amenities, function(amenity) { %>
+					<li>
+						<label>
+							<input type="checkbox" name="<%= amenity.code %>"/> <%= amenity.name %>
+							<span class="count">(<%= amenity.count %>)</span>
+						</label>
+					</li>
+				<% }) %>
+			</ul>
+			<a class="toggle">
+				<span class="more"><%= l("show more") %></span>
+				<span class="less"><%= l("show less") %></span>
+				...
+			</a>
+		</div>
 		<div class="buttons">
 			<button class="close">Hide Filters</button>
 		</div>
