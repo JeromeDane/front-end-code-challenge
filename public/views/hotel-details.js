@@ -7,19 +7,28 @@ define([
 	// dialog settings
 	var width, height;			// automatically calculated within updateDialogDimensions()
 	var animDuration = 300;
+	
+	function isDialogOpen(view) {
+		return (view.$dialog && view.$dialog.dialog('isOpen'));
+	}
 
 	// get where the dialog top should be
 	function getDialogTop() {
-		return $('body').scrollTop() + ($(window).height() / 2) - (height / 2);
+		var offset = 60;
+		return $('body').scrollTop() + ($(window).height() / 2) - ((height + offset) / 2);
+	}
+	
+	// get where the dialog left edge should be
+	function getDialogLeft() {
+		return ($(window).width() / 2) - (width / 2) - 5;
 	}
 
 	// reposition dialog top if open
 	function positionDialogTopIfOpen(view) {
 		
 		// don't do anything if the dialog isn't open
-		if(!view.$dialog || !view.$dialog.dialog('isOpen')) return;
+		if(!isDialogOpen(view)) return;
 		
-		console.log('os2');
 		view.$dialog.dialog('widget').css('top', getDialogTop());
 	}
 
@@ -54,15 +63,14 @@ define([
 		
 		// animate grow dialog to full size
 		view.$dialog.animate({
-				width: width,
-				height: height + 'px'
+				height: height
 			}, { duration: animDuration });
 			
 		// animate dialog widget fade in and position to center
 		view.$dialog.dialog('widget').animate({
 				opacity: 1,
 				width: width,
-				left: ($(window).width() / 2) - (width / 2),
+				left: getDialogLeft(),	// small offset to the left for better positioning
 				top: getDialogTop()
 			}, 
 			{ duration: animDuration });
@@ -76,13 +84,24 @@ define([
 	// update the dialog dimensions based on window size
 	function updateDialogDimensions() {
 		// TODO: calculate dialog dimensions based on current window size
-		width = 500;
-		height = 400;
+		width = Math.min(600, $(window).width() - 20);
+		height = Math.min(600, $(window).height() - 70);
+		
 	}
 	
 	// resize the dialog based on current size settings
-	function resizeDialog(view) {
-		// TODO: resize the dialog based on current size settings
+	function resizeDialogIfOpen(view) {
+		
+		// don't do anything if the dialog isn't open
+		if(!isDialogOpen(view)) return;
+		
+		// resize and re-center dialog
+		view.$dialog.dialog('widget').css({
+			height: height,
+			width: width,
+			left: getDialogLeft(),	// small offset to the left for better positioning
+			top: getDialogTop()
+		});
 	}
 	
 	var view = {
@@ -101,7 +120,7 @@ define([
 		   // update dialog dimensions based on window size
 		   $(window).resize(function() {
 			   updateDialogDimensions();
-			   resizeDialog(view);
+			   resizeDialogIfOpen(_this);
 		   });
 		   updateDialogDimensions();
 		   
