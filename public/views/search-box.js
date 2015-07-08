@@ -8,7 +8,7 @@ define([
 	
 	// TODO: Way to let user click "current location"
 	
-	// TODO: Store field values and restore them on render
+	// TODO: Store field values and restore them on re-render (e.g. after locale change)
 	
 	function handleHotelSearchError(view, response) {
 		
@@ -33,9 +33,36 @@ define([
 		
 		// TODO: Fix display of calendar popups on mobile
 		
+		// TODO: Move code for date pickers into their own view and create one instance for checkin, one for checkout
+		
 		// get checkin/checkout fields
-		$checkinField = $('input[name="checkin"]', view.$el);
-		$checkoutField = $('input[name="checkout"]', view.$el);
+		var $checkinField = $('input[name="checkin"]', view.$el);
+		var $checkoutField = $('input[name="checkout"]', view.$el);
+		
+		// convert a check in/out date to a string
+		function _dateToStr(date) {
+			var day = date.getDay();
+			var d = date.getDate();
+			var monthIndex = date.getMonth();
+			var year = date.getFullYear();
+
+			return l("DATE_FORMAT")
+					.replace(/WEEKDAY/, l("DAY_" + day))
+					.replace(/MONTH/, l("MONTH_" + monthIndex))
+					.replace(/DATE/, d)
+					.replace(/YEAR/, year);
+		}
+		
+		// update the displayed date
+		function _updateDateDisplay() {
+			var checkinDate = $checkinField.datepicker('getDate');
+			$('.checkin .date', view.$el).text(_dateToStr(checkinDate));
+			var checkoutDate = $checkoutField.datepicker('getDate');
+			$('.checkout .date', view.$el).text(_dateToStr(checkoutDate));
+			var nights = (checkoutDate-checkinDate)/(1000*60*60*24);
+			// display number of nights
+			$('.checkout .nights', view.$el).text(" (" + nights + " " + (nights > 1 ? l("nights") : l("night")) + ")");
+		}
 		
 		// initialize both fields the same way
 		_.each([$checkinField, $checkoutField], function($field) {
@@ -43,8 +70,17 @@ define([
 				minDate: 0,
 				numberOfMonths: 2,
 				slideshowAnim: "slideDown",
-				dateFormat: "yy-mm-dd"
+				dateFormat: "yy-mm-dd",
+				onSelect: _updateDateDisplay
 			});
+		});
+		
+		// enable click on date display to open selector
+		$('.checkin', view.$el).click(function() {
+			$checkinField.datepicker("show");
+		});
+		$('.checkout', view.$el).click(function() {
+			$checkoutField.datepicker("show");
 		});
 		
 		// checking field specific settings
@@ -59,7 +95,7 @@ define([
 		});
 		$checkoutField.datepicker('setDate', "+1d");
 		
-		// TODO: Hide date fields and show as formatted date text when not focused. Click text/icon to change.
+		_updateDateDisplay();
 		
 	}
 	

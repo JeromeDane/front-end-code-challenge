@@ -69,7 +69,7 @@ form.search-box,
 		display: none;
 	}
 	form.search-box .location {
-		margin-bottom: .5em;
+		margin-bottom: 1em;
 	}
 		form.search-box .location .search-field-wrapper {
 			margin-right: 100px;
@@ -102,6 +102,8 @@ form.search-box,
 	form.search-box .search-field.checkout {
 		width: 49%;
 		display: inline-block;
+		cursor: pointer;
+		margin-bottom: 1em;
 	}
 		form.search-box .search-field.checkin label,
 		form.search-box .search-field.checkout label {
@@ -109,7 +111,29 @@ form.search-box,
 		}
 		form.search-box .search-field.checkin input,
 		form.search-box .search-field.checkout input {
-			max-width: 100px;
+			width: 0;
+			border: none;
+			padding: 0;
+		}
+		form.search-box .search-field.checkin .date,
+		form.search-box .search-field.checkout .date {
+			position: relative;
+			left: -.15em;
+			font-weight: bold;
+			font-family: 'Bitter', serif;
+		}
+		form.search-box .search-field.checkout .nights {
+			display: none;
+		}
+		form.search-box .search-field.checkin .icon,
+		form.search-box .search-field.checkout .icon {
+			width: 21px;
+			height: 20px;
+			display: inline-block;
+			background: url(http://d1zikkhuo9bi6f.cloudfront.net/v32.4.1/roomkey/images/roomkey/roomkey_sprite.png) no-repeat right;
+			background-position: 0 -190px;
+			position: relative;
+			top: 3px;
 		}
 	form.search-box input[type="submit"] {
 		position: absolute;
@@ -404,25 +428,8 @@ input.loading {
 		right: 38px;
 	}
 	
-	/* show distance, checkin, and checkout on one line */
-	form.search-box .search-field.checkin,
-	form.search-box .search-field.checkout,
-	form.search-box .search-field.dist {
-		display: inline-block;
-		width: 40%;
-	}
-	form.search-box .search-field.checkin,
-	form.search-box .search-field.checkout {
-		width: 19%;
-		margin-right: 8%; 
-		margin-top: .4em;
-	}
-	form.search-box .search-field.dist {
-		position: relative;
-		top: -1.3em;
-	}
-	form.search-box {
-		height: 100px;
+	form.search-box .search-field.checkout .nights {
+		display: inline;
 	}
 	
 	.hotel-details h1 {
@@ -441,6 +448,31 @@ input.loading {
 
 /* tablets and larger */
 @media (min-width: 800px) {
+	
+	/* show distance, checkin, and checkout on one line */
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout,
+	form.search-box .search-field.dist {
+		display: inline-block;
+		width: 20%;
+	}
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout {
+		width: 29%;
+		margin-right: 8%; 
+		margin-top: .4em;
+	}
+	form.search-box .search-field.dist {
+		position: relative;
+		top: -1.3em;
+	}
+	form.search-box {
+		height: 100px;
+	}
+	form.search-box .location {
+		margin-bottom: .5em;
+	}
+	
 	/* show search filters on the right */
 	.search-filters-wrapper {
 		width: 200px;

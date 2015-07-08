@@ -13,11 +13,17 @@
 	</div>
 	<div class="search-field checkin">
 		<label><%= l("Check-In") %>:</label>
-		<input type"text" name="checkin"/>
+		<input type="text" name="checkin"/>
+		<span class="date"></span>
+		<span class="icon"></span>
 	</div>
 	<div class="search-field checkout">
-		<label><%= l("Check-Out") %>:</label>
-		<input type"text" name="checkout"/>
+		<label>
+			<%= l("Check-Out") %><span class="nights"></span>:
+		</label>
+		<input type="text" name="checkout"/>
+		<span class="date"></span>
+		<span class="icon"></span>
 	</div>
 	<div class="search-field dist">
 		<label><%= l("WITHIN_X_MILES") %></label>
