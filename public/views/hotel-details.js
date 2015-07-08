@@ -74,6 +74,10 @@ define([
 				top: getDialogTop()
 			}, 
 			{ duration: animDuration });
+		
+		// fade the modal overlay in along with other animations
+		$('.ui-widget-overlay').hide();
+		$('.ui-widget-overlay').fadeIn(animDuration);
 
 		// close the dialog when clicking outside it
 		$('.ui-widget-overlay').on('click', function() {
