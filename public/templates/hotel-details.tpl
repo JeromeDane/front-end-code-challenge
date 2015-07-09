@@ -60,6 +60,19 @@
 				</ul>
 			</div>
 			<p class="description"><%= description %></p>
+			<div class="amenities">
+				<h4><%= l("Amenities") %></h4>
+				<ul>
+					<% _.each(amenities, function(amenity) { %>
+						<li>
+							<%= l(amenity.name) %>
+						</li>
+					<% }) %>
+				</ul>
+			</div>
+			<div class="map-wrapper">
+				<div class="map-container"></div>
+			</div>
 		</div>
 		<div id="tabs-photos">
 			<div class="photos">

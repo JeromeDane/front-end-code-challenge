@@ -95,18 +95,6 @@ form.search-box,
 		display: inline;
 	}
 	
-	.hotel-details h1 {
-		font-size: 1.5em;
-	}
-	.hotel-details .stars,
-	.hotel-details .rating {
-		display: inline-block;
-	}
-	.hotel-details .stars {
-		margin-right: .75em; 
-		border-right: 1px solid #aaa;
-		padding-right: 1em;
-	}
 }
 
 /* tablets and larger */
@@ -155,17 +143,4 @@ form.search-box,
 		margin:1em 0 0;
 	}
 	
-	.hotel-details .overview-block,
-	.hotel-details .rate-block {
-		display: inline-block;
-		width: 49%;
-	}
-	.hotel-details .rate-block {
-		text-align: center;
-		position: relative;
-		top: -1em;
-	}
-	.hotel-details .rate-block .qualifier {
-		text-align: left;
-	}
 }

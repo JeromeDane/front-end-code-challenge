@@ -69,8 +69,55 @@ define([
 	
 	function initMap(view) {
 		
-		// wait until switching to map tab before trying to render
+		// use hotel latitude and longitude
+		var latLng = new google.maps.LatLng(view.model.get('lat'), view.model.get('lng'));
+		
+		// perform actual map render within a given tab
+		function _renderMap(tabName, zoomLevel, showUi) {
+			
+			var container = $('#tabs-' + tabName + ' .map-container', view.$dialog)[0];
+			
+			// render map
+			var map = new google.maps.Map(container, {
+				center: latLng,
+				zoom: zoomLevel,
+				disableDefaultUI: !showUi
+			});
+			
+			// apply marker
+			new google.maps.Marker({
+				position: latLng,
+				map: map
+			});
+		}
+		
+		function _renderOverviewMap() {
+			_renderMap('overview', 11, false);
+		}
+		
+		// render overview tab map once animations are complete
+		view.on('animation-complete', function() {
+			_renderOverviewMap();
+		});
+		
+		// wait until switching to a tab before trying to render a map there
 		view.$tabs.on("tabsactivate", function(event, ui) {
+			
+			var tabName = ui.newPanel.selector.match(/tabs-(.+)/)[1];
+			
+			switch(tabName) {
+				case 'map':
+					_renderMap('map', 13, true);
+					break;
+				case 'overview':
+					_renderOverviewMap();
+					break;
+			}
+			
+		});
+		
+		// wait until switching to map tab before trying to render
+		view.$tabs.on("tabsactivate", function(event, ui, showUi) {
 			
 			var container = $('#tabs-map .map-container', view.$dialog)[0];
 			
@@ -80,7 +127,8 @@ define([
 			// render map
 			var map = new google.maps.Map(container, {
 				center: latLng,
-				zoom: 13
+				zoom: 13,
+				disableDefaultUI: showUi
 			});
 			
 			// apply marker
@@ -90,6 +138,12 @@ define([
 			});
 			
 		});
+		
+		// render overview tab map once animations are complete
+		view.on('animation-complete', function() {
+			_renderOverviewMap();
+		});
+		
 	}
 	
 	function isDialogOpen(view) {
@@ -212,7 +266,10 @@ define([
 		// animate grow dialog to full size
 		view.$dialog.animate({
 				height: height
-			}, { duration: animDuration });
+			}, animDuration, function() {
+				// tell other elements of the view that the animation is complete
+				view.trigger('animation-complete');
+			});
 			
 		// animate dialog widget fade in and position to center
 		view.$dialog.dialog('widget').animate({
