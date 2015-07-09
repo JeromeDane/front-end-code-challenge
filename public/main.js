@@ -31,16 +31,16 @@ require([
 	'touchpunch',
 	'ui'
 ], function(
-	a, 
-	b, 
-	c, 
-	d, 
-	e, 
-	f, 
-	g, 
-	h, 
-	i, 
-	j, 
+	Backbone, 
+	css, 
+	jQuery, 
+	Localization, 
+	Utils, 
+	Raty, 
+	Sly,
+	Swipebox, 
+	Tooltipster, 
+	Touchpunch, 
 	UiView
 ) {
 
