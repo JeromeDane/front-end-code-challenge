@@ -52,8 +52,7 @@ define([
 		if(!view.hotels.hasNoResults()) {
 			
 			// if there are no results to display after filters, then show message
-			if(view.hotels.getFiltered().length === 0) {
-				console.log('sadsa', $('.no-filtered-results', view.$el).size());
+			if(view.hotels.length > 0 && view.hotels.getFiltered().length === 0) {
 				$('.no-filtered-results', view.$el).show();
 				return;
 			}
