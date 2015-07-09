@@ -8,7 +8,7 @@
 			<% }) %>
 		</select>
 	</div>
-	<div class="filter availability">
+	<div class="availability">
 		<label>
 			<input name="availability" type="checkbox"/>
 			<%= l("Only show available") %>
@@ -24,6 +24,14 @@
 		</div>
 		<div class="filter rate">
 			<label><%= l("Nightly Rate") %>: <span class="values"></label>
+			<div class="slider"></div>
+		</div>
+		<div class="filter stars">
+			<label><%= l("Hotel Stars") %>: <span class="stars"></label>
+			<div class="slider"></div>
+		</div>
+		<div class="filter guest_rating">
+			<label><%= l("Guest Rating") %>: <span class="stars"></label>
 			<div class="slider"></div>
 		</div>
 		<div class="filter amenities">

@@ -106,6 +106,38 @@ define([
 		});
 	}
 	
+	function initFilterByStars(view, type) {
+		
+		// update star display
+		function _updateDisplay(score) {
+			$('.filter.' + type + ' span.stars', view.$el).raty({
+				score: score,
+				half: true,
+				path: 'lib/raty/images',
+				readOnly: true
+			});
+		}
+		
+		// create slider
+		var $slider = $('.filter.' + type + ' .slider', view.$el);
+		$slider.slider({
+			range: 'min',
+			min: 0,
+			max: 5,
+			step: 1,
+			slide: function(evt, ui) {
+				_updateDisplay(ui.value);
+			},
+			change: function(evt, ui) {
+				view.hotels.filterBy(type, ui.value);
+			}
+		});
+		
+		// render initial stars (0 by default)
+		_updateDisplay($slider.slider('value'));
+		
+	}
+	
 	function initOpenCloseToggle(view) {
 		
 		var largeWidth = 800;
@@ -264,7 +296,11 @@ define([
 			initFilterByName(this);
 			initFilterByRate(this);
 			initClearFilters(this);
+			initFilterByStars(this, 'stars');
+			initFilterByStars(this, 'guest_rating');
 			renderMap(this);
+			
+			
 			
 			// render jquery-ui buttons
 			$('button', this.$el).button();

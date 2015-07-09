@@ -134,6 +134,7 @@ define([
 				var hotelMatches = true;
 				// check each custom filter to see if hotel matches
 				_.each(filters, function(value, field) {
+					// TODO: Break this into separate functions for readibility
 					switch(field) {
 						case 'amenities':
 							_.each(value, function(code) {
@@ -155,12 +156,17 @@ define([
 								hotelMatches = false;
 							}
 							break;
+						case 'guest_rating': 
+						case 'stars':
+							if(hotel.get(field) < value) {
+								hotelMatches = false;
+							}
+							break;
 						case 'rate':
 							if(hotel.get('nightly_rate') < value[0] || hotel.get('nightly_rate') > value[1]) {
 								hotelMatches = false;
 							}
 							break;
-							
 					}
 				});
 				return hotelMatches;

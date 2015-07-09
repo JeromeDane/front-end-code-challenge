@@ -50,9 +50,16 @@
 		margin-top: 1em;
 	}
 	.search-filters-wrapper .sort,
-	.search-filters-wrapper .filter {
+	.search-filters-wrapper .availability {
 		margin-bottom: .5em;
 	}
+	.search-filters-wrapper .filter {
+		margin-bottom: 1em;
+	}
+		.search-filters-wrapper .filter img[src*="star"] {
+			position: relative;
+			top: 3px;
+		}
 	.search-filters-wrapper .sort,
 	.search-filters-wrapper .availability {
 		display: inline-block;
