@@ -69,7 +69,9 @@
 		display: block;
 		margin-bottom:.5em;
 	}
-	.search-filters-wrapper .rate .slider {
+	.search-filters-wrapper .rate .slider,
+	.search-filters-wrapper .stars .slider,
+	.search-filters-wrapper .guest_rating .slider {
 		margin: 0 .5em;
 	}
 	.search-filters-wrapper .amenities ul {
