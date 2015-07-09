@@ -67,6 +67,31 @@ define([
 		
 	}
 	
+	function initMap(view) {
+		// wait until switching to map tab
+		view.$tabs.on("tabsactivate", function(event, ui) {
+			
+			var container = $('#tabs-map .map-container', view.$dialog)[0];
+			
+			// use hotel latitude and longitude
+			var latLng = new google.maps.LatLng(view.model.get('lat'), view.model.get('lng'));
+			
+			// render map
+			var map = new google.maps.Map(container, {
+				center: latLng,
+				zoom: 13
+			});
+			
+			// apply marker
+			var marker = new google.maps.Marker({
+				position: latLng,
+				map: map,
+				title: 'Hello World!'
+			});
+			
+		});
+	}
+	
 	function isDialogOpen(view) {
 		return (view.$dialog && view.$dialog.hasClass('ui-dialog-content') && view.$dialog.dialog('isOpen'));
 	}
@@ -122,11 +147,7 @@ define([
 	
 	function renderTabs(view) {
 		view.$tabs = $('#hotel-details-tabs', view.$dialog);
-		view.$tabs.tabs({
-			activate: function(evt, ui) {
-				console.log(evt, ui);
-			}
-		});
+		view.$tabs.tabs();
 	}
 	
 	// resize the dialog based on current size settings
@@ -255,6 +276,7 @@ define([
 			renderTabs(this);
 			initBestRate(this);
 			initGallery(this);
+			initMap(this);
 			
 			$('button', this.$dialog).button();
 		}
