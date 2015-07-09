@@ -35,7 +35,7 @@ define([
 
 	// get where the dialog top should be
 	function getDialogTop() {
-		var offset = 60;
+		var offset = 25;
 		return $('body').scrollTop() + ($(window).height() / 2) - ((height + offset) / 2);
 	}
 	
@@ -114,7 +114,7 @@ define([
 	function updateDialogDimensions() {
 		// TODO: calculate dialog dimensions based on current window size
 		width = Math.min(900, $(window).width() - 20);
-		height = Math.min(700, $(window).height() - 70);
+		height = Math.min(700, $(window).height() - 35);
 		
 	}
 	
@@ -186,6 +186,8 @@ define([
 		// don't do anything if the dialog isn't open
 		if(!isDialogOpen(view)) return;
 		
+		updateDialogDimensions();
+		
 		// resize and re-center dialog
 		view.$dialog.dialog('widget').css({
 			height: height,
@@ -193,6 +195,7 @@ define([
 			left: getDialogLeft(),	// small offset to the left for better positioning
 			top: getDialogTop()
 		});
+		view.$dialog.height(height);
 	}
 	
 	var view = {
@@ -210,7 +213,6 @@ define([
 		   
 		   // update dialog dimensions based on window size
 		   $(window).resize(function() {
-			   updateDialogDimensions();
 			   resizeDialogIfOpen(_this);
 		   });
 		   updateDialogDimensions();
