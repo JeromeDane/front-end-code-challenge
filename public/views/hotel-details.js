@@ -104,6 +104,10 @@ define([
 		$('.ui-widget-overlay').on('click', function() {
 			view.$dialog.dialog('close');
 		});
+		
+		// fix dialog contents starting scrolled down
+		view.$dialog.scrollTop(0);
+		
 	}
 	
 	// update the dialog dimensions based on window size
