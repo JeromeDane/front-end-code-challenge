@@ -36,7 +36,6 @@ define([
 		view._descClosedHeight = $('#tabs-overview .description .text', this.$dialog).height();
 
 		// initialize description text toggle
-		console.log(view._descClosedHeight);
 		$('#tabs-overview .description .toggle', view.$dialog).click(function() {
 			toggleDescription(view);
 		});
