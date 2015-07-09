@@ -1,6 +1,10 @@
 .search-filters-wrapper {
 	
 }
+	.search-filters-wrapper .map-container {
+		height: 200px;
+		margin-bottom: 1em;
+	}
 	.search-filters-wrapper > *:first-child,
 	.search-filters-wrapper > *:first-child + * {
 		margin-bottom:1em;
@@ -47,7 +51,7 @@
 	}
 	.search-filters-wrapper .sort,
 	.search-filters-wrapper .filter {
-		margin-bottom: 1em;
+		margin-bottom: .5em;
 	}
 	.search-filters-wrapper .sort,
 	.search-filters-wrapper .availability {

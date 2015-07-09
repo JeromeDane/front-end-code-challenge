@@ -154,6 +154,37 @@ define([
 		$sortBy.val(view.hotels.getSortOrder());
 	}
 	
+	function renderMap(view) {
+		
+		// don't do anything if the map container isn't visible
+		if($('.map-container:visible', this.$el).size() === 0) return;
+		
+		// get and clean out the map container
+		var container = $('.map-container', view.$el)[0];
+		container.innerHTML = "";
+
+		// use hotel latitude and longitude
+		var latLng = new google.maps.LatLng(view.hotels.getLatitude(), view.hotels.getLongitude());
+
+		// render map
+		var map = new google.maps.Map(container, {
+			center: latLng,
+			zoom: 10,
+			disableDefaultUI: true
+		});
+
+		// apply hotel markers
+		// TODO: Make map markers clickable to open hotel details dialog
+		_.each(view.hotels.getFiltered(), function(hotel) {
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(hotel.get('lat'), hotel.get('lng')),
+				map: map,
+				title: hotel.get('name')
+			});
+		});
+			
+	}
+	
 	function toggleAmenitiesShowMore(view) {
 		
 		var numMin = 6;
@@ -201,6 +232,10 @@ define([
 				_this.$el.html("");
 			});
 			
+			this.hotels.on('filter', function() {
+				renderMap(_this);
+			});
+			
 			this.views = {
 				"search-numresults": new SearchNumResultsView({
 					hotels: this.hotels
@@ -229,6 +264,7 @@ define([
 			initFilterByName(this);
 			initFilterByRate(this);
 			initClearFilters(this);
+			renderMap(this);
 			
 			// render jquery-ui buttons
 			$('button', this.$el).button();

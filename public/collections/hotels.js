@@ -180,12 +180,36 @@ define([
 		},
 		
 		/**
+		 * Get the latitude used in the last search
+		 * 
+		 * @returns {float} The latitude used in the last search
+		 */
+		getLatitude: function() {
+			var matches = this.url.match(/lat=((-|\d|\.)+)/);
+			if(matches) {
+				return parseFloat(matches[1]);
+			}
+		},
+		
+		/**
 		 * Get name of the location used to perform search
 		 * 
 		 * @returns {string} Name of the location used to perform search
 		 */
 		getLocationName: function() {
 			return this._locationName || l("unknown location");
+		},
+		
+		/**
+		 * Get the longitudeused in the last search
+		 * 
+		 * @returns {float} The longitude used in the last search
+		 */
+		getLongitude: function() {
+			var matches = this.url.match(/lng=((-|\d|\.)+)/);
+			if(matches) {
+				return parseFloat(matches[1]);
+			}
 		},
 		
 		/**

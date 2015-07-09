@@ -14,6 +14,7 @@
 			<%= l("Only show available") %>
 		</label>
 	</div>
+	<div class="map-container"></div>
 	<div class="filters">
 		<h4><%= l("Filter Search Results") %></h4>
 		<div class="clear-filters" title="Clear filters"></div>

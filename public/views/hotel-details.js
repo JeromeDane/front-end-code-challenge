@@ -84,10 +84,9 @@ define([
 			});
 			
 			// apply marker
-			var marker = new google.maps.Marker({
+			new google.maps.Marker({
 				position: latLng,
-				map: map,
-				title: 'Hello World!'
+				map: map
 			});
 			
 		});
