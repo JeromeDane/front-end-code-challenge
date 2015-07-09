@@ -30,6 +30,43 @@ define([
 		});
 	}
 	
+	function initGallery(view) {
+		
+		var $photos = $('#tabs-photos a', view.$dialog);
+		var $thumbStrip = $('.thumbnail-strip', view.$dialog);
+		
+		// initialize swipebox gallery
+		$photos.swipebox({ loopAtEnd: true });
+		
+		var sly = new Sly($thumbStrip, {
+			mouseDragging: true,
+			touchDragging: true,
+			horizontal: true,
+			slidee: $('.photos', $thumbStrip),
+			itemNav: 'centered',
+			itemSelector: 'li',
+			smart: true,
+			elasticBounds: true
+		}).init();
+		
+		// update thumbnail strip slidee width as images load
+		// TODO: Fix width getting too large, which causes white space after last picture
+		$('img', $thumbStrip).load(function() {
+		   $(this).parent().parent().width($(this).width());
+			sly.reload(); 
+		});
+	
+		// activate swipebox gallery on thumbnail strip
+		$('a', $thumbStrip).swipebox({ 
+			loopAtEnd: true,
+			afterClose: function() {
+				// switch to tabs after viewing gallery from thumbnail strip
+				view.$tabs.tabs( "option", "active", 1);
+			}
+		});
+		
+	}
+	
 	function isDialogOpen(view) {
 		return (view.$dialog && view.$dialog.hasClass('ui-dialog-content') && view.$dialog.dialog('isOpen'));
 	}
@@ -54,6 +91,66 @@ define([
 		view.$dialog.dialog('widget').css('top', getDialogTop());
 	}
 
+	// render star value and guest ratings as stars
+	function renderStars(view) {
+		
+		var starConfig = {
+			half: true,
+			path: 'lib/raty/images',
+			readOnly: true
+		};
+
+		// render hotel star value
+		// TODO: replace path to star images for this instance to a copy that has a small drop shadow to help with visibility when positioned over hotel thumbnail images
+		starConfig.score = view.model.get('stars');
+		starConfig.hints = ["", "", "", "", ""];
+		$('.star-value', view.$dialog).raty(starConfig);
+
+		// render guest rating star value
+		starConfig.score = view.model.get('guest_rating');
+		starConfig.hints = [l('RATING_1'), l('RATING_2'), l('RATING_3'), l('RATING_4'), l('RATING_5')];
+		$('.rating .score', view.$dialog).raty(starConfig);
+		
+		// render review stars
+		delete starConfig.score;
+		starConfig.score = function() {
+			return $(this).attr('data-rating');
+		};
+		$('ul.reviews .rating .score', view.$dialog).raty(starConfig);
+		
+	}
+	
+	function renderTabs(view) {
+		
+		// TODO: Fix odd thumbnail strip positioning in Chrome when switching back to overview tab
+		
+		view.$tabs = $('#hotel-details-tabs', view.$dialog);
+		view.$tabs.tabs({
+			activate: function(evt, ui) {
+				console.log(evt, ui);
+			}
+		});
+	}
+	
+	// resize the dialog based on current size settings
+	function resizeDialogIfOpen(view) {
+		
+		// don't do anything if the dialog isn't open
+		if(!isDialogOpen(view)) return;
+		
+		updateDialogDimensions();
+		
+		// resize and re-center dialog
+		view.$dialog.dialog('widget').css({
+			height: height,
+			width: width,
+			left: getDialogLeft(),	// small offset to the left for better positioning
+			top: getDialogTop(),
+			closeOnEscape: false
+		});
+		view.$dialog.height(height);
+	}
+	
 	// show view as a dialog that centers on hotel preview
 	function showDialog(view, hotelPreviewView) {
 		
@@ -127,104 +224,6 @@ define([
 		// TODO: calculate dialog dimensions based on current window size
 		width = Math.min(900, $(window).width() - 20);
 		height = Math.min(700, $(window).height() - 35);
-		
-	}
-	
-	// render star value and guest ratings as stars
-	function renderStars(view) {
-		
-		var starConfig = {
-			half: true,
-			path: 'lib/raty/images',
-			readOnly: true
-		};
-
-		// render hotel star value
-		// TODO: replace path to star images for this instance to a copy that has a small drop shadow to help with visibility when positioned over hotel thumbnail images
-		starConfig.score = view.model.get('stars');
-		starConfig.hints = ["", "", "", "", ""];
-		$('.star-value', view.$dialog).raty(starConfig);
-
-		// render guest rating star value
-		starConfig.score = view.model.get('guest_rating');
-		starConfig.hints = [l('RATING_1'), l('RATING_2'), l('RATING_3'), l('RATING_4'), l('RATING_5')];
-		$('.rating .score', view.$dialog).raty(starConfig);
-		
-		// render review stars
-		delete starConfig.score;
-		starConfig.score = function() {
-			return $(this).attr('data-rating');
-		};
-		$('ul.reviews .rating .score', view.$dialog).raty(starConfig);
-		
-	}
-	
-	function renderTabs(view) {
-		
-		// TODO: Fix odd thumbnail strip positioning in Chrome when switching back to overview tab
-		
-		view.$tabs = $('#hotel-details-tabs', view.$dialog);
-		view.$tabs.tabs({
-			activate: function(evt, ui) {
-				console.log(evt, ui);
-			}
-		});
-	}
-	
-	function initGallery(view) {
-		
-		var $photos = $('#tabs-photos a', view.$dialog);
-		var $thumbStrip = $('.thumbnail-strip', view.$dialog);
-		
-		// initialize swipebox gallery
-		$photos.swipebox({ loopAtEnd: true });
-		
-		var sly = new Sly($thumbStrip, {
-			mouseDragging: true,
-			touchDragging: true,
-			horizontal: true,
-			slidee: $('.photos', $thumbStrip),
-			itemNav: 'centered',
-			itemSelector: 'li',
-			smart: true,
-			elasticBounds: true
-		}).init();
-		
-		// update thumbnail strip slidee width as images load
-		// TODO: Fix width getting too large, which causes white space after last picture
-		$('img', $thumbStrip).load(function() {
-		   $(this).parent().parent().width($(this).width());
-			sly.reload(); 
-		});
-	
-		// activate swipebox gallery on thumbnail strip
-		$('a', $thumbStrip).swipebox({ 
-			loopAtEnd: true,
-			afterClose: function() {
-				// switch to tabs after viewing gallery from thumbnail strip
-				view.$tabs.tabs( "option", "active", 1);
-			}
-		});
-		
-	}
-	
-	// resize the dialog based on current size settings
-	function resizeDialogIfOpen(view) {
-		
-		// don't do anything if the dialog isn't open
-		if(!isDialogOpen(view)) return;
-		
-		updateDialogDimensions();
-		
-		// resize and re-center dialog
-		view.$dialog.dialog('widget').css({
-			height: height,
-			width: width,
-			left: getDialogLeft(),	// small offset to the left for better positioning
-			top: getDialogTop(),
-			closeOnEscape: false
-		});
-		view.$dialog.height(height);
 	}
 	
 	var view = {
