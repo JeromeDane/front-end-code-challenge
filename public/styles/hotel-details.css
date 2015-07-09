@@ -136,3 +136,24 @@
 			float: left;
 			height: 100%;
 		}
+.hotel-details .reviews,
+.hotel-details .reviews li.review {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+	.reviews, .hotel-details .reviews li.review {
+		margin: 1em 0;
+	}
+	.hotel-details .reviews .score {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	.hotel-details .reviews .title {
+		font-family: 'Bitter', serif;
+		font-weight: bold;
+		font-style: italic;
+		color: #099;
+		margin-bottom: .5em;
+		display: inline-block;
+	}

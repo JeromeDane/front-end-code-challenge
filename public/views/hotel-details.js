@@ -137,6 +137,14 @@ define([
 		starConfig.score = view.model.get('guest_rating');
 		starConfig.hints = [l('RATING_1'), l('RATING_2'), l('RATING_3'), l('RATING_4'), l('RATING_5')];
 		$('.rating .score', view.$dialog).raty(starConfig);
+		
+		// render review stars
+		delete starConfig.score;
+		starConfig.score = function() {
+			return $(this).attr('data-rating');
+		};
+		$('ul.reviews .rating .score', view.$dialog).raty(starConfig);
+		
 	}
 	
 	function renderTabs(view) {
