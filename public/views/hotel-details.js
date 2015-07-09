@@ -193,7 +193,8 @@ define([
 			height: height,
 			width: width,
 			left: getDialogLeft(),	// small offset to the left for better positioning
-			top: getDialogTop()
+			top: getDialogTop(),
+			closeOnEscape: false
 		});
 		view.$dialog.height(height);
 	}
