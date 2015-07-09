@@ -59,7 +59,14 @@
 					<% }) %>
 				</ul>
 			</div>
-			<p class="description"><%= description %></p>
+			<div class="description closed">
+				<div class="text"><%= description %></div>
+				<a class="toggle">
+					<span class="more"><%= l("show all") %></span>
+					<span class="less"><%= l("show less") %></span>
+					...
+				</a>
+			</div>
 			<div class="amenities">
 				<h4><%= l("Amenities") %></h4>
 				<ul>

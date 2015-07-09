@@ -61,8 +61,34 @@
 	border-radius: 0;
 	width: 120%;
 }
+#tabs-overview .description,
 #tabs-overview h4 {
 	margin-top: 1em;
+}
+	#tabs-overview .description .toggle {
+		display: block;
+		margin-top: .5em;
+		text-align: right;
+		color: #099;
+		cursor: pointer;
+	}
+	#tabs-overview .description .text {
+		max-height: 190px;
+		overflow: hidden;
+	}
+	/* TODO: Apply height animation using CSS instead of jQuery */
+	#tabs-overview .description.closed .text {
+		overflow: hidden;
+	}
+	#tabs-overview .description .toggle .more,
+	#tabs-overview .description.closed .toggle .less {
+		display: none;
+	}
+	#tabs-overview .description.closed .toggle .more {
+		display: inline;
+	}
+#tabs-overview .description .text:after {
+	contents: '...';
 }
 #tabs-overview .map-container {
 	margin-top: 1em;

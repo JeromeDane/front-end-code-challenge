@@ -30,6 +30,18 @@ define([
 		});
 	}
 	
+	function initDescriptionToggle(view) {
+		
+		// store description closed height for use later
+		view._descClosedHeight = $('#tabs-overview .description .text', this.$dialog).height();
+
+		// initialize description text toggle
+		console.log(view._descClosedHeight);
+		$('#tabs-overview .description .toggle', view.$dialog).click(function() {
+			toggleDescription(view);
+		});
+	}
+	
 	function initGallery(view) {
 		
 		var $photos = $('#tabs-photos a', view.$dialog);
@@ -292,11 +304,30 @@ define([
 		
 	}
 	
+	// toggle description open/closed state
+	function toggleDescription(view) {
+		
+		var animDuration = 500;
+		
+		var $elem = $('#tabs-overview .description', view.$dialog);
+		if($elem.hasClass('closed')) {
+			$elem.removeClass('closed');
+			$('.text', $elem).animate({
+				"max-height": 9000			// TODO: figure out the right way do animate infinite max height rather than using 9000 as a magic number
+			}, animDuration);
+		} else {
+			$elem.addClass('closed');	
+			$('.text', $elem).animate({
+				"max-height": view._descClosedHeight
+			}, animDuration);
+		}
+	}
+	
 	// update the dialog dimensions based on window size
 	function updateDialogDimensions() {
 		// TODO: calculate dialog dimensions based on current window size
 		width = Math.min(900, $(window).width() - 20);
-		height = Math.min(700, $(window).height() - 35);
+		height = Math.min(600, $(window).height() - 35);
 	}
 	
 	var view = {
@@ -334,6 +365,7 @@ define([
 			initBestRate(this);
 			initGallery(this);
 			initMap(this);
+			initDescriptionToggle(this);
 			
 			$('button', this.$dialog).button();
 		}
