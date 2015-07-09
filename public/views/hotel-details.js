@@ -135,6 +135,57 @@ define([
 		$('.rating .score', view.$dialog).raty(starConfig);
 	}
 	
+	function renderTabs(view) {
+		$('#hotel-details-tabs', view.$dialog).tabs({
+			activate: function(evt, ui) {
+				console.log(evt, ui);
+			}
+		});
+	}
+	
+	function initGallery(view) {
+		
+		var $photos = $('#tabs-photos a', view.$dialog);
+		var $thumbStrip = $('.thumbnail-strip', view.$dialog);
+		
+		// initialize swipebox gallery
+		$photos.swipebox({ loopAtEnd: true });
+		
+		var sly = new Sly($thumbStrip, {
+			mouseDragging: true,
+			touchDragging: true,
+			horizontal: true,
+			slidee: $('.photos', $thumbStrip),
+			itemNav: 'centered',
+			itemSelector: 'li',
+			smart: true,
+			elasticBounds: true
+		}, {
+			load: function () {
+				console.log('move');
+			},
+		}).init();
+		
+		// update thumbnail strip slidee width as images load
+		// TODO: Fix width getting too large, which causes white space after last picture
+		var slideeWidth = 0;
+		$('img', $thumbStrip).load(function() {
+			/*
+			slideeWidth += $(this).width();
+			$('.photos', $thumbStrip).width(slideeWidth);
+			*/
+		   $(this).parent().parent().width($(this).width());
+			sly.reload(); 
+		});
+	
+		// activate swipebox gallery on thumbnail strip
+		$('a', $thumbStrip).swipebox({ 
+			loopAtEnd: true 
+		});
+		
+		
+	}
+	
 	// resize the dialog based on current size settings
 	function resizeDialogIfOpen(view) {
 		
@@ -180,7 +231,9 @@ define([
 			
 			showDialog(this, hotelPreviewView);
 			renderStars(this);
+			renderTabs(this);
 			initBestRate(this);
+			initGallery(this);
 			
 			$('button', this.$dialog).button();
 		}

@@ -411,7 +411,31 @@ input.loading {
 	.hotel-details .rating {
 		margin-bottom: .5em;
 	}
-	
+	.hotel-details .photos a {
+		text-decoration: none;
+	}
+	.hotel-details .photos a img {
+		border: none;
+	}
+	.hotel-details .thumbnail-strip {
+		height: 150px;
+	}
+		.hotel-details .thumbnail-strip img {
+			height: 150px;
+			border-right: 1px solid #aaa;
+		}
+		.hotel-details .thumbnail-strip .photos { 
+			margin: 0; 
+			padding: 0; 
+			height: 100%; 
+			list-style: none;
+		}
+		.hotel-details .thumbnail-strip .photos li { 
+			margin: 0;
+			padding: 0;
+			float: left;
+			height: 100%;
+		}
 	
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {

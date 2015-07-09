@@ -28,6 +28,8 @@ require.config({
 		'masonry': 'lib/masonry/masonry.min',
 		'jerome-utils': 'lib/jeromedane/utils',
 		'raty': 'lib/raty/jquery.raty',
+		'sly': 'lib/sly/sly.min',
+		'swipebox': 'lib/swipebox/js/jquery.swipebox.min',
 		'text': 'lib/require/text',
 		'tooltipster': 'lib/tooltipster/jquery.tooltipster.min',
 		'touchpunch': 'lib/touchpunch/touchpunch.min',
@@ -62,6 +64,18 @@ require.config({
 				'css!lib/raty/jquery.raty'
 			]
 		},
+		'sly': {
+			expords: 'Sly',
+			deps: [
+				'jquery'
+			]
+		},
+		'swipebox': {
+			deps: [
+				'jquery',
+				'css!lib/swipebox/css/swipebox.min'
+			]
+		},
 		'tooltipster': {
 			deps: [
 				'jquery',
@@ -80,6 +94,8 @@ require.config({
 				'localization',
 				'jerome-utils',
 				'raty',
+				'sly',
+				'swipebox',
 				'tooltipster',
 				'touchpunch'
 			]
