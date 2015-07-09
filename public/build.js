@@ -4,6 +4,7 @@
 	removeCombined: true,
 	optimizeCss: 'standard',
     dir:'./dist',
+	wrapShim: true,
 	fileExclusionRegExp: /^(\..+|docs|(r|build)\.(js|bat)|yuidoc\.json|.+\.(zip|bat|map)|nbproject)$/,
 	modules: [
         {
