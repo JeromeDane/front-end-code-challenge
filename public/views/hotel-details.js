@@ -160,7 +160,8 @@ define([
 	}
 	
 	function renderTabs(view) {
-		$('#hotel-details-tabs', view.$dialog).tabs({
+		view.$tabs = $('#hotel-details-tabs', view.$dialog);
+		view.$tabs.tabs({
 			activate: function(evt, ui) {
 				console.log(evt, ui);
 			}
@@ -195,7 +196,11 @@ define([
 	
 		// activate swipebox gallery on thumbnail strip
 		$('a', $thumbStrip).swipebox({ 
-			loopAtEnd: true 
+			loopAtEnd: true,
+			afterClose: function() {
+				// switch to tabs after viewing gallery from thumbnail strip
+				view.$tabs.tabs( "option", "active", 1);
+			}
 		});
 		
 	}
