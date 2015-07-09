@@ -27,9 +27,33 @@
 #hotel-details-tabs > ul {
 	border: none;
 }
-#tabs-photos {
-	padding-top: 1em;
+#hotel-details-tabs.ui-tabs .ui-tabs-nav {
+	padding: 0;
 }
+	#hotel-details-tabs.ui-tabs .ui-tabs-nav li {
+		margin: 0;
+	}
+	#tabs-photos .photos {
+		margin-top: 1em;
+		text-align: center;
+	}
+	#hotel-details-tabs .ui-state-default, 
+	#hotel-details-tabs .ui-widget-content .ui-state-default, 
+	#hotel-details-tabs .ui-widget-header .ui-state-default {
+		background: #099;
+		border: none;
+		border-right: 1px solid #666;
+	}
+	#hotel-details-tabs .ui-state-active, 
+	#hotel-details-tabs .ui-widget-content .ui-state-active, 
+	#hotel-details-tabs .ui-widget-header .ui-state-active {
+		background: #007171;
+	}
+	#hotel-details-tabs .ui-state-default a, 
+	#hotel-details-tabs .ui-state-default a:link, 
+	#hotel-details-tabs .ui-state-default a:visited {
+		color: #fff;
+	}
 #hotel-details-tabs > ul {
 	background: #099;
 	position: relative;

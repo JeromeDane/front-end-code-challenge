@@ -68,6 +68,13 @@ form.search-box,
 	padding: 1em;
 }
 	
+/* smallest phones */
+@media (max-width: 365px) {
+	/* fit hotel detail tabs onto one line */
+	#hotel-details-tabs.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+		padding: .5em .6em;
+	}
+}
 /* tablets and some phone horizontal views */
 @media (min-width: 600px) {
 	/* larger location search input text */
@@ -126,6 +133,10 @@ form.search-box,
 	}
 	form.search-box .location {
 		margin-bottom: .5em;
+	}
+	
+	#hotel-details-tabs {
+		margin-top: -.5em;
 	}
 	
 	/* show search filters on the right */
