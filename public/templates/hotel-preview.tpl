@@ -1,4 +1,4 @@
-<% if(typeof(thumbnail) != 'undefined') { %>
+<% if(thumbnail) { %>
 	<img src="<%= thumbnail %>" class="thumbnail" alt="Hotel Thumbnail"/>
 <% } %>
 <% if(typeof(logo) != 'undefined') { %>

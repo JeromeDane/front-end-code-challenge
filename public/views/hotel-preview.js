@@ -50,6 +50,10 @@ define([
 			
 			this.$el.html(this.template(this.model.toJSON()));
 			
+			// impose thumbnail size
+			var thumbHeight = this.model.get('thumbnail').getHeightFromWidth(this.$el.width());
+			$('.thumbnail', this.$el).height(thumbHeight);
+			
 			renderStars(this);
 			initClick(this);
 			

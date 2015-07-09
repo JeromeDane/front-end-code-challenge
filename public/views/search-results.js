@@ -34,13 +34,6 @@ define([
 			gutter: 13,
 			isFitWidth: true
 		});
-		$('img.thumbnail', $wrapper).load(function() {
-			grid.layout();
-		});
-		
-		// TODO: force thumbnail height via CSS and update grid 
-		// layout sooner during loading using something like
-		// http://stackoverflow.com/questions/23390393/get-image-height-before-its-fully-loaded
 	}
 	
 	// show a no results found message
