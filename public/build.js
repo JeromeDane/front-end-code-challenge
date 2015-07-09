@@ -6,6 +6,7 @@
 	optimize: 'uglify2',
     dir:'./dist',
 	wrapShim: true,
+	preserveLicenseComments: false,
 	fileExclusionRegExp: /^(\..+|docs|(r|build)\.(js|bat)|yuidoc\.json|.+\.(zip|bat|map)|nbproject)$/,
 	modules: [
         {
