@@ -8,7 +8,8 @@ var locations   = require('./routes/locations');
 var hotels      = require('./routes/hotels');
 
 var app = express();
-var publicPathName = 'public';
+//var publicPathName = 'public';
+var publicPathName = 'public/dist';
 var publicPath = path.join(__dirname, publicPathName);
 
 app.use(bodyParser.json());
