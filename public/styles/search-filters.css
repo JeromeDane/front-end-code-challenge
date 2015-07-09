@@ -1,0 +1,93 @@
+.search-filters-wrapper {
+	
+}
+	.search-filters-wrapper > *:first-child,
+	.search-filters-wrapper > *:first-child + * {
+		margin-bottom:1em;
+	}
+	.search-filters-wrapper .num-results {
+		font-weight: bold;
+		color: #099;
+	}
+	.search-filters-wrapper h4 {
+		display: inline-block;
+		margin-top: 0;
+	}
+	.search-filters-wrapper .clear-filters {
+		display: inline-block;
+		margin-left: .3em;
+		cursor: pointer;
+		border-radius: 30px;
+		color: #eee;
+		background: #aaa;
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 0px;
+		padding: 8px 3px 7px 4px;
+		position: relative;
+		top: 2px;
+	}
+	.search-filters-wrapper .clear-filters:before {
+		content: "×";
+	}
+	.search-filters-wrapper .clear-filters:hover {
+		color: #fff;
+		background: #888;
+	}
+	.search-filters-wrapper label.show,
+	.search-filters-wrapper.open button.show-filters,
+	.search-filters-wrapper.closed .filters {
+		display: none;
+	}
+		.search-filters-wrapper.closed label.show {
+			display: block;
+		}
+	.search-filters-wrapper .buttons {
+		margin-top: 1em;
+	}
+	.search-filters-wrapper .sort,
+	.search-filters-wrapper .filter {
+		margin-bottom: 1em;
+	}
+	.search-filters-wrapper .sort,
+	.search-filters-wrapper .availability {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	.search-filters-wrapper .filter label {
+		display: block;
+		margin-bottom:.5em;
+	}
+	.search-filters-wrapper .rate .slider {
+		margin: 0 .5em;
+	}
+	.search-filters-wrapper .amenities ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+		.search-filters-wrapper .amenities ul li {
+			margin:0;
+			padding: 0;
+			font-size: .9em;
+			position: relative;
+		}
+		.search-filters-wrapper .amenities ul li label {
+			cursor: pointer;
+			padding-right: 1em;
+		}
+		.search-filters-wrapper .amenities ul li label:hover {
+			background: #efefef;
+		}
+		.search-filters-wrapper .amenities ul li .count {
+			position: absolute;
+			right: .1em;
+			top: .1em;
+		}
+		.search-filters-wrapper .amenities .toggle {
+			display: block;
+			margin-top: .5em;
+			text-align: right;
+			color: #099;
+			cursor: pointer;
+		}

@@ -1,0 +1,84 @@
+form.search-box .invalid-location {
+		padding: 1em;
+		margin: .5em 0 1em;
+		display: none;
+	}
+	form.search-box .location {
+		margin-bottom: 1em;
+	}
+		form.search-box .location .search-field-wrapper {
+			margin-right: 100px;
+		}
+		form.search-box .location label {
+			font-size: 1.3em;
+			font-weight: bold;
+			display: block;
+			margin-bottom: .5em;
+		}
+		form.search-box .location input {
+			width: 100%;
+			font-size: 1em;
+			padding: .5em .2em;
+			font-family: 'Bitter', serif;
+		}
+			form.search-box .location input.prompt {
+				color: #aaa;
+				font-style: italic;
+			}
+	form.search-box .search-field.dist {
+		margin-right: 15px;
+		margin-bottom: .75em;
+	}
+		form.search-box .search-field.dist label {
+			margin-bottom: .3em;
+			display: block;
+		}
+	form.search-box .search-field.checkin,
+	form.search-box .search-field.checkout {
+		width: 49%;
+		display: inline-block;
+		cursor: pointer;
+		margin-bottom: 1em;
+	}
+		form.search-box .search-field.checkin label,
+		form.search-box .search-field.checkout label {
+			display: block;
+		}
+		form.search-box .search-field.checkin input,
+		form.search-box .search-field.checkout input {
+			width: 0;
+			border: none;
+			padding: 0;
+		}
+		form.search-box .search-field.checkin .date,
+		form.search-box .search-field.checkout .date {
+			position: relative;
+			left: -.15em;
+			font-weight: bold;
+			font-family: 'Bitter', serif;
+		}
+		form.search-box .search-field.checkout .nights {
+			display: none;
+		}
+		form.search-box .search-field.checkin .icon,
+		form.search-box .search-field.checkout .icon {
+			width: 21px;
+			height: 20px;
+			display: inline-block;
+			background: url(http://d1zikkhuo9bi6f.cloudfront.net/v32.4.1/roomkey/images/roomkey/roomkey_sprite.png) no-repeat right;
+			background-position: 0 -190px;
+			position: relative;
+			top: 3px;
+		}
+	form.search-box input[type="submit"] {
+		position: absolute;
+		right: 30px;
+		top: 14px;
+		height: 37px;
+		border-color: #999;
+		border-radius: 0 3px 3px 0;
+	}
+
+input.loading {
+	background: url(../images/ajax-loader.gif) right no-repeat;
+}

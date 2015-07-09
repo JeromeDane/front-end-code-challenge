@@ -1,0 +1,89 @@
+.view-search-results .hotels {
+	margin: auto;
+	margin-top:1em;
+}
+
+.view-search-results .no-results {
+	display: none;
+	min-height: 115px;
+}
+	.view-search-results .no-results img {
+		float: left;
+		margin: 0 2em 1em 0;
+		position: relative;
+		top: -.5em;
+	}
+
+.hotel-preview {
+	width:200px;
+	display: inline-block;
+	margin-bottom: 1em;
+	padding: 1em;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	border:1px solid #aaa;
+	border-radius: 3px;
+	cursor: pointer;
+	position: relative;
+	background:#fff;
+}
+	.hotel-preview:hover {
+		margin-top: -1px;
+		margin-left: -1px;
+		border-color: #888;
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	}
+	.hotel-preview .thumbnail {
+		border: 1px inset #ccc;
+	}
+	.hotel-preview .logo {
+		float: right;
+		margin: .5em 0 0 .5em;
+	}
+	.hotel-preview .name {
+		font-weight: bold;
+		margin: .5em 0;
+	}
+	.hotel-preview .stars {
+		position: absolute;
+		top: 1.5em;
+		right: 1em;
+	}
+	.hotel-preview .star-value img {
+		height: 15px;
+		width: 15px;
+	}
+	/* don't show stars over actual hotel star value */
+	.stars .star-value img[src*="off"] {
+		display: none;
+	}
+	.hotel-preview .rating .score img {
+		height: 15px;
+		width: 15px;
+		position: relative;
+		top: 2px;
+	}
+	.hotel-preview .rate {
+		margin-top: .5em;
+	}
+		.rate .price {
+			display: inline-block;
+			font-size: 2em;
+			font-family: 'Bitter', serif;
+			color: #3b2525;
+		}
+		.rate .qualifier {
+			display: inline-block;
+			margin-left: .5em;
+			font-size: .75em;
+			font-style: italic;
+			color: #666;
+		}
+	.unavailable {
+		margin-top: 1em;
+		border: 1px solid #aaa;
+		color: #666;
+		background: #ccc;
+		text-align: center;
+		padding: 1em 0;
+		border-radius: 3px;
+	}
