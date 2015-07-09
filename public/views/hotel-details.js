@@ -1,3 +1,4 @@
+// TODO: Consider breaking this up into separate views. Lots of code here. :-(
 define([
 	'text!templates/hotel-details.tpl'
 ], function(
