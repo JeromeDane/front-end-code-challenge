@@ -80,5 +80,5 @@ form.search-box .invalid-location {
 	}
 
 input.loading {
-	background: url(../images/ajax-loader.gif) right no-repeat;
+	background: url(../images/ajax-loader.gif) 95% no-repeat;
 }
