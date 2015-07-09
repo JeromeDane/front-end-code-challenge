@@ -22,6 +22,7 @@
 			<label><%= l("Hotel Name Contains") %></span></label>
 			<input name="name"/>
 		</div>
+		<!-- TODO: Make rate and filters into checkboxes (1 line for each star level) -->
 		<div class="filter rate">
 			<label><%= l("Nightly Rate") %>: <span class="values"></label>
 			<div class="slider"></div>
