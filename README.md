@@ -1,12 +1,3 @@
-ZipCode Data: http://www.opengeocode.org/download.php#cityzip
-
-Distance calculation between lat/long points:
-http://www.movable-type.co.uk/scripts/latlong.html
-
-TODO:
-
-* Replace == with === everywhere for stronger type checking
-
 Room Key Front End Development Challenge
 ========================================
 
@@ -21,6 +12,15 @@ Here are the key things I wanted to show:
 * Expanded hotel searching by distance rather than having hotels bound to a location
 * Responsive design that's easy to use on any size device
 * Localization and language switching
+
+As with any worthwhile project, there are 1.8 billion improvements and tiny fixes I would
+still like to make. I have made TODO comments throughout the code where appropriate to 
+indicate some of the things I would have done given more time. 
+
+I would love to implement user accounts with personalization and a hotel short list.
+Users could add hotels by clicking on a small, circular "+" icon in the top left of 
+hotel preview cards, allowing them to retain and compare a short list of the hotels that 
+best suit their needs.
 
 I am always looking to improve, so please don't hesitate to
 comment on any part of this project. Feedback is welcome and will be put to good use.
@@ -37,7 +37,9 @@ back-end system.
 The user interface leverages [Backbone.js](http://backbonejs.org/) to manage a
 relatively modular design pattern. Views render data to templates, and automatically
 update as data is modified. Dependencies are managed and loaded using 
-[Require.JS](http://requirejs.org/).
+[Require.JS](http://requirejs.org/). Much of the interactive input elements are
+generated using [jQuery UI](https://jqueryui.com) to create a rich experience with low coding time
+and good cross-browser support.
 
 Here is the directory structure for this project:
 
@@ -109,7 +111,8 @@ file to serve up more locations than the
 [original 3](https://github.com/roomkey/front-end-code-challenge/blob/master/data/locations.json)
  provided in the coding challenge.
 
-I implement latitude/longitude based distance calculation in the back end in order to be able 
+I implement latitude/longitude based distance calculation in the back end based on 
+[this formula](http://www.movable-type.co.uk/scripts/latlong.html) in order to be able 
 to find all hotels within a dynamic distance of any given point. Doing so on data from a flat 
 JSON is not optimal, and would not scale well to searching a very large set of hotels. This would 
 likely require a database scheme that supports indexing, caching, or other optimization tricks like 
@@ -123,16 +126,135 @@ I personally prefer the "Google aesthetic", featuring flat, simple UI elements t
 content and usability first. I chose to emulate much of the existing Room Key color scheme
 and layout in order to see how if might be modified for a responsive interface.
 
-## Responsive Design
+## User Interface
 
-I am passionate about usability. The massive increase in the use of phones, tablets, and
+At the risk of preaching to the choir, the massive increase in the use of phones, tablets, and
 other mobile devices means that users are viewing sites on a wide range of screen sizes. The
 user interface for this project is designed to adapt to any size screen in order to provide
-the best possible user experience. 
+the best possible user experience. This is an area in which I would greatly like to contribute.
 
-### Search Interface
+[Chrome](https://www.google.com/chrome/) provides an excellent [device preview mode](https://developer.chrome.com/devtools/docs/device-mode),
+allowing you to easily re-render the interface as it would be displayed on a variety of mobile devices. 
+
+### Search
+
+The search interface is the primary point of interaction. Users are prompted to 
+enter a city or zipcode for their destination, as well as check-in/check-out dates
+and a maximum distance within which to find hotels. 
+
+The interface will make a location search request to the back end API after a short delay 
+from the most recent key-press. A small loading indicator in the right portion of the search 
+input lets users know that data is being loading. Once available, matching locations are 
+displayed in a drop-down. The desired location can then be selected by clicking/tapping or
+using the arrow keys on the keyboard and then pressing enter.
+
+The check-in and check-out fields are pre-populated with the current and following
+days for convenience. These can be changed by clicking/tapping on either date and 
+selecting a new date from the pop-up calendars. The interface prevents users from 
+selecting a check-out date before their check-in date, and vice-versa.
+
+Filters are made availible to further limit and refine the resulting hotels. Hhotel preview 
+cards are rendered in a [Pinterest](https://www.pinterest.com/) like, stacking layout using 
+the [Masonry](http://masonry.desandro.com/) library. The display of hotel preview cards is
+automatically updated as filters are applied.
+
+##### Search displayed on a desktop computer
+
+The location search field is large, taking up the full width. The check-in, check-out, and
+maximum distance fields are displayed in three columns to save on vertical space. Filters are 
+easily accessible on the left. 
 
 ![Search Interface on Desktop](https://lh3.googleusercontent.com/FHXjPUOuVepd1Lha-LVikiGCosvG56VlCsjJBq_9KTat=w1465-h976-no "Search Interface on Desktop")
+
+##### Search displayed on a horizontal iPad
+
+The interface automatically adjusts to fit the maximum number of hotel preview card columns.
+All user elements are touch responsive, and sliders can be moved with touch thanks to the
+[touchpunch](http://touchpunch.furf.com/) library.
+
+![Search Interface on Horizontal iPad](https://lh3.googleusercontent.com/LD9QH1FOjE7CFzS8LZQcZ7O27c-3VAWaR4eNQ7cWGZaU=w1008-h767-no "Search Interface on Horizontal iPad")
+
+##### Search displayed on a vertical iPad
+
+The check-in and check-out fields are displayed in two columns, while the maximum distance slider
+is displayed below, taking up the full width.
+
+The filter box is moved from the left side of the screen to above the search results, and most
+of the fields are hidden to allow taking up too much vertical space. Clicking on the 
+"Filter Search Results" button will expand the search box so that all filters are accessible.
+
+![Search Interface on Vertical iPad](https://lh3.googleusercontent.com/8g34eDEAapXvFmLZ0MAYNOvRA_5Szi4zZYZu08D1CeCk=w601-h813-no "Search Interface on Vertical iPad")
+
+##### Search displayed on a horizontal iPhone6
+
+Similar to a vertical iPad, but the interface has resized to show two hotel preview card columns.
+
+![Search Interface on horizontal iPhone6](https://lh3.googleusercontent.com/zBPwFslA7hxLjaZyPhuEhVhMYW-JnJwNJJdbD-9Bfgbr=w660-h372-no "Search Interface on vertical horizontal6")
+
+A small amount of scrolling down reveals two centered hotel preview card columns
+
+![Search Interface on horizontal iPhone6](https://lh3.googleusercontent.com/OzZTKN414rt4InsbCJn3Woy_Ftjoq2JMcXvRuEe60Lpq=w665-h373-no "Search Interface on horizontal iPhone6 - scrolled down")
+
+
+##### Search displayed on a vertical iPhone6
+
+The locale selector in the top right is moved to its own line in order to allow the site title
+to fill the full width of the phone. The search filters boxes automatically scale to fit.
+
+![Search Interface on vertical iPhone6](https://lh3.googleusercontent.com/St97F3mShv1mNbj1YjFIja17FMhpJaPoUqfq9dvZlmnw=w361-h658-no "Search Interface on vertical iPhone6")
+
+A small amount of scrolling down reveals centered hotel preview cards.
+
+![Search Interface on vertical iPhone6](https://lh3.googleusercontent.com/xR7ZLTq_bH-5Wv05qv_gR_hqoKJfNKHBEkWWOS70qCoh=w360-h655-no "Search Interface on vertical iPhone6 - scrolled down")
+
+### Hotel Details
+
+Clicking/tapping on a hotel preview card within search results opens a modal dialog containing
+details about the selected hotel. This dialog animates up from the selected card to the center
+of the screen, creating a sense of physicality to the interaction. The dialog can be closed
+by clicking/tapping anywhere outside of the dialog, by clicking on the "X" button in the top
+right of the dialog, or by pressing the escape key on the keyboard.
+
+There are four navigational tabs. The overview tab contains a horizontally scrolling preview of
+the photos available for the selected hotel thanks to the [Sly](http://darsa.in/sly/) library. 
+It can be moved right or left by clicking and dragging or through touch gestures. Clicking/tapping on
+any photo will open a touch-enabled, full-screen view, allowing users to click or swipe to view the 
+next photo thanks to the [Swipebox](http://brutaldesign.github.io/swipebox/) library.
+
+The photos tab contains a grid of thumbnails of all available photos for the hotel, and selecting
+on any of these will open the full screen photo view. The map tab features a larger, Google-powered
+map of the hotel's location. The reviews tab contains a breakdown of the frequency of guest ratings
+as well as a list of guest reviews.
+
+##### Hotel details on desktop
+
+The hotel name, address, stars, rating, price, and booking button are displayed across the top
+of the dialog box for easy access. The hotel description, amenities, and small map are
+displayed in 3 columns.
+
+![Hotel details on desktop](https://lh3.googleusercontent.com/DdStq67-BYUpVYlr2AoDBMByt35SqCvQSbuSgtHU-xnM=w1494-h889-no "Hotel details on desktop")
+
+Guest rating frequencies are displayed to the left of guest reviews.
+
+![Hotel details on desktop](https://lh3.googleusercontent.com/_QVSrhNn-YFFZ3nY9QMOMS1Tkj7X2qqL8I8SRdR4I9OC=w1482-h905-no "Hotel details on desktop")
+
+##### Hotel details on horizontal iPad
+
+The dialog box is centered, taking up most of the screen, but similar in layout to 
+the desktop experience.
+
+![Hotel details on horizontal iPad](https://lh3.googleusercontent.com/iHxLZQ1xWNlBIIwGZP8lH9757MQvNqfGXx4eM4m_B8pe=w989-h760-no "Hotel details on horizontal iPad")
+
+##### Hotel details on vertical iPhone6
+
+The dialog box is resized to fit the screen, and the rate information and booking button are 
+shown below ratings and hotel title.
+
+![Hotel details on vertical iPhone6](https://lh3.googleusercontent.com/weIbKRuHCAzPrkp5cj8GYqLJLjewt7eYIGoU-SG88VAh=w370-h663-no "Hotel details on vertical iPhone6")
+
+A small amount of scrolling reveals amenities and map preview.
+
+![Hotel details on vertical iPhone6](https://lh3.googleusercontent.com/FtMRfdAUS0PqLJEcosE3AsUM36eScHdbSsH0wfm9lgzZ=w370-h660-no "Hotel details on vertical iPhone6")
 
 
 ## Using the Application
