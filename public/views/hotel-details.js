@@ -243,11 +243,9 @@ define([
 			},
 			create: function() {
 				// Don't close dialog if gallery open. Tip from  http://stackoverflow.com/questions/14853388/how-to-catch-esc-in-event-in-jquery-dialog
-				$(this).closest('.ui-dialog').on('keydown', function(ev) {
-					if(ev.keyCode === $.ui.keyCode.ESCAPE) {
-						if($('#swipebox-slider:visible').size() === 0) {
-							view.$dialog.dialog('close');
-						}
+				$(window).on('keydown', function(evt) {
+					if(isDialogOpen(view) && evt.keyCode === $.ui.keyCode.ESCAPE && $('#swipebox-slider:visible').size() === 0) {
+						view.$dialog.dialog('close');
 					}
 				});
 			},
@@ -328,7 +326,6 @@ define([
 			
 			var attr = this.model.toJSON();
 			attr.ratingFrequencies = this.model.getRatingFrequencies();
-			console.log(attr.ratingFrequencies );
 			this.$el.html(this.template(attr));
 			
 			showDialog(this, hotelPreviewView);
