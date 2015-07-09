@@ -61,6 +61,9 @@
 	border-radius: 0;
 	width: 120%;
 }
+#tabs-overview h4 {
+	margin-top: 1em;
+}
 #tabs-overview .map-container {
 	margin-top: 1em;
 	height: 200px;
@@ -168,14 +171,46 @@
 			float: left;
 			height: 100%;
 		}
+		
+#tabs-reviews .frequencies {
+	width: 100%;
+	max-width: 400px;
+	float: left;
+	margin-bottom: 1em;
+}
+#tabs-reviews .frequencies .level {
+	width: 100%;
+	float: left;
+	margin-bottom: .5em;
+}
+	#tabs-reviews .frequencies label {
+		display: block;
+		width: 4em;
+		float: left;
+	}
+	#tabs-reviews .frequencies .count {
+		width: 2em;
+		float: right;
+	}
+	#tabs-reviews .frequencies .bar {
+		background: #eee;
+		margin: 0 3em 0 5em;
+	}
+	#tabs-reviews .frequencies .bar .value {
+		background: #099;
+	}
+	
 .hotel-details .reviews,
+.hotel-details .reviews ul,
 .hotel-details .reviews li.review {
+	width: 100%;
+	float: left;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 	.reviews, .hotel-details .reviews li.review {
-		margin: 1em 0;
+		margin-bottom: 1em;
 	}
 	.hotel-details .reviews .score {
 		display: inline-block;
@@ -189,6 +224,7 @@
 		margin-bottom: .5em;
 		display: inline-block;
 	}
+	
 	
 	
 /* tablets and larger */
@@ -270,5 +306,17 @@
 	.hotel-details .rate-block .qualifier {
 		text-align: left;
 	}
+	
+	/* show ratings and reviews in 2 columns */
+	#tabs-reviews .frequencies {
+		width: 30%;
+	}
+	#tabs-reviews .frequencies h4 {
+		margin-bottom: 1.4em;
+	}
+	.hotel-details .reviews {
+		width: 68%;
+		margin-left: 2%;
 		
+	}
 }

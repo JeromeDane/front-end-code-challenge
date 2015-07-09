@@ -85,17 +85,33 @@
 		</div>
 		<div id="tabs-map">
 			<div class="map-container"></div>
+			<!-- TODO: implement embedded get directions -->
 		</div>
 		<div id="tabs-reviews">
-			<ul class="reviews">
-				<% _.each(guest_reviews, function(review) { %>
-					<li class="review">
-						<div class="rating"><div class="score" data-rating="<%= review.rating %>"></div></div>
-						<div class="title"><%= review.title %></div>
-						<div class="summary"><%= review.summary %></div>
-					</li>
+			<div class="frequencies">
+				<h4><%= l("Guest Ratings") %></h4>
+				<% _.each(ratingFrequencies.reverse(), function(frequency, i) { %>
+					<div class="level">
+						<label><%= l("RATING_" + ((4 - i) + 1)) %></label>
+						<div class="count"><%= frequency.count %></div>
+						<div class="bar">
+							<div class="value" style="width: <%= frequency.percent %>%">&nbsp;</div>
+						</div>
+					</div>
 				<% }) %>
-			</ul>
+			</div>
+			<div class="reviews">
+				<h4><%= l("What guests have to say") %></h4>
+				<ul>
+					<% _.each(guest_reviews, function(review) { %>
+						<li class="review">
+							<div class="rating"><div class="score" data-rating="<%= review.rating %>"></div></div>
+							<div class="title"><%= review.title %></div>
+							<div class="summary"><%= review.summary %></div>
+						</li>
+					<% }) %>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

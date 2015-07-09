@@ -19,6 +19,31 @@ define([
 			
 		},
 		
+		/**
+		 * Get an array of objects with count and percentage
+		 * of ratings at each of the 5 levels
+		 * 
+		 * @returns {array}
+		 */
+		getRatingFrequencies: function() {
+			var levels = [0, 0, 0, 0, 0];
+			var total = 0;
+			_.each(this.get('guest_reviews'), function(review) {
+				var rating = Math.ceil(review.rating);
+				levels[rating - 1]++;
+				total++;
+			});
+			
+			var frequencies = [];
+			for(var i = 0; i < levels.length; i++) {
+				frequencies[i] = {
+					count: levels[i],
+					percent: total > 0 ? levels[i] / total * 100 : 0
+				};
+			}
+			return frequencies;
+		},
+		
 		hasAmenity: function(code) {
 			return _.findWhere(this.get('amenities'), { code: code });
 		},

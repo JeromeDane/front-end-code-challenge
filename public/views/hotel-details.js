@@ -326,7 +326,10 @@ define([
 			
 			this.model = hotelPreviewView.model;
 			
-			this.$el.html(this.template(this.model.toJSON()));
+			var attr = this.model.toJSON();
+			attr.ratingFrequencies = this.model.getRatingFrequencies();
+			console.log(attr.ratingFrequencies );
+			this.$el.html(this.template(attr));
 			
 			showDialog(this, hotelPreviewView);
 			renderStars(this);

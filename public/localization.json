@@ -38,8 +38,8 @@
 		"MONTH_10": "November",
 		"MONTH_11": "December",
 		
-		"RATING_1": "bad",
-		"RATING_2": "poor",
+		"RATING_1": "terrible",
+		"RATING_2": "bad",
 		"RATING_3": "average",
 		"RATING_4": "good",
 		"RATING_5": "excellent",
@@ -136,6 +136,7 @@
 		"SITE_TITLE": "Super Hôtels",
 		"Sort by": "Trier",
 		"taxes & fees": "taxes et frais",
+		"What guests have to say": "Ce que les visiteurs ont à dire",
 		"WITHIN_X_MILES": "à moins de MAXDIST miles",
 		
 		"Hotel": "Hôtel",
@@ -168,7 +169,7 @@
 		"MONTH_10": "november",
 		"MONTH_11": "décember",
 		
-		"RATING_1": "mauvais",
+		"RATING_1": "afreux",
 		"RATING_2": "pauvres",
 		"RATING_3": "moyen",
 		"RATING_4": "bien",
