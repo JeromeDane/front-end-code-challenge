@@ -3,11 +3,13 @@
 	margin-top:1em;
 }
 
-.view-search-results .no-results {
+.view-search-results .no-results,
+.view-search-results .no-filtered-results {
 	display: none;
 	min-height: 115px;
 }
-	.view-search-results .no-results img {
+	.view-search-results .no-results img,
+	.view-search-results .no-filtered-results img {
 		float: left;
 		margin: 0 2em 1em 0;
 		position: relative;

@@ -48,8 +48,16 @@ define([
 		
 		$('.loading', this.$el).hide();
 		
-		// if there are actually results to display, then 
+		// if there are actually results to display, then show message
 		if(!view.hotels.hasNoResults()) {
+			
+			// if there are no results to display after filters, then show message
+			if(view.hotels.getFiltered().length === 0) {
+				console.log('sadsa', $('.no-filtered-results', view.$el).size());
+				$('.no-filtered-results', view.$el).show();
+				return;
+			}
+			
 			$('.no-results', view.$el).hide();
 			return;
 		}
