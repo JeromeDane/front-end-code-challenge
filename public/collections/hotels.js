@@ -1,9 +1,7 @@
 define([
-	'models/hotel',
-	'json!api/hotels/amenities'
+	'models/hotel'
 ], function(
-	HotelModel,
-	amenities	
+	HotelModel
 ) {
 	
 	var baseUrl = 'api/hotels';
@@ -78,9 +76,31 @@ define([
 			this.trigger('filter');
 		},
 		
+		/**
+		 * Get array of unique ammenities featured in the hotels in this collection
+		 * 
+		 * @returns {array}
+		 */
+		getAmenities: function() {
+			var uniqueAmenities = {};
+			_.each(this.pluck('amenities'), function(amenities) {
+				_.each(amenities, function(amenity) {
+					uniqueAmenities[amenity.code] = amenity;
+				});
+			});
+			return _.toArray(uniqueAmenities);
+		},
+		
+		/**
+		 * Get array of unique amenities including the number of
+		 * hotels that have each one
+		 * 
+		 * @returns {array}
+		 */
 		getAmenitiesWithFrequency: function() {
+			
 			// make it easy to look up amenities
-			amenities = _.indexBy(_.toArray(amenities), 'code');
+			var amenities = _.indexBy(this.getAmenities(), 'code');
 
 			// reset hotel count for each amenity
 			_.each(amenities, function(amenity) {
@@ -99,10 +119,7 @@ define([
 				return -1 * amenity.count;
 			});
 
-			// only return amenities that are used by at least one hotel
-			return _.filter(amenities, function(amenity) {
-				return amenity.count > 0;
-			});
+			return amenities;
 		},
 		
 		/**
