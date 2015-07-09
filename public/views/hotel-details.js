@@ -160,20 +160,11 @@ define([
 			itemSelector: 'li',
 			smart: true,
 			elasticBounds: true
-		}, {
-			load: function () {
-				console.log('move');
-			},
 		}).init();
 		
 		// update thumbnail strip slidee width as images load
 		// TODO: Fix width getting too large, which causes white space after last picture
-		var slideeWidth = 0;
 		$('img', $thumbStrip).load(function() {
-			/*
-			slideeWidth += $(this).width();
-			$('.photos', $thumbStrip).width(slideeWidth);
-			*/
 		   $(this).parent().parent().width($(this).width());
 			sly.reload(); 
 		});
@@ -182,7 +173,6 @@ define([
 		$('a', $thumbStrip).swipebox({ 
 			loopAtEnd: true 
 		});
-		
 		
 	}
 	
