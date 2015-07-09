@@ -48,20 +48,23 @@
 		top: 1.5em;
 		right: 1em;
 	}
-	.hotel-preview .star-value img {
-		height: 15px;
-		width: 15px;
+		.hotel-preview .star-value img {
+			height: 15px;
+			width: 15px;
+		}
+		/* don't show stars over actual hotel star value */
+		.stars .star-value img[src*="off"] {
+			display: none;
+		}
+	.hotel-preview .rating .score {
+		white-space: nowrap;
 	}
-	/* don't show stars over actual hotel star value */
-	.stars .star-value img[src*="off"] {
-		display: none;
-	}
-	.hotel-preview .rating .score img {
-		height: 15px;
-		width: 15px;
-		position: relative;
-		top: 2px;
-	}
+		.hotel-preview .rating .score img {
+			height: 15px;
+			width: 15px;
+			position: relative;
+			top: 2px;
+		}
 	.hotel-preview .rate {
 		margin-top: .5em;
 	}
