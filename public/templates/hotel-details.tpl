@@ -47,45 +47,42 @@
 			<li><a href="#tabs-map"><%= l("Map") %></a></li>
 			<li><a href="#tabs-reviews"><%= l("Reviews") %> (<%= guest_reviews.length %>)</a></li>
 		</ul>
-		<div id="hotel-details-tabs">
-			<div id="tabs-overview">
-				<div class="thumbnail-strip">
-					<ul class="photos">
-						<% _.each(photos, function(photo) { %>
-							<li>
-								<a href="<%= photo.url %>" title="<%= photo.caption %>">
-									<img src="<%= photo.thumbnail %>"/>
-								</a>
-							</li>
-						<% }) %>
-					</ul>
-				</div>
-				<p class="description"><%= description %></p>
-			</div>
-			<div id="tabs-photos">
-				<div class="photos">
+		<div id="tabs-overview">
+			<div class="thumbnail-strip">
+				<ul class="photos">
 					<% _.each(photos, function(photo) { %>
-						<a href="<%= photo.url %>" title="<%= photo.caption %>">
-							<img src="<%= photo.thumbnail %>"/>
-						</a>
-					<% }) %>
-				</div>
-			</div>
-			<div id="tabs-map">
-				<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-				<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-			</div>
-			<div id="tabs-reviews">
-				<ul class="reviews">
-					<% _.each(guest_reviews, function(review) { %>
-						<li class="review">
-							<div class="rating"><div class="score" data-rating="<%= review.rating %>"></div></div>
-							<div class="title"><%= review.title %></div>
-							<div class="summary"><%= review.summary %></div>
+						<li>
+							<a href="<%= photo.url %>" title="<%= photo.caption %>">
+								<img src="<%= photo.thumbnail %>"/>
+							</a>
 						</li>
 					<% }) %>
 				</ul>
 			</div>
+			<p class="description"><%= description %></p>
+		</div>
+		<div id="tabs-photos">
+			<div class="photos">
+				<% _.each(photos, function(photo) { %>
+					<a href="<%= photo.url %>" title="<%= photo.caption %>">
+						<img src="<%= photo.thumbnail %>"/>
+					</a>
+				<% }) %>
+			</div>
+		</div>
+		<div id="tabs-map">
+			<div class="map-container"></div>
+		</div>
+		<div id="tabs-reviews">
+			<ul class="reviews">
+				<% _.each(guest_reviews, function(review) { %>
+					<li class="review">
+						<div class="rating"><div class="score" data-rating="<%= review.rating %>"></div></div>
+						<div class="title"><%= review.title %></div>
+						<div class="summary"><%= review.summary %></div>
+					</li>
+				<% }) %>
+			</ul>
 		</div>
 	</div>
 </div>

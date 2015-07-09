@@ -121,9 +121,6 @@ define([
 	}
 	
 	function renderTabs(view) {
-		
-		// TODO: Fix odd thumbnail strip positioning in Chrome when switching back to overview tab
-		
 		view.$tabs = $('#hotel-details-tabs', view.$dialog);
 		view.$tabs.tabs({
 			activate: function(evt, ui) {
