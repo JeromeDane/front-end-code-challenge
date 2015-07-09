@@ -68,7 +68,8 @@ define([
 	}
 	
 	function initMap(view) {
-		// wait until switching to map tab
+		
+		// wait until switching to map tab before trying to render
 		view.$tabs.on("tabsactivate", function(event, ui) {
 			
 			var container = $('#tabs-map .map-container', view.$dialog)[0];
