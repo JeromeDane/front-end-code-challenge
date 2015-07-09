@@ -30,5 +30,6 @@
 		<div class="distSlider"></div>
 		<input type="hidden" name="dist"/>
 	</div>
+	<!-- TODO: add clear location search button -->
 	<input type="submit" value="Search"/>
 </form>
