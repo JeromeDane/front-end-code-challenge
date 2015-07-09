@@ -2,14 +2,6 @@
  * Configure require.js and load main UI
  */
 
-/**
-* Force require.js to ignore cache during development. Should be removed for 
-* deployment to production environments.
-* 
-* @type Boolean
-*/
-var IGNORE_CACHE = true;
-
 // set up require.js configuration
 require.config({
 	// cache busting
