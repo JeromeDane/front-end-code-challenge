@@ -107,12 +107,36 @@ require.config({
 });
 
 // load and render the main UI to the body element of the HTML page
-require(["ui"], function(UiView) {
-	
+require([
+	'backbone',
+	'css!styles/ui',
+	'jquery-ui',
+	'localization',
+	'jerome-utils',
+	'raty',
+	'sly',
+	'swipebox',
+	'tooltipster',
+	'touchpunch',
+	'ui'
+], function(
+	a, 
+	b, 
+	c, 
+	d, 
+	e, 
+	f, 
+	g, 
+	h, 
+	i, 
+	j, 
+	UiView
+) {
+
 	var ui = new UiView({
 		el: 'body'
 	});
-	
+
 	ui.render();
-	
+
 });
