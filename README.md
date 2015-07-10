@@ -19,7 +19,7 @@ indicate some of the things I would have done given more time.
 
 I would love to implement user accounts with personalization and a hotel short list.
 Users could add hotels by clicking on a small, circular "+" icon in the top left of 
-hotel preview cards, allowing them to retain and compare a short list of the hotels that 
+hotel preview cards, allowing them to retain and compare hotels that 
 best suit their needs.
 
 I am always looking to improve, so please don't hesitate to
@@ -29,17 +29,17 @@ Thanks for your consideration.
 
 ## Code Structure
 
-I chose to use a single page JavaScript application design rather than having the user
-navigate between separate pages. This means there may be more initial loading, but the
+I chose to use a single page JavaScript application design rather than having users
+navigate between separate pages. There may be more initial loading, but the
 overall user experience should be smoother and more dynamic, with less drag on the 
-back-end system.
+back end system.
 
 The user interface leverages [Backbone.js](http://backbonejs.org/) to manage a
-relatively modular design pattern. Views render data to templates, and automatically
+modular design pattern. Views render data to templates, and automatically
 update as data is modified. Dependencies are managed and loaded using 
 [Require.JS](http://requirejs.org/). Much of the interactive input elements are
-generated using [jQuery UI](https://jqueryui.com) to create a rich experience with low coding time
-and good cross-browser support.
+generated using [jQuery UI](https://jqueryui.com) to create a rich experience with 
+less coding time and good cross-browser support.
 
 Here is the directory structure for this project:
 
@@ -60,7 +60,7 @@ Here is the directory structure for this project:
 
 The user interface code is held within 
 [``public``](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/views), 
-which I might have called ***ui*** instead if I were starting from scratch. I have not had the opportunity
+which I personally might have called ***ui*** if I were starting from scratch. I have not had the opportunity
 to work with Node.js much, so I am unaware if that would break any 
 strong conventions. All third party libraries are located in 
 [``public/lib``](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/lib). The 
@@ -68,10 +68,12 @@ remaining folders contain the various collections, images, models, styles, templ
 to render the user interface. I also made some modifications to the API calls. These scripts
 can be found in [``routes``](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/routes).
 
-I tried to keep each file simple and focused on the task at hand. For example, my primary stylesheet
+I tried to keep each file simple and centered around the task at hand. My primary stylesheet
 was getting very large, so I broke it up into multiple files, all loaded with ``@import`` statements.
 Each view (i.e. modular content on the screen) has its own JavaScript and template file. Data is 
-represented as collections and models, each with their own respective JavaScript files. 
+represented as collections and models, each with their own respective JavaScript files. Although
+this represents a lot of files to load, the problem can be mitigated by running an 
+[optimization build](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane#optimization).
 
 When loaded in a browser, the main [``public/index.html``](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/public/index.html)
 file loads [``public/config.js``](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/public/config.js) 
@@ -84,35 +86,34 @@ This user interface view then initializes all of the various sub-views required 
 I would have liked to use a responsive framework like 
 [Twitter Bootstrap](http://twitter.github.io/bootstrap/) or 
 [Foundation](http://foundation.zurb.com/), but I have not had the opportunity to 
-use them recently. As much as I would have loved to dive in and
+use them. As much as I would have loved to dive in and
 learn one, it was faster to get this coding challenge done with custom CSS and HTML 
 templates. This is an area I hope to explore in the near future.
 
 ## Documentation
 
-Normally I would include full JSDoc style comments within all of the code to be able to 
+Normally I would include full JSDoc style comments within all of my code to be able to 
 generate documentation through something like [YUIDoc](http://yui.github.io/yuidoc/).
-For the purposes of this coding challenge, I tried to include comments where appropriate
-to make it clear what the code is doing, as well as provide the groundwork for document
-generation in the future. As much as I would have liked to fully document all of the
-code, doing so was beyond the scope this challenge given everything else I wanted to 
-get done.
+As much as I would have liked to fully document everything in this project, doing so was 
+beyond the scope this challenge given everything else I wanted to get done. I included
+comments where appropriate to make it clear what the code is doing, as well as 
+provide the groundwork for document generation in the future. 
 
 ## Back End
 
-The back end provided for this coding challenge was written in [NodeJS](http://nodejs.org/download/)
-with existing API methods that returned data from flat JSON files. Normally I would use a full, 
-relational database for this kind of application in order to be able to perform more flexible
+The back end provided for this coding challenge was written by Room Key staff in [NodeJS](http://nodejs.org/download/)
+with existing API methods that returned data from flat JSON files. I would use a full, 
+relational database for a live version of this application to be able to perform more flexible
 queries and take advantage of indexing.
 
-In order to make searching a little more interesting, I imported 
-[US ZipCode data](http://www.opengeocode.org/download.php#cityzip) and created a new ``data/zipcodes.json``
+I imported [US ZipCode data](http://www.opengeocode.org/download.php#cityzip) and created a new 
+[``data/zipcodes.json``](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/data/zipcodes.json)
 file to serve up more locations than the 
 [original 3](https://github.com/roomkey/front-end-code-challenge/blob/master/data/locations.json)
- provided in the coding challenge.
+provided in the coding challenge.
 
 I implement latitude/longitude based distance calculation in the back end based on 
-[this formula](http://www.movable-type.co.uk/scripts/latlong.html) in order to be able 
+[this formula](http://www.movable-type.co.uk/scripts/latlong.html) to be able 
 to find all hotels within a dynamic distance of any given point. Doing so on data from a flat 
 JSON is not optimal, and would not scale well to searching a very large set of hotels. This would 
 likely require a database scheme that supports indexing, caching, or other optimization tricks like 
@@ -123,39 +124,41 @@ on those hotels within a given region.
 
 I am more of a coder than a graphic designer, so I focused on functionality over aesthetics.
 I personally prefer the "Google aesthetic", featuring flat, simple UI elements that put 
-content and usability first. I chose to emulate much of the existing Room Key color scheme
-and layout in order to see how if might be modified for a responsive interface.
+content and usability first. I chose to emulate much of the existing [Room Key](http://roomkey.com) color scheme
+and layout in order to see how it could be adapted to a responsive design.
 
 ## User Interface
 
-At the risk of preaching to the choir, the massive increase in the use of phones, tablets, and
-other mobile devices means that users are viewing sites on a wide range of screen sizes. The
+The massive increase in use of phones, tablets, and
+other mobile devices means that users are viewing sites on a wide variety of screen sizes. The
 user interface for this project is designed to adapt to any size screen in order to provide
-the best possible user experience. This is an area in which I would greatly like to contribute.
+an optimal user experience. This is an area in which I hope to be able to contribute.
 
 [Chrome](https://www.google.com/chrome/) provides an excellent [device preview mode](https://developer.chrome.com/devtools/docs/device-mode),
 allowing you to easily re-render the interface as it would be displayed on a variety of mobile devices. 
 
-### Search
+### Search UI
 
-The search interface is the primary point of interaction. Users are prompted to 
+The search interface is the primary point of interaction within the application. Users are prompted to 
 enter a city or zipcode for their destination, as well as check-in/check-out dates
 and a maximum distance within which to find hotels. 
 
 The interface will make a location search request to the back end API after a short delay 
 from the most recent key-press. A small loading indicator in the right portion of the search 
-input lets users know that data is being loading. Once available, matching locations are 
-displayed in a drop-down. The desired location can then be selected by clicking/tapping or
-using the arrow keys on the keyboard and then pressing enter.
+input lets users know that data is being loading. Matching locations are 
+displayed in a drop-down, and the desired location can then be selected by clicking/tapping or
+using the arrow keys on the keyboard and pressing enter. An error message is displayed if the
+user attempts to perform a search without first selecting a valid location.
 
 The check-in and check-out fields are pre-populated with the current and following
 days for convenience. These can be changed by clicking/tapping on either date and 
 selecting a new date from the pop-up calendars. The interface prevents users from 
-selecting a check-out date before their check-in date, and vice-versa.
+selecting a check-out date before their check-in date, and vice-versa. The number 
+of nights the user will stay is displayed next to the check-out field.
 
-Filters are made availible to further limit and refine the resulting hotels. Hhotel preview 
+Filters are available to further limit and refine search results. Hotel preview 
 cards are rendered in a [Pinterest](https://www.pinterest.com/) like, stacking layout using 
-the [Masonry](http://masonry.desandro.com/) library. The display of hotel preview cards is
+the [Masonry](http://masonry.desandro.com/) library. The hotel preview cards are
 automatically updated as filters are applied.
 
 ##### Search displayed on a desktop computer
@@ -169,7 +172,7 @@ easily accessible on the left.
 ##### Search displayed on a horizontal iPad
 
 The interface automatically adjusts to fit the maximum number of hotel preview card columns.
-All user elements are touch responsive, and sliders can be moved with touch thanks to the
+All user elements are touch responsive, and sliders can be moved with touch events thanks to the
 [touchpunch](http://touchpunch.furf.com/) library.
 
 ![Search Interface on Horizontal iPad](https://lh3.googleusercontent.com/LD9QH1FOjE7CFzS8LZQcZ7O27c-3VAWaR4eNQ7cWGZaU=w1008-h767-no "Search Interface on Horizontal iPad")
@@ -180,56 +183,56 @@ The check-in and check-out fields are displayed in two columns, while the maximu
 is displayed below, taking up the full width.
 
 The filter box is moved from the left side of the screen to above the search results, and most
-of the fields are hidden to allow taking up too much vertical space. Clicking on the 
+of the fields are hidden to avoid taking up too much vertical space. Clicking on the 
 "Filter Search Results" button will expand the search box so that all filters are accessible.
 
 ![Search Interface on Vertical iPad](https://lh3.googleusercontent.com/8g34eDEAapXvFmLZ0MAYNOvRA_5Szi4zZYZu08D1CeCk=w601-h813-no "Search Interface on Vertical iPad")
 
-##### Search displayed on a horizontal iPhone6
+##### Search displayed on a horizontal iPhone 6
 
 Similar to a vertical iPad, but the interface has resized to show two hotel preview card columns.
 
-![Search Interface on horizontal iPhone6](https://lh3.googleusercontent.com/zBPwFslA7hxLjaZyPhuEhVhMYW-JnJwNJJdbD-9Bfgbr=w660-h372-no "Search Interface on vertical horizontal6")
+![Search Interface on horizontal iPhone 6](https://lh3.googleusercontent.com/zBPwFslA7hxLjaZyPhuEhVhMYW-JnJwNJJdbD-9Bfgbr=w660-h372-no "Search Interface on vertical horizontal6")
 
 A small amount of scrolling down reveals two centered hotel preview card columns
 
-![Search Interface on horizontal iPhone6](https://lh3.googleusercontent.com/OzZTKN414rt4InsbCJn3Woy_Ftjoq2JMcXvRuEe60Lpq=w665-h373-no "Search Interface on horizontal iPhone6 - scrolled down")
+![Search Interface on horizontal iPhone 6](https://lh3.googleusercontent.com/OzZTKN414rt4InsbCJn3Woy_Ftjoq2JMcXvRuEe60Lpq=w665-h373-no "Search Interface on horizontal iPhone 6 - scrolled down")
 
 
-##### Search displayed on a vertical iPhone6
+##### Search displayed on a vertical iPhone 6
 
-The locale selector in the top right is moved to its own line in order to allow the site title
-to fill the full width of the phone. The search filters boxes automatically scale to fit.
+The language selector in the top right is moved down so the site title does not wrap to multiple
+lines. The search and filter boxes automatically scale to fit.
 
-![Search Interface on vertical iPhone6](https://lh3.googleusercontent.com/St97F3mShv1mNbj1YjFIja17FMhpJaPoUqfq9dvZlmnw=w361-h658-no "Search Interface on vertical iPhone6")
+![Search Interface on vertical iPhone 6](https://lh3.googleusercontent.com/St97F3mShv1mNbj1YjFIja17FMhpJaPoUqfq9dvZlmnw=w361-h658-no "Search Interface on vertical iPhone 6")
 
-A small amount of scrolling down reveals centered hotel preview cards.
+A small amount of scrolling reveals centered hotel preview cards.
 
-![Search Interface on vertical iPhone6](https://lh3.googleusercontent.com/xR7ZLTq_bH-5Wv05qv_gR_hqoKJfNKHBEkWWOS70qCoh=w360-h655-no "Search Interface on vertical iPhone6 - scrolled down")
+![Search Interface on vertical iPhone 6](https://lh3.googleusercontent.com/xR7ZLTq_bH-5Wv05qv_gR_hqoKJfNKHBEkWWOS70qCoh=w360-h655-no "Search Interface on vertical iPhone 6 - scrolled down")
 
 ### Hotel Details
 
-Clicking/tapping on a hotel preview card within search results opens a modal dialog containing
+Clicking/tapping on a hotel preview card opens a modal dialog containing
 details about the selected hotel. This dialog animates up from the selected card to the center
 of the screen, creating a sense of physicality to the interaction. The dialog can be closed
-by clicking/tapping anywhere outside of the dialog, by clicking on the "X" button in the top
-right of the dialog, or by pressing the escape key on the keyboard.
+by clicking/tapping anywhere outside of the dialog box, by clicking/tapping on the "X" button in the top
+right, or by pressing the escape key on the keyboard.
 
 There are four navigational tabs. The overview tab contains a horizontally scrolling preview of
-the photos available for the selected hotel thanks to the [Sly](http://darsa.in/sly/) library. 
-It can be moved right or left by clicking and dragging or through touch gestures. Clicking/tapping on
+the photos available for the selected hotel. It can be moved right or left by clicking and dragging 
+or through touch gestures thanks to the [Sly](http://darsa.in/sly/) library. Clicking/tapping on
 any photo will open a touch-enabled, full-screen view, allowing users to click or swipe to view the 
 next photo thanks to the [Swipebox](http://brutaldesign.github.io/swipebox/) library.
 
-The photos tab contains a grid of thumbnails of all available photos for the hotel, and selecting
-on any of these will open the full screen photo view. The map tab features a larger, Google-powered
+The photos tab contains a grid of thumbnails of all available photos for the hotel. Selecting
+any of these will open the full screen photo view. The map tab features a larger, Google-powered
 map of the hotel's location. The reviews tab contains a breakdown of the frequency of guest ratings
 as well as a list of guest reviews.
 
-##### Hotel details on desktop
+##### Hotel details on desktop computer
 
-The hotel name, address, stars, rating, price, and booking button are displayed across the top
-of the dialog box for easy access. The hotel description, amenities, and small map are
+The hotel name, address, stars, rating, and booking information are displayed across the top
+of the dialog box for easy access. The hotel description, amenities, and a small preview map are
 displayed in 3 columns.
 
 ![Hotel details on desktop](https://lh3.googleusercontent.com/DdStq67-BYUpVYlr2AoDBMByt35SqCvQSbuSgtHU-xnM=w1494-h889-no "Hotel details on desktop")
@@ -245,29 +248,25 @@ the desktop experience.
 
 ![Hotel details on horizontal iPad](https://lh3.googleusercontent.com/iHxLZQ1xWNlBIIwGZP8lH9757MQvNqfGXx4eM4m_B8pe=w989-h760-no "Hotel details on horizontal iPad")
 
-##### Hotel details on vertical iPhone6
+##### Hotel details on vertical iPhone 6
 
-The dialog box is resized to fit the screen, and the rate information and booking button are 
-shown below ratings and hotel title.
+The dialog box is resized to fit the screen, and the booking information is
+shown below ratings, address, and hotel name.
 
-![Hotel details on vertical iPhone6](https://lh3.googleusercontent.com/weIbKRuHCAzPrkp5cj8GYqLJLjewt7eYIGoU-SG88VAh=w370-h663-no "Hotel details on vertical iPhone6")
+![Hotel details on vertical iPhone 6](https://lh3.googleusercontent.com/weIbKRuHCAzPrkp5cj8GYqLJLjewt7eYIGoU-SG88VAh=w370-h663-no "Hotel details on vertical iPhone 6")
 
 A small amount of scrolling reveals amenities and map preview.
 
-![Hotel details on vertical iPhone6](https://lh3.googleusercontent.com/FtMRfdAUS0PqLJEcosE3AsUM36eScHdbSsH0wfm9lgzZ=w370-h660-no "Hotel details on vertical iPhone6")
+![Hotel details on vertical iPhone 6](https://lh3.googleusercontent.com/FtMRfdAUS0PqLJEcosE3AsUM36eScHdbSsH0wfm9lgzZ=w370-h660-no "Hotel details on vertical iPhone 6")
 
 
 ## Using the Application
 
 This application requires [NodeJS](http://nodejs.org/download/) which you
-will need to install if you have not already done so.
-
-Once you have NodeJS installed, clone this Github repository or 
+will need to install if you have not already done so. Once you have NodeJS installed, clone this Github repository or 
 [download](https://github.com/JeromeDane/front-end-code-challenge/archive/jeromedane.zip) 
-and unzip the code to your local machine. Next navigate to the root folder of this project 
-in your command line. 
-
-Install the package dependencies by running:
+and unzip the code to your local machine. Navigate to the root folder of this project 
+in your command line, and install the package dependencies by running:
 
 ```
 npm install
@@ -279,21 +278,21 @@ Once the dependencies are installed, start the application server:
 npm start
 ```
 
-Once the server is running, you can access the start page (public/index.html) at [http://localhost:9696](http://localhost:9696).
+Once the server is running, you can access the interface (public/index.html) at [http://localhost:9696](http://localhost:9696).
 
 
 ## Optimization
 
-One of the down-sides of single-page JavaScript applications is that they often require
+One of the drawbacks of single-page JavaScript applications is that they can require
 a lot of front-loading of files and assets before the user can interact with the interface.
-This could be mitigated by performing more asynchronous loads as the user makes requests, 
+This could be mitigated by performing more asynchronous loads as the user performs actions, 
 or by combining files in order to reduce the number of initial HTTP requests.
 
-This project is designed to have the user interface code run through the 
-[require.js optimizer](http://requirejs.org/docs/optimization.html). There are 111 raw source code
-and asset files in the user interface portion of the project, totaling 2 MB. Loading the user
+This project is designed to be built using the
+[require.js optimizer](http://requirejs.org/docs/optimization.html). There are 111 source code
+and asset files in the user ``public`` folder of the project, totaling 2 MB. Loading the user
 interface in a browser requires **59 HTTP requests**. After performing the optimization build, 
-the UI folder contains 71 files totaling only 777 KB. There are only **16 HTTP requests** performed.
+the ``public`` folder contains 71 files totaling only 777 KB, and there are only **16 HTTP requests** performed.
 
 To run the optimization, navigate to the ``public`` folder of this project on your machine in a
 console window, and run:
@@ -305,24 +304,23 @@ node lib/require/r.js -o build.js
 The ``r.js`` optimization library has been included for convenience, but can also be 
 [globally installed](http://requirejs.org/docs/optimization.html#download) on your machine.
 
-This will create a new distribution folder ``public/dist`` on your machine. To tell the application
-to use this folder rather than the full source code, stop any running instances of Node.js, then
-modify ``app.js`` as in 
+To tell the application to use this the optimized code, stop the Node.js server, then
+modify [``app.js``](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/app.js) as in 
 [this commit](https://github.com/JeromeDane/front-end-code-challenge/commit/5b9449f0dc6393a54c4d8aeb5431ca39990ab088)
-so that it now loads the user interface from ``public/dist`` rather than ``public``, and restart the server:
+so that it loads the user interface from ``public/dist`` rather than ``public``. Finally, restart the server:
 
 
 ```
 npm start
 ```
 
-Once the server is running, you can access the start page (public/index.html) at [http://localhost:9696](http://localhost:9696).
+Once the server is running, you can access the interface (public/index.html) at [http://localhost:9696](http://localhost:9696).
 
 ## License
 
-To my knowledge, all code and libraries used in this project are MIT licensed. The modifications 
-to the original [coding challenge](https://github.com/roomkey/front-end-code-challenge)
+To my knowledge, all code and libraries used in this project are distributed unter the MIT license. 
+The modifications to the original [coding challenge](https://github.com/roomkey/front-end-code-challenge)
 that resulted in [this submission](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane) 
 are licensed under [Creative Commons Attribution 3.0](https://creativecommons.org/licenses/by/3.0/us/). 
-Basically I just ask that if you use any of my modifications in your own work that you provide a link
-somewhere in your code or documentation pointing back here.
+I just ask that you include a link back here in your code or documentation if you use any of my modifications 
+in your own work.
