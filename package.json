@@ -6,12 +6,19 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "backbone": "^1.2.1",
     "body-parser": "~1.8.1",
+    "brfs": "^1.4.0",
     "connect-browserify": "^4.0.0",
     "express": "~4.9.0",
     "ip": "^0.3.3",
+    "jquery": "^2.1.4",
+    "jquery-ui": "^1.10.5",
     "lodash": "^2.4.1",
+    "masonry-layout": "^3.3.1",
     "path": "^0.11.14",
-    "random-seed": "^0.2.0"
+    "random-seed": "^0.2.0",
+    "stringify": "^3.1.0",
+    "underscore": "^1.8.3"
   }
 }
