@@ -3,6 +3,8 @@ var path        = require('path');
 var _           = require('lodash');
 var ip          = require('ip');
 var bodyParser  = require('body-parser');
+var browserify  = require('connect-browserify');
+var deamdify    = require('deamdify');
 
 var locations   = require('./routes/locations');
 var hotels      = require('./routes/hotels');
@@ -10,6 +12,13 @@ var hotels      = require('./routes/hotels');
 var app = express();
 var publicPathName = 'public';
 var publicPath = path.join(__dirname, publicPathName);
+
+app.use('/main.js', browserify.serve({
+  entry: path.join(publicPath, 'main.js'),
+  watch: true,
+  transforms: [deamdify],
+  debug: true
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
