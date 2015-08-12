@@ -1,6 +1,8 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
 var SearchNumResultsView = require('./search-numresults');
+var $ = require('jquery');
+var l = require('../localization').l;
 
 // TODO: Consider breaking this up into separate views. Lots of code here. :-(
 
@@ -110,7 +112,7 @@ function initFilterByStars(view, type) {
 		$('.filter.' + type + ' span.stars', view.$el).raty({
 			score: score,
 			half: true,
-			path: 'lib/raty/images',
+			path: 'images/raty',
 			readOnly: true
 		});
 	}
@@ -283,7 +285,8 @@ var view = {
 
 		this.$el.html(this.template({
 			amenities: this.hotels.getAmenitiesWithFrequency(),
-			sortOrders: this.hotels.getSortOrders()
+			sortOrders: this.hotels.getSortOrders(),
+			l: l
 		}));
 
 		initOpenCloseToggle(this);
@@ -302,7 +305,7 @@ var view = {
 		// render jquery-ui buttons
 		$('button', this.$el).button();
 
-		com.jeromedane.Utils.renderSubView(this, 'search-numresults');
+		require('../utils').renderSubView(this, 'search-numresults');
 	}
 };
 

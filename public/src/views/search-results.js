@@ -1,8 +1,9 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
 var $ = require('jquery');
-var Masonry = require('masonry-layout');
 var l =  require('../localization').l;
+var Masonry = require('masonry-layout');
+var HotelPreviewView = require('./hotel-preview');
 
 function renderHotels(view) {
 

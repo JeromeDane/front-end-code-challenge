@@ -9,6 +9,7 @@
     "backbone": "^1.2.1",
     "body-parser": "~1.8.1",
     "brfs": "^1.4.0",
+    "browserify": "^11.0.1",
     "connect-browserify": "^4.0.0",
     "express": "~4.9.0",
     "ip": "^0.3.3",
@@ -18,7 +19,20 @@
     "masonry-layout": "^3.3.1",
     "path": "^0.11.14",
     "random-seed": "^0.2.0",
+    "raty": "git+https://github.com/wbotelhos/raty.git#2.7.0",
+    "shim": "^0.6.0",
+    "sly": "git+https://github.com/JeromeDane/sly.git",
     "stringify": "^3.1.0",
+    "swipebox": "git+https://github.com/JeromeDane/swipebox.git",
+    "tooltipster": "^1.0.9",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  },
+  "browserify": {
+    "transform": [
+      "stringify"
+    ]
   }
 }

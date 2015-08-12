@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var PhotosCollection = require('../collections/photos');
 
 var model = {
 

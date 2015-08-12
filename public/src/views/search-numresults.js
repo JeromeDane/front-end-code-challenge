@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
+var l = require('../localization').l;
 
 var view = {
 
@@ -19,7 +20,8 @@ var view = {
 
 		this.$el.html(this.template({
 			numHotels: this.hotels.length,
-			numHotelsFiltered: this.hotels.getFiltered().length
+			numHotelsFiltered: this.hotels.getFiltered().length,
+			l: l
 		}));
 
 	}

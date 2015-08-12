@@ -1,6 +1,13 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
 var $ = require('jquery');
+var l = require('../localization').l;
+
+// TODO: Get browserify-shim working to inject jQuery into tooltipster so jQuery doesn't need to be exposed globally
+global.jQuery = require("jquery");
+require('tooltipster');
+require('swipebox');
+require('sly');
 
 // dialog settings
 var width, height;			// automatically calculated within updateDialogDimensions()
@@ -183,7 +190,7 @@ function renderStars(view) {
 
 	var starConfig = {
 		half: true,
-		path: 'lib/raty/images',
+		path: 'images/raty',
 		readOnly: true
 	};
 
@@ -353,6 +360,7 @@ var view = {
 
 		var attr = this.model.toJSON();
 		attr.ratingFrequencies = this.model.getRatingFrequencies();
+		attr.l = l;
 		this.$el.html(this.template(attr));
 
 		showDialog(this, hotelPreviewView);

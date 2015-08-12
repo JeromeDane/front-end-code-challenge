@@ -1,16 +1,10 @@
-define([
-	'models/photo'
-], function(
-		PhotoModel
-) {
-	
-	var collection = {
+var Backbone = require('backbone');
+var PhotoModel = require('../models/photo');
 		
-		model: PhotoModel
-		
-	};
-	
-	return Backbone.Collection.extend(collection);
-	
-});
+var collection = {
 
+	model: PhotoModel
+
+};
+
+module.exports = Backbone.Collection.extend(collection);
