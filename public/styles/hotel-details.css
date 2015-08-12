@@ -1,6 +1,7 @@
 .ui-dialog.hotel-details-dialog {
 	padding: 0 0 1em 0;
 	border-color: #666;
+	position: absolute;
 }
 .hotel-details-dialog > .ui-dialog-titlebar {
 	height: 0;
