@@ -1,8 +1,10 @@
+/*@import url(_normalize.css);*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400);
 @import url(http://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
 @import url(jquery-ui/jquery-ui.min.css);
-@import url(jquery-ui/jquery-ui.structure.min.css);
-@import url(jquery-ui/jquery-ui.theme.min.css);
+@import url(swipebox/css/swipebox.min.css);
+@import url(tooltipster/tooltipster.css);
+@import url(tooltipster/themes/tooltipster-shadow.css);
 @import url(search-box.css);
 @import url(search-filters.css);
 @import url(search-results.css);
