@@ -1,6 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var HotelModel = require('../models/hotel');
+var l = require('../localization').l;
 
 var baseUrl = 'api/hotels';
 var sortOrderDefault = "guest_rating";
