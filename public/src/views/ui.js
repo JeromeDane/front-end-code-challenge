@@ -4,6 +4,11 @@ var HeaderView = require('./header');
 var SearchView = require('./search');
 var $ = require('jquery');
 var renderSubView = require('../utils').renderSubView;
+var Localization = require('../localization');
+
+var localizationData = require('../localization.json');
+
+Localization.define(localizationData);
 
 var view = {
 

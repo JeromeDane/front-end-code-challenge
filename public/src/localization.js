@@ -1,3 +1,5 @@
+require('l10n.js');
+
 module.exports = (new function() {
 
 	/**
