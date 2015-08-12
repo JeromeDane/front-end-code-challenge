@@ -13,7 +13,7 @@ var publicPathName = 'public';
 var publicPath = path.join(__dirname, publicPathName);
 
 app.use('/main.js', browserify.serve({
-  entry: path.join(publicPath, 'main.js'),
+  entry: path.join(publicPath, 'src/main.js'),
   watch: true,
   debug: true
 }));

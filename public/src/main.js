@@ -1,4 +1,4 @@
-var UiView = require('./src/views/ui');
+var UiView = require('./views/ui');
 
 var ui = new UiView({
 	el: 'body'
