@@ -4,3 +4,5 @@ node_modules/
 /nbproject/private/
 nbproject/
 public/dist/
+main.bundle.js
+public/main.min.js

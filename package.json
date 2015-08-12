@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "min": "browserify public/src/main.js > public/main.bundle.js",
+	"min:closure": "java -jar node_modules/google-closure-compiler/compiler.jar --js_output_file=public/main.min.js public/main.bundle.js"
   },
   "dependencies": {
     "backbone": "^1.2.1",
@@ -15,7 +17,7 @@
     "ip": "^0.3.3",
     "jquery": "^2.1.4",
     "jquery-ui": "^1.10.5",
-	"l10n.js": "git+https://github.com/JeromeDane/l10n.js.git",
+    "l10n.js": "git+https://github.com/JeromeDane/l10n.js.git",
     "lodash": "^2.4.1",
     "masonry-layout": "^3.3.1",
     "path": "^0.11.14",
@@ -29,8 +31,10 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "uglifyjs": "^2.4.10"
+    "google-closure-compiler": "^20150729.0.0",
+    "uglify-js": "^2.4.24"
   },
+  "browser": "public/src/main.js",
   "browserify": {
     "transform": [
       "stringify"
