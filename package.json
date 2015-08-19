@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "min": "browserify public/src/main.js > public/main.bundle.js",
+    "min": "browserify public/src/index.js -d -p [minifyify --map index.min.map --output public/index.min.map]> public/index.min.js",
     "style": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map > public/index.bundle.css",
     "style:min": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map --clean-css=\"--compatibility=ie8 --advanced\" > public/index.bundle.css",
     "toc": "doctoc ."
@@ -35,7 +35,8 @@
   "devDependencies": {
     "doctoc": "^0.15.0",
     "less": "^2.5.1",
-    "less-plugin-clean-css": "^1.5.1"
+    "less-plugin-clean-css": "^1.5.1",
+    "minifyify": "^7.0.5"
   },
   "browser": "public/src/main.js",
   "browserify": {
