@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node app.js",
     "min": "browserify public/src/main.js > public/main.bundle.js",
-    "style": "lessc public/src/styles/ui.less > public/index.bundle.css",
-    "style:min": "lessc public/src/styles/ui.less --clean-css=\"--compatibility=ie8 --advanced\" > public/index.bundle.css"
+    "style": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map > public/index.bundle.css",
+    "style:min": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map --clean-css=\"--compatibility=ie8 --advanced\" > public/index.bundle.css"
   },
   "dependencies": {
     "backbone": "^1.2.1",

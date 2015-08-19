@@ -7,3 +7,4 @@ public/dist/
 main.bundle.js
 public/main.min.js
 public/index.bundle.css
+public/index.bundle.css.map
