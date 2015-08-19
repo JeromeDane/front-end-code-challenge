@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node app.js",
     "min": "browserify public/src/main.js > public/main.bundle.js",
-	"min:closure": "java -jar node_modules/google-closure-compiler/compiler.jar --js_output_file=public/main.min.js public/main.bundle.js"
+    "style": "lessc public/src/styles/ui.less > public/index.bundle.css",
+    "style:min": "lessc public/src/styles/ui.less --clean-css=\"--compatibility=ie8 --advanced\" > public/index.bundle.css"
   },
   "dependencies": {
     "backbone": "^1.2.1",
@@ -31,8 +32,8 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "google-closure-compiler": "^20150729.0.0",
-    "uglify-js": "^2.4.24"
+    "less": "^2.5.1",
+    "less-plugin-clean-css": "^1.5.1"
   },
   "browser": "public/src/main.js",
   "browserify": {

@@ -6,3 +6,4 @@ nbproject/
 public/dist/
 main.bundle.js
 public/main.min.js
+public/index.bundle.css
