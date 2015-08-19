@@ -27,6 +27,8 @@ comment on any part of this project. Feedback is welcome and will be put to good
 
 Thanks for your consideration.
 
+[TOC]
+
 ## Code Structure
 
 I chose to use a single page JavaScript application design rather than having users
@@ -36,10 +38,10 @@ back end system.
 
 The user interface leverages [Backbone.js](http://backbonejs.org/) to manage a
 modular design pattern. Views render data to templates, and automatically
-update as data is modified. Dependencies are managed and loaded using 
-[Require.JS](http://requirejs.org/). Much of the interactive input elements are
-generated using [jQuery UI](https://jqueryui.com) to create a rich experience with 
-less coding time and good cross-browser support.
+update as data is modified. Dependencies are managed using [npm](http://npmjs.com) and 
+[browserify](http://browserify.org). Many of the interactive input elements are generated using 
+[jQuery UI](https://jqueryui.com) to create a rich experience with less coding time and good 
+cross-browser support.
 
 Here is the directory structure for this project:
 
