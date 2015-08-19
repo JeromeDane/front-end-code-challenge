@@ -51,15 +51,11 @@ command line interface.
 
         npm install    
 
-4. Compile the stylesheets by running the following command:
-
-        npm run style
-
-5. Start the server by running the following command:
+4. Start the server by running the following command:
 
         npm start
 
-6. Navigate to [http://localhost:9696/](http://localhost:9696/) in your browser.
+5. Navigate to [http://localhost:9696/](http://localhost:9696/) in your browser.
 
 ## Project Structure
 
