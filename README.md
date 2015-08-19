@@ -66,7 +66,7 @@ command line interface.
 I chose to use a single page JavaScript application design rather than having users navigate between separate pages. There may be more initial loading, but the overall user experience should be smoother and more dynamic, with less drag on the back end system.
 
 The user interface leverages [Backbone.js](http://backbonejs.org/) to manage a modular design pattern. Views render data to templates, and automatically
-update as data is modified. Dependencies are managed using [npm](http://npmjs.com) and [browserify](http://browserify.org). Many of the interactive input elements are generated using [jQuery UI](https://jqueryui.com) to create a rich experience with less coding time and good cross-browser support.
+update as data is modified. Dependencies are managed using [npm](http://npmjs.com) and [browserify](http://browserify.org). 
 
 Here is the directory structure for this project:
 
@@ -97,12 +97,13 @@ first mapping hotels to regions encompassing several adjacent cities and searchi
 
 The back end server provides real-time bundling of all source files. Accessing `\index.js` in the browser causes the back end to run browserify to serve a bundled file containing all of the scripts. Accessing `\index.css` in the browser causes the back end to run less to generate and serve up a bundled file containing all of the stylesheets.
 
-
 ### Front End Structure
 
 The user interface code is held within [`public`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public). The [`public/src`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/src) directory contains the various collections, models, styles, templates, and views required to render the user interface. 
 
 When loaded in a browser, [`public/index.html`](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/public/index.html) asks the back end for `\index.js` and `\index.css`, which will automatically be generated containing bundles of all necessary scripts and styles from [`public/src`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/src).
+
+Many of the interactive input elements are generated using [jQuery UI](https://jqueryui.com) to create a rich experience with less coding time and good cross-browser support.
 
 ## User Interface
 
