@@ -1,3 +1,29 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Room Key Front End Development Challenge
+](#room-key-front-end-development-challenge)
+  - [Code Structure](#code-structure)
+  - [Documentation](#documentation)
+  - [Back End](#back-end)
+  - [Look and Feel](#look-and-feel)
+  - [User Interface](#user-interface)
+    - [Search UI](#search-ui)
+        - [Search displayed on a desktop computer](#search-displayed-on-a-desktop-computer)
+        - [Search displayed on a horizontal iPad](#search-displayed-on-a-horizontal-ipad)
+        - [Search displayed on a vertical iPad](#search-displayed-on-a-vertical-ipad)
+        - [Search displayed on a horizontal iPhone 6](#search-displayed-on-a-horizontal-iphone-6)
+        - [Search displayed on a vertical iPhone 6](#search-displayed-on-a-vertical-iphone-6)
+    - [Hotel Details](#hotel-details)
+        - [Hotel details on desktop computer](#hotel-details-on-desktop-computer)
+        - [Hotel details on horizontal iPad](#hotel-details-on-horizontal-ipad)
+        - [Hotel details on vertical iPhone 6](#hotel-details-on-vertical-iphone-6)
+  - [Using the Application](#using-the-application)
+  - [Optimization](#optimization)
+  - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 Room Key Front End Development Challenge
 ========================================
 
@@ -26,8 +52,6 @@ I am always looking to improve, so please don't hesitate to
 comment on any part of this project. Feedback is welcome and will be put to good use.
 
 Thanks for your consideration.
-
-[TOC]
 
 ## Code Structure
 
