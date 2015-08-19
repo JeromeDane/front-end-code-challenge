@@ -12,8 +12,8 @@ var app = express();
 var publicPathName = 'public';
 var publicPath = path.join(__dirname, publicPathName);
 
-app.use('/main.js', browserify.serve({
-  entry: path.join(publicPath, 'src/main.js'),
+app.use('/index.js', browserify.serve({
+  entry: path.join(publicPath, 'src/index.js'),
   watch: true,
   debug: true
 }));
