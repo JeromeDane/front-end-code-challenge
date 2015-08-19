@@ -227,6 +227,8 @@ I've also started investigating the [jsdoc-to-markdown](https://www.npmjs.com/pa
 
 ## To Do
 
+* WRITE TESTS!
+
 * Create a [gulp](http://gulpjs.com/)/[grunt](http://gruntjs.com/) process to automate [distribution build steps](#distribution-build).
 
 * Handle jQuery-ui and Swipebox module image paths without having to manually copy images to `public` to support defaults in their respective CSS files
