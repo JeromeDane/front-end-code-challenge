@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "min": "browserify public/src/index.js -d -p [minifyify --map index.min.map --output public/index.min.map]> public/index.min.js",
-    "style": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map > public/index.bundle.css",
-    "style:min": "lessc public/src/styles/ui.less --source-map=public/index.bundle.css.map --source-map-url=index.bundle.css.map --clean-css=\"--compatibility=ie8 --advanced\" > public/index.bundle.css",
+    "build": "npm run min-scripts & npm run min-styles",
+    "min-scripts": "browserify public/src/index.js -d -p [minifyify --map index.min.js.map --output public/index.min.js.map]> public/index.min.js",
+    "min-styles": "lessc public/src/styles/index.less --source-map=public/index.min.css.map --source-map-url=index.min.css.map --clean-css=\"--compatibility=ie8 --advanced\" > public/index.min.css",
     "toc": "doctoc ."
   },
   "dependencies": {
