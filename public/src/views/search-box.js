@@ -258,7 +258,15 @@ function parseLocationResults() {
 		};
 	}));
 	this.$search.removeClass('loading');	
-	this.$search.keydown();					// force open autocomplete options
+	
+	// hack to force open autocomplete list when locations are ready. from https://community.oracle.com/thread/2451338
+	//preserve the minLength option
+	var lMinLength = this.$search.autocomplete("option","minLength");
+	//set minLength to 0 so a search can trigger
+	this.$search.autocomplete("option","minLength", 0);      
+	this.$search.autocomplete("search",'');
+	//reset the minlength option
+	this.$search.autocomplete("option","minLength", lMinLength);
 }
 
 // perform hotel search
