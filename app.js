@@ -4,6 +4,8 @@ var _           = require('lodash');
 var ip          = require('ip');
 var bodyParser  = require('body-parser');
 var browserify  = require('connect-browserify');
+var expressLess = require('express-less');
+
 
 var locations   = require('./routes/locations');
 var hotels      = require('./routes/hotels');
@@ -16,6 +18,13 @@ app.use('/index.js', browserify.serve({
   entry: path.join(publicPath, 'src/index.js'),
   watch: true,
   debug: true
+}));
+
+app.use('/', expressLess(path.join(publicPath, 'src', 'styles'), { 
+	debug: true,
+	sourceMap: {
+		sourceMapFileInline: true
+	}
 }));
 
 app.use(bodyParser.json());
