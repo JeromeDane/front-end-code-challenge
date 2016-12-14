@@ -2,7 +2,7 @@
 	<div class="overview-block">
 		<h1><%= name %></h1>
 		<div class="address">
-			<%= address.line1 %>, <%= address.city %>, 
+			<%= address.line1 %>, <%= address.city %>,
 			<%= address.state %> <%= address.postal_code %>, <%= address.country_name %>
 		</div>
 		<div>
@@ -33,7 +33,7 @@
 			<button onclick="javascript:alert('not implemented in this coding challenge')">
 				Book Now
 				<% if(typeof(logo) != 'undefined') { %>
-					<img src="<%= logo %>" class="logo"/>
+					<!-- <img src="<%= logo %>" class="logo"/> -->
 				<% } %>
 			</button>
 		<% } else { %>
