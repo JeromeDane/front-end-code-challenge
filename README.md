@@ -22,6 +22,7 @@
       - [Hotel details on vertical iPhone 6](#hotel-details-on-vertical-iphone-6)
 - [Distribution Build](#distribution-build)
 - [Code Documentation](#code-documentation)
+- [Integration Tests](#integration-tests)
 - [To Do](#to-do)
 - [License](#license)
 
@@ -44,7 +45,7 @@ I am always looking to improve, so please don't hesitate to comment on any part 
 
 1. Install [NodeJS](https://nodejs.org/) if you haven't already.
 
-2. Clone this repository to your local machine, and navigate to it's root directory in your 
+2. Clone this repository to your local machine, and navigate to it's root directory in your
 command line interface.
 
 3. Install all required dependencies by running the following command:
@@ -62,11 +63,11 @@ command line interface.
 I chose to use a single page JavaScript application design rather than having users navigate between separate pages. There may be more initial loading, but the overall user experience should be smoother and more dynamic, with less drag on the back end system.
 
 The user interface leverages [Backbone.js](http://backbonejs.org/) to manage a modular design pattern. Views render data to templates, and automatically
-update as data is modified. Dependencies are managed using [npm](http://npmjs.com) and [browserify](http://browserify.org). 
+update as data is modified. Dependencies are managed using [npm](http://npmjs.com) and [browserify](http://browserify.org).
 
 Here is the directory structure for this project:
 
-``` 
+```
 +---data
 |   +---hotels
 +---public
@@ -85,17 +86,17 @@ Here is the directory structure for this project:
 ### Back End Structure
 
 The back end provided for this coding challenge was written by Room Key staff in [NodeJS](http://nodejs.org/download/) with existing API methods that returned data from flat JSON files. I would use a full, relational database for a live version of this application to be able to perform more flexible
-queries and take advantage of indexing. I imported [US ZipCode data](http://www.opengeocode.org/download.php#cityzip) and created a new [`data/zipcodes.json`](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/data/zipcodes.json) file to serve up more locations than the 
+queries and take advantage of indexing. I imported [US ZipCode data](http://www.opengeocode.org/download.php#cityzip) and created a new [`data/zipcodes.json`](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/data/zipcodes.json) file to serve up more locations than the
 [original 3](https://github.com/roomkey/front-end-code-challenge/blob/master/data/locations.json) provided in the coding challenge.
 
-I implement latitude/longitude based distance calculation in the back end based on [this formula](http://www.movable-type.co.uk/scripts/latlong.html) to be able to find all hotels within a dynamic distance of any given point. Doing so on data from a flat JSON is not optimal, and would not scale well to searching a very large set of hotels. This would likely require a database scheme that supports indexing, caching, or other optimization tricks like 
+I implement latitude/longitude based distance calculation in the back end based on [this formula](http://www.movable-type.co.uk/scripts/latlong.html) to be able to find all hotels within a dynamic distance of any given point. Doing so on data from a flat JSON is not optimal, and would not scale well to searching a very large set of hotels. This would likely require a database scheme that supports indexing, caching, or other optimization tricks like
 first mapping hotels to regions encompassing several adjacent cities and searching distance only on those hotels within a given region.
 
 The back end server provides real-time bundling of all source files. Accessing `\index.js` in the browser causes the back end to run browserify to serve a bundled file containing all of the scripts. Accessing `\index.css` in the browser causes the back end to run less to generate and serve up a bundled file containing all of the stylesheets.
 
 ### Front End Structure
 
-The user interface code is held within [`public`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public). The [`public/src`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/src) directory contains the various collections, models, styles, templates, and views required to render the user interface. 
+The user interface code is held within [`public`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public). The [`public/src`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/src) directory contains the various collections, models, styles, templates, and views required to render the user interface.
 
 When loaded in a browser, [`public/index.html`](https://github.com/JeromeDane/front-end-code-challenge/blob/jeromedane/public/index.html) asks the back end for `\index.js` and `\index.css`, which will automatically be generated containing bundles of all necessary scripts and styles from [`public/src`](https://github.com/JeromeDane/front-end-code-challenge/tree/jeromedane/public/src).
 
@@ -108,11 +109,11 @@ and layout in order to see how it could be adapted to a responsive design.
 
 The massive increase in use of phones, tablets, and other mobile devices means that users are viewing sites on a wide variety of screen sizes. The user interface for this project is designed to adapt to any size screen in order to provide an optimal user experience. This is an area in which I hope to be able to contribute.
 
-[Chrome](https://www.google.com/chrome/) provides an excellent [device preview mode](https://developer.chrome.com/devtools/docs/device-mode), allowing you to easily re-render the interface as it would be displayed on a variety of mobile devices. 
+[Chrome](https://www.google.com/chrome/) provides an excellent [device preview mode](https://developer.chrome.com/devtools/docs/device-mode), allowing you to easily re-render the interface as it would be displayed on a variety of mobile devices.
 
 ### Search UI
 
-The search interface is the primary point of interaction within the application. Users are prompted to enter a city or zipcode for their destination, as well as check-in/check-out dates and a maximum distance within which to find hotels. 
+The search interface is the primary point of interaction within the application. Users are prompted to enter a city or zipcode for their destination, as well as check-in/check-out dates and a maximum distance within which to find hotels.
 
 The interface will make a location search request to the back end API after a short delay from the most recent key-press. A small loading indicator in the right portion of the search input lets users know that data is being loading. Matching locations are displayed in a drop-down, and the desired location can then be selected by clicking/tapping or using the arrow keys on the keyboard and pressing enter. An error message is displayed if the user attempts to perform a search without first selecting a valid location.
 
@@ -122,7 +123,7 @@ Filters are available to further limit and refine search results. Hotel preview 
 
 ##### Search displayed on a desktop computer
 
-The location search field is large, taking up the full width. The check-in, check-out, and maximum distance fields are displayed in three columns to save on vertical space. Filters are easily accessible on the left. 
+The location search field is large, taking up the full width. The check-in, check-out, and maximum distance fields are displayed in three columns to save on vertical space. Filters are easily accessible on the left.
 
 ![Search Interface on Desktop](https://lh3.googleusercontent.com/FHXjPUOuVepd1Lha-LVikiGCosvG56VlCsjJBq_9KTat=w1465-h976-no "Search Interface on Desktop")
 
@@ -221,13 +222,21 @@ A small amount of scrolling reveals amenities and map preview.
 
 ## Code Documentation
 
-Normally I would include full JSDoc style comments within all of my code to be able to generate documentation through something like [YUIDoc](http://yui.github.io/yuidoc/). As much as I would have liked to fully document everything in this project, doing so was beyond the scope this challenge given everything else I wanted to get done. I included comments where appropriate to make it clear what the code is doing, as well as provide the groundwork for document generation in the future. 
+Normally I would include full JSDoc style comments within all of my code to be able to generate documentation through something like [YUIDoc](http://yui.github.io/yuidoc/). As much as I would have liked to fully document everything in this project, doing so was beyond the scope this challenge given everything else I wanted to get done. I included comments where appropriate to make it clear what the code is doing, as well as provide the groundwork for document generation in the future.
 
 I've also started investigating the [jsdoc-to-markdown](https://www.npmjs.com/package/jsdoc-to-markdown) module, which does a great job of turning JSDoc style comments into markdown (`*.md`) files.
 
+## Integration Tests
+
+Integration tests are run using [webdriver.io](http://webdriver.io). To run them:
+
+```
+npm test
+```
+
 ## To Do
 
-* WRITE TESTS!
+* Write more tests and show example of browsermob proxy for monitoring network traffic
 
 * Create a [gulp](http://gulpjs.com/)/[grunt](http://gruntjs.com/) process to automate [distribution build steps](#distribution-build).
 
