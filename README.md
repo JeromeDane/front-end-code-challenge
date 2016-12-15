@@ -228,7 +228,7 @@ I've also started investigating the [jsdoc-to-markdown](https://www.npmjs.com/pa
 
 ## Integration Tests
 
-Integration tests are run using [webdriver.io](http://webdriver.io). To run them:
+Integration tests are run using [webdriver.io](http://webdriver.io). To run them, first make sure the site is running on `localhost:9696` by running `npm start` as described above, then launch the tests in a separate terminal window with:
 
 ```
 npm test

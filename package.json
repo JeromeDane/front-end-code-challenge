@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "backbone": "1.2.1",
-    "body-parser": "~1.8.1",
+    "body-parser": "1.8.1",
     "brfs": "1.4.0",
     "browserify": "11.0.1",
     "connect-browserify": "4.0.0",
@@ -41,7 +41,7 @@
     "less-plugin-clean-css": "1.5.1",
     "minifyify": "7.0.5",
     "request": "2.79.0",
-    "wdio-mocha-framework": "^0.5.7",
+    "wdio-mocha-framework": "0.5.7",
     "wdio-selenium-standalone-service": "0.0.7",
     "wdio-spec-reporter": "0.0.4"
   },
