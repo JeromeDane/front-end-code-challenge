@@ -33,12 +33,16 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "doctoc": "0.15.0",
     "express-less": "0.0.8",
     "less": "2.5.1",
     "less-plugin-clean-css": "1.5.1",
     "minifyify": "7.0.5",
-    "request": "2.79.0"
+    "request": "2.79.0",
+    "wdio-mocha-framework": "^0.5.7",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.4"
   },
   "browser": "public/src/main.js",
   "browserify": {
